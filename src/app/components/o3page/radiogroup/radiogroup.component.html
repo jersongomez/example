@@ -1,0 +1,27 @@
+<mat-error class="error-input" *ngIf="calculatorService.DataCuotas.length === 0 && !calculatorService.getPristine">
+  Ingrese un valor correcto y seleccione una cuota
+</mat-error>
+<mat-error class="error-input" *ngIf="calculatorService.ErrorMinToFinance">
+  No cumple con las políticas internas de financiamiento
+</mat-error>
+<div class="contRadioGroup">
+  <span
+    [ngClass]="radio.meses"
+    class="radio"
+    *ngFor="let radio of serviceCuota.Cuotas"
+    (click)="setCuota(radio.idCuota)"
+  >
+    <div class="cntPago">
+      <input class="check" [id]="radio.idCuota" name="cuota" type="radio" [value]="radio.idCuota" />
+      <div class="pago">
+        <div>{{ radio.meses }}</div>
+        <div *ngIf="calculatorService.ShowData || calculatorService.ErrorMinToFinance" class="cuota">
+          $ {{ calculatorService.DataCuotas | cuota: radio.idCuota | number: '1.0-0':'es' }} /mes
+        </div>
+        <div *ngIf="calculatorService.getLoadData" class="cuota">
+          <mat-progress-spinner diameter="20" mode="indeterminate" value="100"></mat-progress-spinner>
+        </div>
+      </div>
+    </div>
+  </span>
+</div>

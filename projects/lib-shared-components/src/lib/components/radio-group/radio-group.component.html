@@ -1,0 +1,41 @@
+<div class="lib-radio-group-container">
+  <div class="lib-radio-group-container__error">
+    <mat-error class="error-input" *ngIf="validateRadioButton">
+      Ingrese un valor correcto y seleccione una cuota
+    </mat-error>
+  </div>
+  <div class="lib-radio-group-container__content">
+    <div class="contRadioGroup" [class.green]="color === 'green'">
+      <span
+        [ngClass]="fee.textValue"
+        class="radio"
+        *ngFor="let fee of fees$ | async"
+        (click)="selectFee(fee.numbericalValue)"
+      >
+        <div class="cntPago">
+          <input
+            #radioBtns
+            class="check"
+            [id]="fee.numbericalValue"
+            name="cuota"
+            type="radio"
+            [value]="fee.numbericalValue"
+            (change)="handleChange($event.target)"
+            [disabled]="disabled(fee)"
+          />
+          <div class="pago">
+            <div class="numBer">{{ fee.textValue }}</div>
+            <div class="mes">meses</div>
+            <div *ngIf="showFeeCalculated && !!fee.valueFeeWithInsurance" class="cuota">
+              $ {{ fee.valueFeeWithInsurance | number: '1.0-0':'es' }} /mes
+            </div>
+            <div *ngIf="loadingFees$ | async" class="cuota">
+              <mat-progress-spinner diameter="20" mode="indeterminate" value="100"></mat-progress-spinner>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- <mat-error class="error-input" *ngIf="    (currentFee$).totalFinancingAmount < (minAmount$) && (currentFee$).totalFinancingAmount != 0  ">  No cumple con las políticas internas de financiamiento</mat-error> -->

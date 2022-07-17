@@ -1,0 +1,235 @@
+@import '../../../../src/scss/variables';
+@import '../../../../src/scss/mixins';
+@import '../../../../projects/lib-shared-components/src/lib/styles/styles.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: monserrat, monserratBold;
+}
+
+.business-help {
+  background: var(--banner-background) center top no-repeat;
+  grid-auto-rows: auto;
+  display: grid;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  .grafica {
+    width: 100%;
+    padding: 8%;
+  }
+
+  .title {
+    font-family: monserratBold;
+    font-size: 13px;
+    margin-bottom: 15px;
+    color: #154c5b;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .title {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+  }
+
+  .partUnoBig {
+    @media only screen and (min-width: 768px) {
+      display: block;
+    }
+
+    .cntUnoBig {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      grid-template-rows: repeat(4, auto);
+      margin-top: 50px;
+
+      @media only screen and (min-width: 768px) {
+        .texInicial .bigTitle {
+          font-size: 27px;
+          line-height: 35px;
+        }
+      }
+
+      .bigTitle {
+        align-self: center;
+        justify-self: center;
+        font-family: monserratBold;
+        font-size: 15px;
+      }
+
+      @media only screen and (min-width: 768px) {
+        .texInicial .textParrafo {
+          line-height: 20px;
+          margin-bottom: 32px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      .cntUnoBig .textCntBig {
+        grid-template-rows: 1fr 1.5fr;
+      }
+    }
+
+    .cntUnoBig .textCntBig {
+      grid-column: 1;
+      padding: 3% 10% 0 0;
+      display: grid;
+      grid-gap: 30px;
+      color: #fff;
+      margin-top: 40px;
+    }
+    @media only screen and (min-width: 768px) {
+      .cntUnoBig .textCntBig {
+        grid-template-rows: 1fr 0.9fr;
+      }
+    }
+  }
+
+  .partDosBigAyuda {
+    @media only screen and (min-width: 768px) {
+      display: block;
+      margin-top: 130px;
+    }
+
+    .procesos {
+      margin-bottom: 50px;
+    }
+
+    .procesos .bigTitle {
+      font-size: 25px;
+    }
+
+    .procesos .title {
+      font-size: 12px;
+    }
+
+    .procesos .textParrafo {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .bigTitle {
+      font-size: 25px;
+    }
+
+    .textCntDosBigAyuda {
+      display: grid;
+      grid-gap: 0 50px;
+    }
+
+    @media only screen and (min-width: 320px) {
+      .textCntDosBigAyuda {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
+        grid-gap: 12px;
+      }
+      .textCntDosBigAyuda .cntClienteDos {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .textCntDosBigAyuda .cntClienteUno {
+        grid-column: 1;
+        grid-row: 2 !important;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      .textCntDosBigAyuda {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: 1fr;
+      }
+      .textCntDosBigAyuda .cntClienteUno {
+        grid-column: 2;
+        grid-row: 1 !important;
+      }
+    }
+
+    .textCntDosBigAyuda .cntClienteUno {
+      grid-row: 1;
+    }
+
+    .textCntDosBigAyuda .cntClienteUno .listaItem {
+      font-size: 10px;
+    }
+
+    .textCntDosBigAyuda .cntClienteDos {
+      grid-row: 1;
+    }
+
+    .textCntDosBigAyuda .cntClienteDos .title {
+      font-size: 11px;
+    }
+
+    .textCntDosBigAyuda .cntClienteDos .listaItem {
+      font-size: 10px;
+    }
+  }
+
+  @include media(small, tablet) {
+    background: inherit;
+
+    .cntUnoBig {
+      .textCntBig {
+        color: black !important;
+      }
+
+      display: grid;
+      grid-auto-rows: auto;
+      grid-template-columns: auto !important;
+      margin: 30px 20px 0;
+      grid-gap: 15px;
+    }
+  }
+}
+
+.business-help-container {
+  &__navbar {
+    background-color: white;
+    background-color: transparent;
+  }
+
+  &__tips {
+    background-color: white;
+  }
+
+  &__footer {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    padding: 20px 0;
+    background-color: #0e486f;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @include media(small, tablet) {
+    &__navbar {
+      background-image: linear-gradient(to right, #154c75, #2b91b5);
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      height: 80px;
+
+      img {
+        height: 160%;
+      }
+    }
+  }
+}
+
+::ng-deep .business-help {
+  &__tips .lib-sales-tip-partners-container__tip--title {
+    color: #154c5b;
+    margin-bottom: 20px;
+  }
+
+  @include media(small, tablet) {
+    .lib-business-help-contianer__content-card {
+      height: inherit !important;
+    }
+  }
+}

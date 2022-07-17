@@ -1,0 +1,82 @@
+@import '../../../../../lib-shared-components/src/lib/styles/styles.scss';
+
+.contenedor .contenido .Contacto {
+  width: 100%;
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-auto-rows: auto;
+  box-sizing: border-box;
+  padding: 0;
+  transition: all 0.5s;
+  font-family: Montserrat;
+}
+
+.lib-light-home-layout-container hr {
+  grid-column: 1 / 3;
+}
+
+.pasos {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+  .paso {
+    .parrafo {
+      margin: 0px 0px 15px 0px;
+      font-size: 13px;
+    }
+    .imagePaso {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.paso {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 20px;
+  img {
+    max-width: 70%;
+  }
+}
+
+.textParrafo {
+  text-align: left;
+  padding-top: 30px;
+}
+
+.parrafo {
+  margin: 0px 0px 15px 0px;
+  font-size: 13px;
+}
+
+.parrafomargenInferior {
+  margin-bottom: 50px;
+}
+
+.business-help-container {
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0;
+
+  &__tips {
+    background-color: map-get($colors, gray-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.tipsVentas {
+  margin: 30px;
+}
+
+.Contacto {
+  padding: 16px 0;
+  font-size: 12px;
+}

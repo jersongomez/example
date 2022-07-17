@@ -1,0 +1,32 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+::ng-deep .mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  color: white;
+}
+
+::ng-deep .mat-icon-button .mat-icon,
+.mat-icon-button i {
+  color: white;
+}
+
+.navbarSection {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 6px 0;
+  div {
+    padding: 0 6px;
+
+    @include Asmall() {
+      width: 50%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

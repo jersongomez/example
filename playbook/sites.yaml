@@ -1,0 +1,23 @@
+- hosts: localhost
+  gather_facts: no
+  
+  vars:
+    _path_rmv_regex: ^.*/(.*)$
+    _path_extension_rmv_regex: ^.*/([^\.]*).*
+
+  tasks:
+  
+  - name: Generating files for  {{ abl_artifact_id }}
+    template: 
+      src: "{{ _file }}"
+      dest: "{{playbook_dir}}/files/{{ _file | regex_replace(_path_extension_rmv_regex, '\\1') }}.yml"
+    loop: "{{ lookup('fileglob', '{{playbook_dir}}/templates/*.j2', wantlist=True) |sort }}"
+    loop_control:
+      pause: 0
+      loop_var: _file
+      
+
+  - replace:
+      path: "{{ abl_abosultepath_dir }}/Dockerfile"      
+      regexp: 'PLABOOK_PROJECT_NPMBUILD'
+      replace: '{{ abl_npm_cmd }}'

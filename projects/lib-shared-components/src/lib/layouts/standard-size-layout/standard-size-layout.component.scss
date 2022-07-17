@@ -1,0 +1,62 @@
+@import '../../styles/styles.scss';
+
+.lib-standard-size-layout-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  &__content.md {
+    padding: 0 16px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: map-get($max-width, small);
+
+    @include respond-to(small) {
+      max-width: map-get($max-width, tablet);
+      padding: 0 24px;
+    }
+
+    @include respond-to(tablet) {
+      max-width: map-get($max-width, laptop);
+      padding: 0 72px;
+    }
+
+    @include respond-to(laptop) {
+      max-width: map-get($max-width, desktop);
+      padding: 0 56px;
+    }
+
+    @include respond-to(desktop) {
+      max-width: map-get($max-width, desktop);
+      padding: 0 64px;
+    }
+  }
+
+  &__content.lg {
+    padding: 0 2px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: map-get($max-width, small);
+
+    @include respond-to(small) {
+      max-width: map-get($max-width, tablet);
+      padding: 0 4px;
+    }
+
+    @include respond-to(tablet) {
+      max-width: map-get($max-width, laptop);
+      padding: 0 52px;
+    }
+
+    @include respond-to(laptop) {
+      max-width: map-get($max-width, desktop);
+      padding: 0 36px;
+    }
+
+    @include respond-to(desktop) {
+      max-width: map-get($max-width, desktop);
+      padding: 0 44px;
+    }
+  }
+}

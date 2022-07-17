@@ -1,0 +1,14 @@
+<div class="lib-input-tooltip">
+  <mat-form-field appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      type="tel"
+      currencyMask
+      [(ngModel)]="value"
+      [readonly]="readonly"
+      [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0, debounce: 1000 }"
+    />
+    <div matSuffix mat-raised-button [matTooltip]="tooltipText" matTooltipPosition="above" class="tooltip">?</div>
+  </mat-form-field>
+</div>

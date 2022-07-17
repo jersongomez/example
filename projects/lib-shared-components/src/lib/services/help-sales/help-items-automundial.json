@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "description": "Pídele que firme el formulario con la autorización de consulta en centrales de riesgo, ya que necesitamos saber su comportamiento en el sistema financiero. El formulario:",
+    "image": "assets/help-sales/automundial/ayudaUno.png"
+  },
+  {
+    "id": 2,
+    "description": "Haz Clic en el botón iniciar solicitud una vez simules la cuota de tu cliente de la siguiente manera:",
+    "image": "assets/help-sales/automundial/ayudaDos.png"
+  },
+  {
+    "id": 3,
+    "description": "Ingresa nombre y numero de identificación del cliente, para proceso de viabilización:",
+    "image": "assets/help-sales/automundial/ayudaViability.png"
+  },
+  {
+    "id": 4,
+    "description": "Si tiene cupo preaprobado, aparecerá una pantalla con la información del cupo, si no, sigue al paso 5:",
+    "image": "assets/help-sales/automundial/resumeViability.png"
+  },
+  {
+    "id": 5,
+    "description": "Ahora, ingresa tus credenciales en el sitio WEB de Experian:",
+    "image": "assets/help-sales/automundial/ayudaTres.png"
+  },
+  {
+    "id": 6,
+    "description": "Cuando Ingreses ve a “Mis Productos” y selecciona Dictum:",
+    "image": "assets/help-sales/automundial/ayudaCuatro.png"
+  },
+  {
+    "id": 7,
+    "description": "Una vez seleccionado “Dictum” ingresa el tipo de documento, el número y el apellido de tu cliente, luego, haz clic en consultar:",
+    "image": "assets/help-sales/automundial/ayudaCinco.png"
+  },
+  {
+    "id": 8,
+    "description": "Ahora diligencia los datos económicos de tu cliente:",
+    "image": "assets/help-sales/automundial/ayudaSeis.png"
+  },
+  {
+    "id": 9,
+    "description": "Listo! Si tu cliente es “Aprobado” obtendrás una pantalla como la siguiente:",
+    "image": "assets/help-sales/automundial/ayudaSiete.png"
+  },
+  {
+    "id": 10,
+    "description": "Tu cliente también puede ser rechazado y deberás informarle únicamente la decisión:",
+    "image": "assets/help-sales/automundial/ayudaOcho.png"
+  },
+  {
+    "id": 11,
+    "description": "Si tu cliente es aprobado, debes pedirle que diligencie los siguientes documentos:",
+    "image": "assets/help-sales/automundial/ayudaNueve.png"
+  }
+]

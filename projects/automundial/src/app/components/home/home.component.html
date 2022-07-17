@@ -1,0 +1,63 @@
+<lib-print-detail-partners
+  [currentfee]="currentFee$"
+  [logoheader]="URL_LOGO_PARTNER"
+  [companyheaderlogo]="URL_LOGO_SANTANDER"
+></lib-print-detail-partners>
+
+<lib-process-request-v1 class="loader" (endRequest)="endRequestViability()" *ngIf="flowService.StartFlow">
+</lib-process-request-v1>
+
+<div class="home-container" [class.loaded]="!!(partnerId$ | async)">
+  <app-basic-layout
+    [URL_BACKGROUND]="URL_BACKGROUND"
+    [URL_LOGO_PARTNER]="URL_LOGO_PARTNER"
+    [URL_LOGO_FOOTER]="URL_LOGO_FOOTER"
+    [partner]="partner"
+  >
+    <div calculator class="home-container__content-card">
+      <div class="calculator">
+        <div class="dialog-label">
+          <div class="title marginOne">
+            <h2>¿Cuanto cupo necesitas?</h2>
+          </div>
+          <div class="slidercontainer marginOne">
+            <input
+              class="slider"
+              type="range"
+              [(ngModel)]="amount"
+              (change)="changeRequestValue()"
+              [min]="min$ | async"
+              [max]="max$ | async"
+              [step]="step"
+              name="sliderValue"
+              required
+            />
+          </div>
+          <div class="contMinMax marginOne">
+            <div class="contMin">
+              <p><span class="gray">Mín:</span> $ {{ min$ | async | number: '1.0-0':'es' }}</p>
+            </div>
+            <div class="contMax">
+              <p><span class="gray">Máx:</span> $ {{ max$ | async | number: '1.0-0':'es' }}</p>
+            </div>
+          </div>
+          <div class="input-amout dialog-input marginOne">
+            <lib-inputheader
+              #inputHeader
+              *ngIf="!!(max$ | async)"
+              labelHeader=""
+              [loadValueMin]="true"
+              [loadCard]="false"
+              [min]="min$"
+              [max]="max$"
+              (outAmountRequested)="changeAmountRq($event)"
+            >
+            </lib-inputheader>
+          </div>
+          <div class="hr"></div>
+          <button class="btn btn-request marginOne" (click)="startRequestFlow()">Iniciar Solicitud</button>
+        </div>
+      </div>
+    </div>
+  </app-basic-layout>
+</div>

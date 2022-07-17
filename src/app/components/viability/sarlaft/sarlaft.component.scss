@@ -1,0 +1,94 @@
+@import '../../../../scss/variables';
+
+.sarlaft-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+  }
+
+  &__form {
+    padding: 16px 0;
+    max-width: 100%;
+
+    &--title-date-entry {
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+
+    &--date-entry {
+      width: calc(100% + 8px);
+      max-width: calc(100% + 8px);
+      display: flex;
+      justify-content: space-between;
+      margin-left: -4px;
+
+      mat-form-field {
+        margin: 0 4px;
+        max-width: calc(33% - 8px);
+        font-family: Roboto;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+    }
+
+    &--input {
+      mat-form-field {
+        width: 100%;
+        font-family: Roboto;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+    }
+
+    &--error {
+      font-family: Roboto;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12px;
+      color: #ec0000;
+    }
+
+    &--text {
+      font-family: Roboto;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}
+
+.sarlaft-radio-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+
+  &__label {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: $textoUno;
+    text-align: center;
+  }
+
+  &__radio-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 8px 0 0 0;
+  }
+}

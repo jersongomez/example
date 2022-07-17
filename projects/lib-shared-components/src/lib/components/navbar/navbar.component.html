@@ -1,0 +1,13 @@
+<div class="navbar-container">
+  <div class="navbar-container__images">
+    <div *ngIf="!!logoHeader" class="navbar-container__images--one">
+      <img [src]="logoHeader" alt="logo-header" />
+    </div>
+    <div *ngIf="!!companyHeaderLogo" class="navbar-container__images--two">
+      <img [src]="companyHeaderLogo" alt="company-header-logo" />
+    </div>
+  </div>
+  <div class="navbar-container__app-menu">
+    <lib-navbar-menu [menuItems]="menu"></lib-navbar-menu>
+  </div>
+</div>

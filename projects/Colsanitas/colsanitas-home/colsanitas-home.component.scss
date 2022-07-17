@@ -1,0 +1,318 @@
+@import '../../../src/scss/variables';
+@import '../../../src/scss/mixins';
+@import '../../lib-shared-components/src/lib/styles/styles.scss';
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: rgb(29, 120, 238);
+}
+
+.colsanitas-home-container {
+  width: auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Roboto;
+
+  .textCntBig {
+    margin-top: 60px;
+    margin-right: 70px;
+  }
+
+  @media print {
+    display: none;
+  }
+
+  &__background {
+    width: 100%;
+    height: 860px;
+    background-image: url('../../../src/assets/colsanitas/fondoAzul.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__content,
+  &__sales-tips {
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__content {
+    padding: 1% 9% 0 10%;
+    @include tabletLaptop() {
+      .colsanitas-home-container {
+        width: 41%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-family: Roboto;
+        padding: 0% 2% 0% 0%;
+      }
+      &--navbar {
+        width: 34%;
+      }
+      .textCntDosBig.doNotPrint {
+        margin-bottom: 20%;
+      }
+    }
+
+    @include smallTablet() {
+    }
+
+    @include Asmall() {
+      &--navbar {
+        width: 75%;
+      }
+
+      padding: 0% 2% 0 2%;
+      .texInicial {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 1px 9px 0 #cacaca;
+        margin-bottom: 15px;
+        padding: 5%;
+      }
+      .bigTitle {
+        font-size: 29px;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        font-family: Roboto;
+        margin: 0% 0% 0% 15%;
+      }
+
+      .textParrafo {
+        font-size: 19px;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+      }
+    }
+
+    &__sales-tips,
+    &__footer {
+      padding: 5% 0 0 0;
+    }
+
+    &__footer {
+      width: 100%;
+    }
+  }
+
+  .title {
+    font-family: DINPro;
+    font-size: 18px;
+    font-weight: bold;
+    color: #154c5b;
+    letter-spacing: -1px;
+  }
+
+  .simulaCuota .bigTitle {
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  .simulaCuota {
+    margin-bottom: 15px;
+  }
+
+  .dto {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    height: 40%;
+    /* width: 40%; */
+  }
+
+  .grafica {
+    width: 100%;
+    padding: 8%;
+  }
+
+  .listaItem {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .cntUnoBig .textCntDosBig {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-gap: 35px;
+    line-height: 23px;
+    padding: 80px 30px 0 0;
+
+    @include tabletLaptop() {
+      display: grid;
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+
+    @include smallTablet() {
+      display: grid;
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+
+    @include Asmall() {
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+  }
+
+  .colsanitas-home-section-center {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    grid-template-rows: repeat(4, auto);
+    margin-top: 50px;
+
+    @include tabletLaptop() {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+
+    @include smallTablet() {
+      display: table;
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+
+    @include Asmall() {
+      padding: 0% 0% 0 0%;
+      display: table;
+      flex-direction: column-reverse;
+      justify-content: center;
+
+      .textCntDosBig.doNotPrint {
+        border-radius: 15px;
+        box-shadow: 0 1px 9px 0 #cacaca;
+        padding: 5%;
+      }
+      .texInicial {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 1px 9px 0 #cacaca;
+        margin-bottom: 15px;
+        padding: 5%;
+      }
+      .bigTitle {
+        font-size: 27px;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        font-family: Roboto;
+        margin: 0% 0% 0% 0%;
+      }
+
+      .textParrafo {
+        font-size: 19px;
+        font-weight: 300;
+        color: rgb(0, 0, 0);
+      }
+    }
+
+    &__information,
+    &__calculator {
+      grid-column: 2;
+      margin-bottom: 30px;
+      @include tabletLaptop() {
+        display: grid;
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+        margin-left: 30px;
+      }
+
+      @include smallTablet() {
+        display: grid;
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+
+      @include Asmall() {
+        display: grid;
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+    }
+
+    .cntUnoBig .textCntBig {
+      grid-template-rows: 1fr 1.5fr;
+      @include tabletLaptop() {
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+
+      @include smallTablet() {
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+
+      @include Asmall() {
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+
+      .cntUnoBig .textCntBig {
+        grid-column: 1;
+        padding: 3% 10% 0 0;
+        display: grid;
+        grid-gap: 30px;
+        color: #fff;
+        margin-top: 40px;
+        margin-right: 40px;
+      }
+      .texInicial .bigTitle {
+        line-height: 35px;
+      }
+      .bigTitle {
+        align-self: center;
+        justify-self: center;
+      }
+    }
+  }
+
+  .bigTitle {
+    font-size: 29px;
+    font-weight: 700;
+    color: white;
+    font-family: Roboto;
+  }
+
+  .textParrafo {
+    font-size: 19px;
+    color: white;
+  }
+}
+
+.home-loader {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(219, 211, 211, 0.1);
+  z-index: 9999;
+}
+mat-progress-spinner {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+}

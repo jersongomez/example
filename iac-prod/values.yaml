@@ -1,0 +1,224 @@
+springboot:
+  app:
+    name: frontend-services-consumer
+    labels:
+      app: frontend-services-consumer
+      app.kubernetes.io/component: frontend-services-consumer
+      app.kubernetes.io/instance: frontend-services-consumer
+      app.kubernetes.io/name: frontend-services-consumer
+      app.kubernetes.io/part-of: frontend-services-consumer
+      app.openshift.io/runtime: springboot
+      app.openshift.io/runtime-version: "2.2"
+      app.kubernetes.io/version: "1.16.0"
+
+  image:
+    ## Name of the image you want to build/deploy
+    name: image-registry.openshift-image-registry.svc:5000/service-data-access-dev/frontend-services-consumer
+    ## Tag that you want to build/deploy
+    tag: latest
+
+  ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
+  deploy:
+    ## Number of pod replicas to deploy
+    replicas: 1
+
+    ## Freeform service ports. More information: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
+    ports:
+      - name: http
+        port: 8080
+        targetPort: 8080
+        protocol: TCP
+
+  ## Freeform resources for Springboot. More information: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    resources:
+      limits:
+        cpu: 400m
+        memory: 1024Mi
+      requests:
+        cpu: 200m
+        memory: 640Mi
+
+     ## Freeform Liveness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
+    #livenessProbe:
+    #  httpGet:
+    #    path: /
+    #    port: http
+    ## If you don't want a livenessProbe, override like this in your values file
+    livenessProbe: ''
+
+    ## Freeform Readiness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
+    #readinessProbe:
+    #  httpGet:
+    #    path: /
+    #    port: http
+    ## If you don't want a readinessProbe, override like this in your values file
+    readinessProbe: ''
+
+    ## Freeform env for the Springboot app. More information: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+    env:
+      - name: JAVA_OPTIONS
+        value: '-Xms640m -Xmx1024m'
+    #  - name: VAR_NAME
+    #    value: var-value
+
+    ## Freeform envFrom for the Springboot app. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
+    envFrom:
+      - secretRef:
+          name: secret-frontend-services-consumer-conexion-bd-amq
+
+    ## Application properties file for configuring the Springboot app
+    applicationProperties:
+      ## Determines if application properties should be created in a configmap and mounted to the Springboot container
+      enabled: true
+      ## Location to mount the properties file
+      mountPath: /deployments/config/
+      ## Name application properties to mount
+      name: application-consumer-persona
+      ## Name file properties in configmap
+      nameFile: application.yml
+      ## Application properties file contents
+      properties: |-
+        services-data-access:
+          service-name: services-data-access
+          proto: http
+          host: service-data-access-service-data-access-dev.apps.ocp4-preprod.cosanpre.corp
+          port: 80
+        keycloak:
+          auth-server-url: https://sso-management-adm-security.apps.ocp4-preprod.cosanpre.corp/auth
+          securityConstraints[0]:
+            securityCollections[0]:
+              patterns[1]: /consultas
+              patterns[0]: /token
+            authRoles[0]: uma_authorization
+          ssl-required: none
+          disable-trust-manager: true
+          resource: cli_security_finance
+          realm: consumer-finance
+        constants:
+          frontend-services-consumer:
+            username: 900491651-5
+            password: g^3p|g&;OEGD
+            grant-type: password
+          endpoint:
+            token: https://macia.wikiplata.com:44375/token
+            consulta: https://macia.wikiplata.com:44375/consultas
+        spring:
+          cloud:
+            kubernetes:
+              reload:
+                enabled: 'true'
+            discovery:
+              client:
+                health-indicator:
+                  enabled: 'false'
+            config:
+              uri: http://localhost:8888
+        server:
+          address: 0.0.0.0
+          ssl:
+            enabled: 'false'
+          port: '8080'
+        info:
+          app:
+            version: v1
+            name: frontend-services-consumer
+            description: Servicio frontend-services-consumer
+        credit-history:
+          method:
+            check: /consultarHC2
+          service-name: credit-history-service
+        ubica:
+          service-name: ubica-service
+          method:
+            check: /ubica/ubicaService
+        viabilizacion:
+          email:
+            url: ${email-sender.proto}://${email-sender.host}:${email-sender.port}
+            metodo: /email/v1/email/sendEmail
+            service-name: ${email-sender.service-name}
+        qualities:
+          service-name: qualities-service-name
+        management:
+          server:
+            address: 0.0.0.0
+            port: '8080'
+          endpoint:
+            restart:
+              enabled: 'true'
+          address: 0.0.0.0
+        oauth:
+          keycloak:
+            grant-type: client_credentials
+            client-id: ${keycloak.client.id.ms}
+            client-secret: ${keycloak.client.secret}
+            url-token: ${sso-keycloak.proto}://${sso-keycloak.host}:${sso-keycloak.port}/realms/${keycloak.realm}/protocol/openid-connect/token
+        logging:
+          config: classpath:logback.xml
+        endpoints:
+          enabled: 'false'
+          health:
+            enabled: 'true'
+        vigia:
+          service-name: vigia-service
+          method:
+            check: /consultaVigia
+        reconocer:
+          service-name: reconocer
+          method:
+            check: /consultaReconocer
+            token: /obtenerToken
+        web-bizagi:
+          service-name: web-bizagi
+          method:
+            create: /bizagi/bizagi/
+        validate:
+          city:
+            method:
+              check: /validacion/v1/ciudad/
+        email-sender:
+          service-name: email-sender-service
+        
+    ## Freeform volumes. More information: https://kubernetes.io/docs/concepts/storage/volumes/
+    volumes:
+     # - name: my-config
+     #   configMap:
+     #     name: my-configmap
+
+    ## Freeform volume mounts. More information: https://kubernetes.io/docs/concepts/storage/volumes/
+    volumeMounts:
+     # - name: my-config
+     #   mountPath: /etc/config
+
+    ## Type of service to create. More information: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+    serviceType: ClusterIP
+
+    ## For creating a Route, allowing your application to be accessed from outside the OCP cluster
+    route:
+      enabled: true
+      targetPort: http
+      ## More information: https://docs.openshift.com/container-platform/4.6/networking/routes/secured-routes.html
+      tls:
+        enabled: false
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
+        ## IMPORTANT: Do not check 'key' into git!
+        key:
+        caCertificate:
+        certificate:
+        destinationCACertificate:
+    
+    secret:
+      enabled: true
+      name: secret-frontend-services-consumer-conexion-bd-amq
+      data:
+        frontend-services-consumer.database.user: ZGJfT3BlblNoaWZ0
+        frontend-services-consumer.database.passwd: UG9zaXRpdmEyMDIwMDMq
+        frontend-services-consumer.amq.user: YWRtaW4=
+        frontend-services-consumer.amq.passwd: YWRtaW5yM2RoNHQyMDIxKg==
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80

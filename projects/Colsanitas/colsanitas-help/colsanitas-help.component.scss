@@ -1,0 +1,338 @@
+@import '../../../src/scss/variables';
+@import '../../../src/scss/mixins';
+
+.colsanitas-help-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Roboto;
+
+  &__background {
+    width: 100%;
+    height: 860px;
+    background-image: url('../../../src/assets/colsanitas/fondoAzul.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .partUno {
+      display: none;
+      .partUno {
+        display: grid;
+        grid-auto-rows: auto;
+        margin: 30px 20px 0;
+        grid-gap: 15px;
+      }
+      .bigTitle {
+        align-self: center;
+        justify-self: center;
+        font-family: Robotic;
+        font-size: 15px;
+      }
+      .partUno .bigTitle {
+        align-self: center;
+        justify-self: center;
+        font-family: Robotic;
+        font-size: 25px;
+      }
+      .partUno .textParrafo {
+        font-size: 14px;
+        line-height: 22px;
+      }
+      .grafica {
+        width: 100%;
+        padding: 8%;
+      }
+      .tarjeta {
+        border-radius: 15px;
+        box-shadow: 0 1px 9px 0 #cacaca;
+        padding: 30px 5%;
+        margin-bottom: 10px;
+        background-color: #fff;
+        .partUno .bigTitle {
+          align-self: center;
+          justify-self: center;
+          font-family: monserratBold;
+          font-size: 25px;
+        }
+        @media only screen and (min-width: 768px) {
+          .title {
+            margin-bottom: 0;
+            font-size: 15px;
+          }
+        }
+        .title {
+          font-family: monserratBold;
+          font-size: 13px;
+          margin-bottom: 15px;
+          color: #154c5b;
+        }
+        .partUno .textParrafo {
+          font-size: 14px;
+          line-height: 22px;
+        }
+        .listaItem[_ngcontent-men-c2] {
+          line-height: 22px;
+        }
+        .listaItem {
+          font-size: 12px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .partUnoBig {
+      padding: 0 10%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .partUnoBig {
+      display: block;
+      padding: 0 7%;
+    }
+  }
+
+  .cntUnoBig {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    grid-template-rows: repeat(4, auto);
+    margin-top: 50px;
+  }
+  @media only screen and (min-width: 1366px) {
+    .cntUnoBig .textCntBig {
+      grid-template-rows: 1fr 1.8fr;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .cntUnoBig .textCntBig {
+      grid-template-rows: 1fr 1.5fr;
+    }
+  }
+
+  .cntUnoBig .textCntBig {
+    grid-column: 1;
+    padding: 3% 10% 0 0;
+    display: grid;
+    grid-gap: 30px;
+    color: #fff;
+    margin-top: 40px;
+  }
+
+  .cntUnoBig {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    grid-template-rows: repeat(4, auto);
+    margin-top: 50px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .cntUnoBig .textCntBig {
+      grid-template-rows: 1fr 0.9fr;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .texInicial .bigTitle {
+      font-size: 27px;
+      line-height: 35px;
+    }
+  }
+
+  .bigTitle {
+    align-self: center;
+    justify-self: center;
+    font-family: Roboto;
+    font-size: 15px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .texInicial .textParrafo {
+      line-height: 20px;
+      margin-bottom: 32px;
+    }
+  }
+
+  @media only screen and (min-width: 1366px) {
+    .partDosBigAyuda {
+      padding: 0 15%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .partDosBigAyuda {
+      display: block;
+      margin-top: 130px;
+      padding: 0 10%;
+    }
+  }
+
+  .partDosBigAyuda {
+    padding: 0 7%;
+  }
+
+  .partDosBigAyuda .procesos {
+    margin-bottom: 50px;
+  }
+
+  .partDosBigAyuda .procesos .bigTitle {
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .partDosBigAyuda .bigTitle {
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .partDosBigAyuda .procesos .title {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .title {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+  }
+
+  .title {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #154c5b;
+  }
+
+  .partDosBigAyuda .procesos .textParrafo {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .imageAventas img,
+  .manSolicitud .pasos .paso .imagePaso img {
+    width: 100%;
+  }
+
+  .partDosBigAyuda .textCntDosBigAyuda {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr;
+  }
+
+  @media only screen and (min-width: 320px) {
+    .partDosBigAyuda .textCntDosBigAyuda {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, auto);
+      grid-gap: 12px;
+    }
+  }
+
+  .partDosBigAyuda .textCntDosBigAyuda {
+    display: flex;
+    grid-gap: 0 50px;
+    .partDosBigAyuda .textCntDosBigAyuda .cntClienteDos {
+      grid-row: 1;
+    }
+    @media only screen and (min-width: 320px) {
+      .partDosBigAyuda .textCntDosBigAyuda .cntClienteDos {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    .partDosBigAyuda .textCntDosBigAyuda .cntClienteDos .title {
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .partDosBigAyuda .textCntDosBigAyuda .cntClienteDos .listaItem {
+      font-size: 10px;
+    }
+    .listaItem[_ngcontent-men-c2] {
+      line-height: 22px;
+    }
+    .listaItem {
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+    grid-row: 1;
+    @media only screen and (min-width: 768px) {
+      .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+        grid-column: 2;
+        grid-row: 1 !important;
+      }
+    }
+    @media only screen and (min-width: 320px) {
+      .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+        grid-column: 1;
+        grid-row: 2 !important;
+      }
+    }
+    .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno .listaItem {
+      font-size: 10px;
+    }
+
+    .listaItem[_ngcontent-men-c2] {
+      line-height: 22px;
+    }
+    .listaItem {
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__content,
+  &__sales-tips,
+  &__contact {
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__content {
+    padding: 1% 9% 0 10%;
+
+    &--navbar,
+    &--section-center {
+      width: 100%;
+    }
+  }
+
+  &__sales-tips {
+    background-color: #f0f0f0;
+    padding: 5% 0 5% 0;
+  }
+
+  &__footer {
+    width: 100%;
+  }
+}
+
+.colsanitas-help-section-center {
+  margin-top: 600px;
+
+  @include tabletLaptop() {
+    margin-top: 650px;
+  }
+
+  @include smallTablet() {
+    margin-top: 650px;
+  }
+
+  @include Asmall() {
+    margin-top: 650px;
+  }
+}

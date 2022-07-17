@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "description": "Pídele que firme el formulario con la autorización de consulta en centrales de riesgo, ya que necesitamos saber su comportamiento en el sistema financiero. El formulario es el siguiente:",
+    "image": "assets/img/form-santander.png"
+  },
+  {
+    "id": 2,
+    "description": "Llena la siguiente información :",
+    "image": "assets/help-sales/gaes/fill-input-header-gaes.png"
+  },
+  {
+    "id": 3,
+    "description": "Selecciona una cuota y veras el detalle:",
+    "image": "assets/help-sales/gaes/select-fee-gaes.png"
+  },
+  {
+    "id": 4,
+    "description": "Llena los datos para autenticar y click en el boton Siguiente:",
+    "image": "assets/img/form-inicio-solicitud.png"
+  },
+  {
+    "id": 5,
+    "description": "Ingresa otp o responde las preguntas y click en el boton Siguiente:",
+    "image": "assets/help-sales/viability/validation-otp-flow.PNG"
+  },
+  {
+    "id": 6,
+    "description": "Llena los datos de viabilización y click en el boton Siguiente:",
+    "image": "assets/help-sales/viability/viability-flow.PNG"
+  },
+  {
+    "id": 7,
+    "description": "Saldra si el cliente es viable o no:",
+    "image": "assets/help-sales/viability/viability-success-flow.PNG"
+  },
+  {
+    "id": 8,
+    "description": "Llena los siguientes datos y click en el boton Siguiente:",
+    "image": "assets/help-sales/viability/sarlaft-flow.PNG"
+  },
+  {
+    "id": 9,
+    "description": "Finaliza realizando firma digital:",
+    "image": "assets/help-sales/viability/sarlaft-success-flow.PNG"
+  }
+]

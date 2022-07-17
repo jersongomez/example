@@ -1,0 +1,69 @@
+<app-traceability-filter
+    (filter)="getinfoParametrosOutput($event)"
+    (createAlliet)="crearParametro($event)"
+    [menuselect]="menuselect"
+  >
+</app-traceability-filter>
+<div *ngIf="logDataLoaded" class="loader-background">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<table mat-table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0" class="mat-elevation-z8">
+  <!-- Nombre Parametro -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre Parametro</th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+    <!-- Tipo Parametro -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo Parametro</th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+
+      <!-- Valor Numerico -->
+  <ng-container matColumnDef="valorNumerico">
+    <th mat-header-cell *matHeaderCellDef> Valor Numerico</th>
+    <td mat-cell *matCellDef="let element"> {{element.valorNumerico  | number }} </td>
+  </ng-container>
+
+      <!-- valor Texto -->
+  <ng-container matColumnDef="valorTexto">
+     <th mat-header-cell *matHeaderCellDef> Valor Texto Aliado</th>
+     <td mat-cell *matCellDef="let element"> {{element.valorTexto}} </td>
+  </ng-container>
+
+    <!-- Activo -->
+    <ng-container matColumnDef="activo">
+      <th mat-header-cell *matHeaderCellDef>  Activo </th>
+      <td mat-cell *matCellDef="let element"> {{element.activo}} </td>
+   </ng-container>
+
+     <!-- Id Aliado -->
+  <ng-container matColumnDef="idAliado">
+    <th mat-header-cell *matHeaderCellDef> Estado Aliado</th>
+    <td mat-cell *matCellDef="let element"> {{element.idAliado}} </td>
+ </ng-container>
+
+   <!-- Icons -->
+   <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Editar Aliado</th>
+    <td mat-cell *matCellDef="let element" class="cell-alignment-right">
+      <mat-icon (click)="editarParametro(element)">edit</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator
+  *ngIf="showPaginator"
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+<div *ngIf="notFound">
+  <p class="lb_No_Text">{{ notFound }}</p>
+</div>
+

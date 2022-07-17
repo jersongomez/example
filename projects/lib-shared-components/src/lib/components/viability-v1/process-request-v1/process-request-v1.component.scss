@@ -1,0 +1,91 @@
+// @import '../../../../scss/_variables.scss';
+// @import '../../../../scss/_mixins.scss';
+.box-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(25, 25, 25, 1);
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 3%;
+}
+
+.box-desc-summary {
+  text-align: left;
+  padding: 2px 8px;
+}
+
+.box-info-summary {
+  text-align: right;
+  padding: 2px 8px;
+}
+
+.info-cal {
+  margin-top: 10%;
+}
+
+.info-form {
+  margin-top: 3%;
+}
+
+.title-summary {
+  margin-top: 10%;
+}
+
+.btn-summary {
+  width: 80%;
+  margin: auto;
+  margin-top: 8%;
+}
+
+.btn-request {
+  background-color: rgba(236, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-back {
+  color: rgba(236, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 1);
+  height: 50px;
+  border-radius: 50px;
+  opacity: 1;
+  border: 1px solid rgba(236, 0, 0, 1);
+  margin-top: 2%;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+#procesess {
+  top: 300px;
+  //   @include Asmall() {
+  //     top: 200px;
+  //   }
+}
+
+#procesess mat-progress-spinner {
+  margin: 25px auto;
+}
+
+#resume {
+  top: 300px;
+  //   @include Asmall() {
+  //     top: 200px;
+  //   }
+}
+
+#resume .cntModal .card {
+  max-width: 45% !important;
+}
+
+button {
+  cursor: pointer;
+}

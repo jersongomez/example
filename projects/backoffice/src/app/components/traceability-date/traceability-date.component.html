@@ -1,0 +1,65 @@
+<app-traceability-filter
+    (filter)="getLogByDateRange($event)"
+    [menuselect]="menuselect"
+    >
+  </app-traceability-filter>
+<div *ngIf="!logDataLoaded" class="loader-background">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+<table mat-table [dataSource]="dataSource" *ngIf="!isEmpty()" class="mat-elevation-z8">
+  <ng-container matColumnDef="usuario">
+    <th mat-header-cell *matHeaderCellDef>Usuario</th>
+    <td mat-cell *matCellDef="let element">{{ element.usuario }}</td>
+  </ng-container>
+  <ng-container matColumnDef="cedulaCliente">
+    <th mat-header-cell *matHeaderCellDef>Cédula cliente</th>
+    <td mat-cell *matCellDef="let element">{{ element.cedulaCliente }}</td>
+  </ng-container>
+  <ng-container matColumnDef="apellidoCliente">
+    <th mat-header-cell *matHeaderCellDef>Cliente</th>
+    <td mat-cell *matCellDef="let element">{{ element.apellidoCliente }}</td>
+  </ng-container>
+  <ng-container matColumnDef="decision">
+    <th mat-header-cell *matHeaderCellDef>Decisión</th>
+    <td mat-cell *matCellDef="let element">{{ element.decision }}</td>
+  </ng-container>
+  <ng-container matColumnDef="causalRechazo">
+    <th mat-header-cell *matHeaderCellDef>Causal rechazo</th>
+    <td mat-cell *matCellDef="let element">{{ element.causalRechazo }}</td>
+  </ng-container>
+  <ng-container matColumnDef="valorAprobado">
+    <th mat-header-cell *matHeaderCellDef>Valor aprobado</th>
+    <td mat-cell *matCellDef="let element">{{ element.valorAprobado | number: '1.2-2' }}</td>
+  </ng-container>
+  <ng-container matColumnDef="disponibleEndeudamiento">
+    <th mat-header-cell *matHeaderCellDef>D. endeudamiento</th>
+    <td mat-cell *matCellDef="let element">{{ element.disponibleEndeudamiento | number: '1.2-2' }}</td>
+  </ng-container>
+  <ng-container matColumnDef="numeroCaso">
+    <th mat-header-cell *matHeaderCellDef>N. Bizagi</th>
+    <td mat-cell *matCellDef="let element">{{ element.numeroCaso }}</td>
+  </ng-container>
+  <ng-container matColumnDef="firmado">
+    <th mat-header-cell *matHeaderCellDef>Firmado</th>
+    <td mat-cell *matCellDef="let element">{{ element.firmado }}</td>
+  </ng-container>
+
+  <!-- Icons -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element" class="cell-alignment-right">
+      <mat-icon (click)="procesFirmas(element)">edit</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator *ngIf="!isEmpty()" #paginator [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+<div *ngIf="isEmpty()">
+  <p class="lb_No_Text">{{ notFound }}</p>
+</div>
+<div *ngIf="!isEmpty()">
+  <button mat-flat-button (click)="generateLogReportByDateRange()">DESCARGAR CONSULTA</button>
+</div>

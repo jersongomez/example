@@ -1,0 +1,27 @@
+<div class="lib-radio-group-container">
+  <div class="lib-radio-group-container__error">
+    <mat-error class="error-input" *ngIf="validateRadioButton"> Primero seleccione una Gama </mat-error>
+  </div>
+
+  <div class="lib-big-radio-group-container__content">
+    <div class="cont-periodo">
+      <ng-container *ngFor="let fee of fees$ | async">
+        <span [ngClass]="fee.textValue" class="radio" *ngIf="fee.valueFeeShow" (click)="selectFee(fee.numbericalValue)">
+          <input
+            #radioBtns
+            [id]="fee.numbericalValue"
+            name="cuota"
+            type="radio"
+            [value]="fee.numbericalValue"
+            (change)="handleChange($event.target)"
+            [disabled]="!fee.valueFeeWithInsurance && existCalculatorFees"
+          />
+          <div>
+            <div class="number">{{ fee.textValue }}</div>
+            <div class="mounth">meses</div>
+          </div>
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</div>

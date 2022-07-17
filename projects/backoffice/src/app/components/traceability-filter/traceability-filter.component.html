@@ -1,0 +1,157 @@
+<form [formGroup]="form" (ngSubmit)="getLogData()">
+  <div *ngIf="menuselect === 'Trazabilidad'">
+    <mat-form-field class="date-form-field">
+      <input matInput formControlName="from" [matDatepicker]="picker1" [max]="maxDateFrom" placeholder="Fecha de inicio"
+        (dateChange)="changeInitialDate($event)" required />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="date-form-field">
+      <input matInput formControlName="to" [matDatepicker]="picker2" [min]="minDateTo" [max]="maxDateTo"
+        placeholder="Fecha de fin" (dateChange)="changeFinalDate($event)" required />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <div>
+      <button mat-flat-button color="warn" [disabled]="!isValidFilter()">CONSULTAR</button>
+    </div>
+  </div>
+  <div *ngIf="menuselect === 'Consultar Documentos'">
+    <div class="Icedula">
+      <mat-form-field class="date-form-field">
+        <input matInput formControlName="cedulaId" placeholder="Ingresa cedula Cliente"
+          (keypress)="utils.numbersOnly($event)" minlength="6" maxlength="12" />
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-flat-button color="warn" type="submit" [disabled]="!isValidFilter()">CONSULTAR</button>
+    </div>
+  </div>
+  <div *ngIf="menuselect === 'Identidad'">
+    <div class="Icedula">
+      <mat-form-field class="date-form-field">
+        <input matInput formControlName="document" placeholder="Ingresa cedula Cliente * "
+          (keypress)="utils.numbersOnly($event)" minlength="6" maxlength="12" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="date-form-field">
+      <input matInput formControlName="from" [matDatepicker]="picker1" [max]="maxDateFrom" placeholder="Fecha de inicio"
+        (dateChange)="changeInitialDate($event)" required />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="date-form-field">
+      <input matInput formControlName="to" [matDatepicker]="picker2" [min]="minDateTo" [max]="maxDateTo"
+        placeholder="Fecha de fin" (dateChange)="changeFinalDate($event)" required />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <div>
+      <button mat-flat-button color="warn" [disabled]="!isValidFilter()">CONSULTAR</button>
+    </div>
+  </div>
+  <div *ngIf="menuselect === 'Agregar Aliados'" id="contenedorAgregarAliados">
+    <div class="Icedula" id="controlForm">
+      <mat-form-field class="date-form-field" id="busquedaNombre">
+        <input
+          matInput
+          formControlName="aliadosNombre"
+          placeholder="Ingresa nombre aliado"
+          minlength="2" maxlength="12"/>
+      </mat-form-field>
+      <div id="dvAliadoAddi" class="radiosCheck">
+        <label>Aliado ADDI: </label>
+        <mat-radio-group  formControlName ="aliadoAddi" id="radioAliado">
+          <mat-radio-button value= true >Si</mat-radio-button>
+          <mat-radio-button value= false >No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div id="dvEstadoAliado" class="radiosCheck">
+        <label> Estado Aliado: </label>
+        <mat-radio-group  formControlName ="estadoAliado" id="radioEstado">
+          <mat-radio-button value= true >Activo</mat-radio-button>
+          <mat-radio-button value= false >Inactivo</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="contButton" id="contenedorBoton">
+      <button
+        id="btnConsultar"
+        mat-flat-button
+        color="warn"
+        type="submit"
+        [disabled]="!isValidFilter()"
+        id="buttonConsultar">CONSULTAR
+      </button>
+
+      <button
+      mat-flat-button
+      color="warn"
+      (click)="CreateAlliet()"
+      id="buttonConsultar">CREAR ALIADO
+    </button>
+
+
+
+
+    </div>
+  </div>
+  <div *ngIf="menuselect === 'Parametria Aliados'" id="contenedorAgregarAliados">
+    <mat-form-field  id=""selectAliados>
+
+      <mat-label>Selecciona Aliado</mat-label>
+       <mat-select
+          formControlName="idAliadoSelect"
+          (ngModelChange)="getAliadosActivos()"
+          id="selectAliado"
+       >
+        <mat-option *ngFor="let dataAliados of aliadosActivos" [value]="dataAliados.id">
+          {{ dataAliados.nombreAliado }}
+        </mat-option>
+      </mat-select>
+      <mat-hint
+        class="sarlaft-container__form--error"
+        *ngIf="form.get('idAliadoSelect').errors?.required && form.get('idAliadoSelect').touched"
+      >
+        El aliado es necesario
+      </mat-hint>
+    </mat-form-field>
+    <div class="Icedula" id="controlFormNombre">
+       <mat-form-field class="date-form-field" id="busquedaNombre">
+        <input
+          matInput
+          formControlName="nombreParametro"
+          placeholder="Ingresa Parametro"
+          minlength="2" maxlength="12"/>
+      </mat-form-field>
+
+      <mat-form-field class="date-form-field" id="busquedaNombre">
+        <input
+          matInput
+          formControlName="tipoParametro"
+          placeholder="Ingresa tipo Parametro"
+          minlength="2" maxlength="12"/>
+      </mat-form-field>
+    </div>
+    <div class="contButton">
+      <button
+        id="btnConsultar"
+        mat-flat-button
+        color="warn"
+        type="submit"
+        [disabled]="!isValidFilter()"
+        id="buttonConsultar">CONSULTAR
+      </button>
+
+      <button
+      id="btnCrear"
+      mat-flat-button
+      color="warn"
+      (click)="CreateAlliet()"
+      id="buttonConsultar">CREAR PARAMETRO
+    </button>
+    </div>
+  </div>
+
+</form>

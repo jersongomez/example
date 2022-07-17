@@ -1,0 +1,16 @@
+<div class="panel">
+  <div class="box">
+    <ng-content select="[info1]"></ng-content>
+    <div [hidden]="!showPane2">
+      <ng-content select="[infoExpand]"></ng-content>
+    </div>
+  </div>
+  <div class="showMas pointer" (click)="showInfo()">
+    <div class="cntShowMas">
+      <div class="cntMas">MOSTRAR {{ showPane2 ? 'MENOS' : 'MÁS' }}</div>
+      <div class="cntIcon">
+        <mat-icon>keyboard_arrow_{{ showPane2 ? 'up' : 'down' }}</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="lib-home-layout-contianer">
+  <div #headerTitle class="lib-home-layout-contianer__header-title">
+    <ng-content select="[header-title]"></ng-content>
+  </div>
+  <div #navbar class="lib-home-layout-contianer__navbar">
+    <ng-content select="[navbar]"></ng-content>
+  </div>
+  <div #contentCard class="lib-home-layout-contianer__content-card">
+    <ng-content select="[content-card]"></ng-content>
+  </div>
+  <div #simulator class="lib-home-layout-contianer__simulator">
+    <ng-content select="[simulator]"></ng-content>
+  </div>
+  <div class="lib-home-layout-contianer__footer">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>
+<div *ngIf="!!imgBg" #bg class="lib-home-layout-bg">
+  <img [src]="imgBg" alt="background" />
+</div>

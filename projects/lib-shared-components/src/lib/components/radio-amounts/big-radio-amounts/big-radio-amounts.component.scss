@@ -1,0 +1,215 @@
+.lib-radio-amounts-container {
+  .cnt-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .cnt-options .opcion {
+    text-align: center;
+  }
+
+  .cnt-options .opcion h3 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  .cnt-options .precio {
+    color: #4cb2dd;
+    font-size: 11px;
+    font-family: Montserrat;
+  }
+
+  .cnt-options .btn-seleccion button {
+    background-color: #4cb2dd;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 9px;
+  }
+
+  .btn-seleccion {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .radio {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+  }
+
+  .btn-seleccion input[type='radio'] {
+    opacity: 0;
+    position: absolute;
+    grid-column: 1;
+    grid-row: 1;
+    width: 14%;
+    height: 4%;
+  }
+
+  .btn-seleccion input[type='radio'] + div {
+    border-radius: 5px;
+    background-color: #b5b5b5;
+    border: none;
+    font-weight: 700;
+    font-size: 10px;
+    color: #fff;
+  }
+
+  .btn-seleccion input[type='radio']:checked + div {
+    border-radius: 5px;
+    box-shadow: 0 1px 7px 0 #b5b5b5;
+    padding: 5px 10px;
+    background-color: #4cb2dd;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 10px;
+  }
+
+  .cell {
+    border: 2px solid transparent;
+    width: 100%;
+    font-size: small;
+    font-weight: 700;
+    color: #4cb2dd;
+    cursor: pointer;
+
+    &:hover {
+      border: #b5b5b5;
+      border-style: dashed;
+      border-width: 2px;
+    }
+  }
+
+  input[type='radio'] + div {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f0f0f0;
+    width: 95%;
+    height: 95%;
+    border: none;
+  }
+
+  @media (min-width: 767.98px) and (max-width: 991.98px) {
+    .btn-seleccion input[type='radio'] {
+      width: 30%;
+      height: 8%;
+    }
+    .btn-seleccion input[type='radio']:checked + div {
+      font-size: 10px;
+      border-radius: 5px;
+    }
+    .cell {
+      font-size: 15px !important;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .btn-seleccion input[type='radio']:checked + div {
+      font-size: 15px;
+      border-radius: 15px;
+    }
+  }
+
+  @media (min-width: 750px) and (max-width: 1199.98px) {
+    .btn-seleccion input[type='radio']:checked + div {
+      font-size: 15px;
+      border-radius: 15px;
+    }
+    .cell {
+      font-size: 15px !important;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .cnt-options .opcion h3 {
+      font-size: 10px;
+    }
+  }
+
+  @media (min-width: 750px) and (max-width: 1199.98px) {
+    .btn-seleccion input[type='radio'] + div {
+      font-size: 12px;
+      border-radius: 15px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .btn-seleccion input[type='radio'] + div {
+      font-size: 15px;
+      border-radius: 15px;
+    }
+  }
+
+  @media (min-width: 750px) and (max-width: 1199.98px) {
+    .btn-seleccion input[type='radio'] + div {
+      font-size: 12px;
+      border-radius: 15px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .btn-seleccion input[type='radio'] + div {
+      font-size: 15px;
+      border-radius: 15px;
+    }
+  }
+
+  @media (min-width: 767.98px) and (max-width: 991.98px) {
+    .cnt-options {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cnt-options .opcion {
+      line-height: 30px;
+    }
+    .cnt-options .opcion h3 {
+      font-size: 14px;
+    }
+    .cnt-options .precio {
+      font-size: 15px;
+    }
+    .cnt-options .btn-seleccion button {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 750px) and (max-width: 1199.98px) {
+    .cnt-options {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cnt-options .opcion {
+      line-height: 30px;
+    }
+    .cnt-options .precio {
+      font-size: 22px;
+    }
+    .cnt-options .btn-seleccion button {
+      font-size: 15px;
+      border-radius: 10px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .cnt-options {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cnt-options .precio {
+      font-size: 22px;
+    }
+    .cnt-options .btn-seleccion button {
+      font-size: 15px;
+      border-radius: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .btn-seleccion input[type='radio'] {
+      width: 35%;
+    }
+  }
+}

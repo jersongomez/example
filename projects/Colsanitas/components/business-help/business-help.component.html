@@ -1,0 +1,100 @@
+<lib-business-help-layout [imgbg]="''" [attr.style]="getImg(['bannerBackground'])" class="business-help">
+  <div navbar>
+    <div class="business-help-container__navbar">
+      <lib-standard-size-layout>
+        <lib-navbar [menu]="menuItems$" [logoHeader]="logoPartner"> </lib-navbar>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+
+  <div contentCard>
+    <lib-standard-size-layout class="partUnoBig">
+      <div class="cntUnoBig">
+        <div class="textCntBig">
+          <div class="texInicial">
+            <p class="bigTitle">Ayuda ventas para asesores comerciales</p>
+            <br />
+            <p class="textParrafo">
+              Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y disfruta de los
+              beneficios que Santander te ofrece.
+            </p>
+          </div>
+        </div>
+        <div class="imageAventas">
+          <img alt="" class="grafica" src="assets/colsanitas/grafica.png" />
+        </div>
+      </div>
+    </lib-standard-size-layout>
+  </div>
+
+  <div process>
+    <lib-standard-size-layout class="partDosBigAyuda">
+      <div class="procesos">
+        <p class="bigTitle">Procesos:</p>
+        <br />
+        <p class="title">
+          Cuando tengas a tu paciente en frente, hazle saber que es una mejor opción financiarlo con Santander porque:
+        </p>
+        <br />
+        <p class="textParrafo">
+          • No afectara la liquidez del cliente.<br />
+          • La tasa cero del préstamo generara mayor valor presente de su dinero, ya que el valor total cancelado al
+          final del crédito será el mismo monto que si paga de contado.<br />
+          • Los plazos se acomodan al flujo de caja del cliente.<br />
+          • En caso de pago anticipado, las condiciones iniciales se mantienen.<br />
+          • Puedes hacer beneficiario del tratamiento a un tercero.<br />
+        </p>
+      </div>
+      <p class="bigTitle">Condiciones:</p>
+      <br />
+      <div class="textCntDosBigAyuda">
+        <div class="cntClienteDos">
+          <p class="title">Clientes asalariados:</p>
+          <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
+          <p class="title">Clientes independientes:</p>
+          <p class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
+        </div>
+        <div class="cntClienteUno">
+          <p class="listaItem">
+            • Debe tener entre 18 y 75 años<br />
+            • Ganar más de un salario mínimo<br />
+            • El monto mínimo es $800.000<br />
+            • El monto máximo es $20.000.000<br />
+            • Colombiano o residente con visa e historia laboral<br />
+            • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
+          </p>
+        </div>
+      </div>
+    </lib-standard-size-layout>
+  </div>
+
+  <div images>
+    <lib-standard-size-layout>
+      <lib-app-manual-partners [helpitems]="helpItemsColsanitas"></lib-app-manual-partners>
+    </lib-standard-size-layout>
+  </div>
+  <div items>
+    <lib-standard-size-layout>
+      <lib-item-request-partners></lib-item-request-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div tips>
+    <div class="business-help-container__tips">
+      <lib-standard-size-layout>
+        <lib-sales-tip-partners [helptips]="helpTipsColsanitas"></lib-sales-tip-partners>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+  <div contact>
+    <lib-standard-size-layout>
+      <lib-contact-partners></lib-contact-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div footer>
+    <div class="business-help-container__footer">
+      <lib-standard-size-layout>Copyright © 2021, Banco Santander</lib-standard-size-layout>
+    </div>
+  </div>
+</lib-business-help-layout>

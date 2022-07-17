@@ -1,0 +1,21 @@
+.part4 {
+  width: 100%;
+  .tics {
+    display: flex;
+    justify-content: space-evenly;
+    .desc {
+      display: flex;
+      flex-direction: column;
+      img {
+        align-self: center;
+        width: 70%;
+      }
+      p {
+        text-align: center;
+        font-weight: normal;
+        font-family: 'DINPro';
+        font-size: 10px;
+      }
+    }
+  }
+}

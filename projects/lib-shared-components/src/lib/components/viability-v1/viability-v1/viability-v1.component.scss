@@ -1,0 +1,143 @@
+@import '../../../styles/styles.scss';
+
+.viability-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  &__title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+  }
+  &__subtitle {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: map-get($colors, gray-dark);
+    font-size: 16px;
+    padding: 8px 0;
+    text-align: center;
+  }
+  &__form {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 0;
+  }
+}
+
+.viability-form {
+  &__inputs {
+    &--title-date-birth {
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    &--date-birth {
+      width: calc(100% + 8px);
+      max-width: calc(100% + 8px);
+      display: flex;
+      justify-content: space-between;
+      margin-left: -4px;
+      mat-form-field {
+        margin: 0 4px;
+        max-width: calc(33% - 8px);
+        font-family: Roboto;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+    }
+    &--input {
+      mat-form-field {
+        width: 100%;
+        font-family: Roboto;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+    }
+    &--error {
+      font-family: Roboto;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12px;
+      color: #ec0000;
+    }
+  }
+  &__summary {
+    &--title {
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 12px;
+      padding: 16px 0;
+      color: map-get($colors, gray-dark);
+    }
+  }
+  &__authorization {
+    padding: 16px 0;
+    &--wrap-label {
+      white-space: normal;
+    }
+  }
+}
+
+.viability-summary-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 8px;
+  &__body {
+    padding: 16px;
+    &--row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+    &--title {
+      font-family: Roboto;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12px;
+    }
+    &--value {
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 12px;
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    padding: 8px 0;
+    &--link {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--text {
+      font-family: Roboto;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &--icon {
+      margin-left: 8px;
+    }
+  }
+}

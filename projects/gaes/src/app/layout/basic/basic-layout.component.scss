@@ -1,0 +1,334 @@
+@import '../../../../../lib-shared-components/src/lib/layouts/home/light-home-layout/light-home-layout.component.scss';
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: rgb(29, 120, 238);
+}
+
+.home-loader {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(219, 211, 211, 0.1);
+  z-index: 9999;
+
+  mat-progress-spinner {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+p.title {
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.inline-block {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-right-links {
+  display: none;
+  grid-column: 6;
+  align-self: center;
+  justify-self: right;
+  width: 100%;
+}
+
+.nav-right-links button {
+  border-radius: 15px;
+  align-self: center;
+  justify-self: end;
+  background-color: #4cb2dd;
+  height: 30px;
+  padding: 0 10px;
+  border: none;
+  margin-left: 5px;
+  padding-bottom: 36px;
+  color: white;
+}
+
+.nav-right-links button .item-button {
+  display: grid;
+  color: #fff;
+}
+
+.nav-right-links button .item-button .big-title {
+  align-self: center;
+  justify-self: initial;
+  font-size: 12px;
+  margin-right: 15px;
+  color: #fff;
+}
+
+.nav-right-links button .item-button .fa-question-circle {
+  align-self: center;
+  justify-self: center;
+  font-size: 15px;
+}
+
+.small {
+  font-family: Montserrat;
+  color: #fff;
+  font-size: 8px;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .nav-right-links {
+    display: block;
+  }
+  .nav-right-links button .item-button {
+    grid-template-columns: 40px 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-right-links {
+    display: block;
+  }
+  .nav-right-links button .item-button {
+    grid-template-columns: 40px 1fr;
+  }
+  .nav-right-links button {
+    width: 100%;
+  }
+}
+
+.nav-right-links button i {
+  color: #fff;
+  font-size: 20px;
+}
+
+#nav-right-links button .item-button {
+  grid-template-columns: 1fr;
+  align-self: center;
+  justify-self: center;
+}
+
+#nav-right-links button .item-button .big-title {
+  margin-right: 0;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .nav-right-links {
+    display: block;
+  }
+  .nav-right-links button .item-button {
+    grid-template-columns: 40px 1fr;
+  }
+  .nav-right-links button {
+    width: 100%;
+  }
+
+  .small {
+    font-size: 15px;
+  }
+}
+
+.parrafo {
+  font-size: 12px;
+  font-family: Montserrat;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .no-desk {
+    display: none;
+  }
+}
+
+.request-container {
+  border-radius: 5px;
+  box-shadow: 0 0 6px #c8c8c8;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.cntOpciones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.cntOpciones .opcion {
+  text-align: center;
+}
+
+.cntOpciones .opcion h3 {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 575px) {
+  .request-container h3 {
+    font-size: 10px;
+    font-weight: 400;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .btnCta {
+    height: 40px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .request-container {
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .request-container {
+    box-shadow: none;
+  }
+
+  .btnCta {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .request-container {
+    box-shadow: none;
+  }
+
+  .btnCta {
+    font-size: 22px;
+  }
+
+  .small {
+    font-size: 15px !important;
+  }
+}
+
+.btnCta {
+  background-color: #4cb2dd;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 9px;
+  font-family: Montserrat;
+  height: 40px;
+  width: 100%;
+}
+
+.cntBotones {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.cntBotones button {
+  font-size: 13px;
+  font-family: Montserrat;
+}
+
+.cntBotones button:disabled,
+.cntBotones button[disabled] {
+  background-color: #baeaff;
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .cntAprox .grayParrf {
+    font-size: 10px;
+  }
+  .cntAprox .tooltip i {
+    font-size: 25px;
+  }
+  .small {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cntBotones button {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .cntAprox .grayParrf {
+    font-size: 18px;
+  }
+  .cntAprox .tooltip i {
+    font-size: 38px;
+  }
+  .cntBotones button {
+    font-size: 13px;
+  }
+
+  .calcPdos .contPeriodo {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .help-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .help-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .help-menu {
+    display: none;
+  }
+}
+
+.help-menu button {
+  background-color: #f0f0f0;
+  color: #939393;
+}
+
+.help-menu button .item-button {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  font-size: 15px;
+}
+
+.help-menu button .item-button .big-title {
+  font-family: Montserrat;
+  font-size: 16px;
+}
+
+.container-condtions p.title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+
+.container-condtions,
+.container-condtions h3 {
+  margin: 10px 0;
+}
+
+.container-condtions .item-list {
+  font-size: 12px;
+}
+
+.lib-light-home-layout-contianer__footer .small {
+  font-family: Montserrat;
+  color: #fff;
+  font-size: 8px;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+}

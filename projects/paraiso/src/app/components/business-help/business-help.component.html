@@ -1,0 +1,45 @@
+<lib-business-help-layout [imgbg]="URL_BACKGROUND">
+  <div header-title>
+    <div class="business-help-container__header-title">
+      <lib-standard-size-layout>Financia tus colchones con el Banco Santander</lib-standard-size-layout>
+    </div>
+  </div>
+  <div navbar>
+    <div class="business-help-container__navbar">
+      <lib-standard-size-layout>
+        <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER" [companyHeaderLogo]="URL_LOGO_SANTANDER">
+        </lib-navbar>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+
+  <div images>
+    <lib-standard-size-layout>
+      <lib-app-manual-partners [helpitems]="helpItemsParaiso"></lib-app-manual-partners>
+    </lib-standard-size-layout>
+  </div>
+  <div items>
+    <lib-standard-size-layout>
+      <lib-item-request-partners></lib-item-request-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div tips>
+    <div class="business-help-container__tips">
+      <lib-standard-size-layout>
+        <lib-sales-tip-partners [helptips]="helpTipsParaiso"></lib-sales-tip-partners>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+  <div contact>
+    <lib-standard-size-layout>
+      <lib-contact-partners></lib-contact-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div footer>
+    <div class="business-help-container__footer">
+      <lib-standard-size-layout>© 2021 - COLCHONES PARAISO</lib-standard-size-layout>
+    </div>
+  </div>
+</lib-business-help-layout>

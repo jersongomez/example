@@ -1,0 +1,34 @@
+@import './../../../../../scss/variables';
+@import './../../../../../scss/mixins';
+.tipsVentas {
+  display: block;
+  background-color: $grisTenue;
+  @include Asmall() {
+    display: none;
+  }
+  h1 {
+    text-align: left;
+    padding: 20px 0px;
+  }
+}
+
+.contDosBig {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 10%;
+  font-size: 13px;
+  .item {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .title {
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  img {
+    width: 60%;
+  }
+}

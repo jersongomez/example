@@ -1,0 +1,12 @@
+<form [formGroup]="forma" (ngSubmit)="save()">
+  <mat-dialog-content>
+    <p class="title">Fecha de nacimiento del paciente</p>
+    <br />
+    <mat-form-field>
+      <input matInput formControlName="fechaNmto" [matDatepicker]="picker" placeholder="Fecha de nacimiento" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button>Aceptar</button>
+  </mat-dialog-content>
+</form>

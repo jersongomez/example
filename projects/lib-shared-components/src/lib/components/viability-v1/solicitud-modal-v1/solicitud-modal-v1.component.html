@@ -1,0 +1,132 @@
+<div *ngIf="!viabilityService.progress">
+  <div *ngIf="showSpinner == true then showSpinnerTempl else showFormTempl"></div>
+  <ng-template #showSpinnerTempl>
+    <h1 header class="title-request">
+      Estamos Validando tu información
+    </h1>
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+    </div>
+  </ng-template>
+  <ng-template #showFormTempl>
+    <h1 header class="title-request">Iniciar Solicitud</h1>
+    <form [formGroup]="form">
+      <div class="dialog-label">
+        <h2>Datos de identificación</h2>
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="nombres" type="text" autocomplete="off" maxlength="40"
+            (keypress)="utils.lettersOnly($event)" />
+          <mat-hint *ngIf="form.get('nombres').errors?.required && form.get('nombres').touched" class="has-error">
+            El nombre es necesario
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos" type="text" autocomplete="off" maxlength="16"
+            (keypress)="utils.lettersOnly($event)" />
+          <mat-hint *ngIf="form.get('apellidos').errors?.required && form.get('apellidos').touched" class="has-error">
+            Los apellidos son necesarios
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Tipo de identificación</mat-label>
+          <mat-select formControlName="tipoIdentificacion">
+            <mat-option *ngFor="let type of typesId$ | async" [value]="type.code">
+              {{ type.name }}
+            </mat-option>
+          </mat-select>
+          <mat-hint *ngIf="form.get('tipoIdentificacion').errors?.required && form.get('tipoIdentificacion').touched"
+            class="has-error">
+            El tipo de identificación es necesario
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Número de identificación</mat-label>
+          <input matInput formControlName="numeroIdentificacion" type="tel" autocomplete="off"
+            (keypress)="utils.numbersOnly($event)" />
+          <mat-hint
+            *ngIf="form.get('numeroIdentificacion').errors?.required && form.get('numeroIdentificacion').touched"
+            class="has-error">
+            Número de identificación requerido
+          </mat-hint>
+          <mat-hint *ngIf="form.get('numeroIdentificacion').errors?.minlength" class="has-error">
+            Debe tener minimo {{ numDocumentMinLength }} números
+          </mat-hint>
+        </mat-form-field>
+        <div class="dialog-label" formGroupName="fechaExpedicion">
+          <h2>Fecha de expedición de la cedula</h2>
+          <mat-hint *ngIf="
+                (form.get('fechaExpedicion.dia').errors?.required && form.get('fechaExpedicion.dia').touched) ||
+                (form.get('fechaExpedicion.mes').errors?.required && form.get('fechaExpedicion.mes').touched) ||
+                (form.get('fechaExpedicion.year').errors?.required && form.get('fechaExpedicion.year').touched)
+              " class="has-error">
+            Seleccioné su fecha de expedición de la cedula
+          </mat-hint>
+          <mat-form-field class="dialog-select dia" appearance="outline">
+            <mat-label>Día</mat-label>
+            <mat-select formControlName="dia">
+              <mat-option *ngFor="let dia of dias" [value]="dia">{{ dia }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="dialog-select mes" appearance="outline">
+            <mat-label>Mes</mat-label>
+            <mat-select formControlName="mes">
+              <mat-option *ngFor="let mes of meses" [value]="mes">{{ mes }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="dialog-select year" appearance="outline">
+            <mat-label>Año</mat-label>
+            <mat-select formControlName="year">
+              <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="correoElectronico" type="email" autocomplete="off" />
+          <mat-hint *ngIf="form.get('correoElectronico').errors?.required && form.get('correoElectronico').touched"
+            class="has-error">
+            El correo electronico es necesario
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Teléfono celular</mat-label>
+          <input matInput formControlName="celular" type="tel" maxlength="10" autocomplete="off"
+            (keypress)="utils.numbersOnly($event)" />
+          <mat-hint *ngIf="form.get('celular').errors?.required && form.get('celular').touched" class="has-error">
+            El número de celular es necesario
+          </mat-hint>
+          <mat-hint *ngIf="form.get('celular').errors?.minlength || form.get('celular').errors?.maxlength"
+            class="has-error">
+            Debe tener minimo y maximo 10 números
+          </mat-hint>
+        </mat-form-field>
+
+        <section class="authorize-all-checkbox">
+          <mat-checkbox class="authorize-all-checkbox__checkbox" formControlName="authorizeAll">
+            <span class="authorize-all-checkbox__checkbox--text">
+              Al validar mi identidad, autorizo a <span>Santander Financing</span> a consultar mi información en
+              Centrales
+              de Riesgo y a contactarme por SMS, WhatsApp y correo electrónico. Para conocer los términos y condiciones
+              <a href="https://santanderfinancing.com/tycconsumo/" target="_blank"> ingresa aquí</a>.
+            </span>
+          </mat-checkbox>
+          <mat-hint *ngIf="form.get('authorizeAll').errors?.required && form.get('authorizeAll').touched"
+            class="has-error">
+            Debes autorizar a Santander Financing a consultar tu información en Centrales de Riesgo y a contactar por
+            SMS,
+            WhatsApp y correo electrónico
+          </mat-hint>
+        </section>
+      </div>
+    </form>
+  </ng-template>
+</div>

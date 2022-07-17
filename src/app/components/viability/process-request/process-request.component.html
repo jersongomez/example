@@ -1,0 +1,84 @@
+<app-modal *ngIf="!viabilityService.progress">
+  <ng-container *ngComponentOutlet="flowService.CurrentStep.component"></ng-container>
+  <button *ngIf="viabilityService.HasNextBtn" class="btn-request" start (click)="startProcessRequest()">
+    Siguiente
+  </button>
+  <button class="btn-back" back (click)="cancelRequest()">Volver al inicio</button>
+</app-modal>
+
+<app-modal id="procesess" *ngIf="viabilityService.progress">
+  <h2 header class="title-message">
+    Estamos Validando <br />
+    tu información
+  </h2>
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</app-modal>
+<!--
+<app-modal id="procesess" [hidden]="!showFinalMessage">
+    <h2 *ngIf="viabilityService.Viable !== undefined" header class="title-message">¡Estado de la solicitud: {{viabilityService.Response.respuestaServicio.solicitud}}!</h2>
+    <h2 *ngIf="viabilityService.Viable === undefined" header class="title-message">¡Hubo un error!</h2>
+    <p *ngIf="viabilityService.Viable" class="info">Ahora continua el proceso con la firma de los documentos.</p>
+    <p *ngIf="viabilityService.Viable === undefined" class="info">Por favor vuelve a intentarlo</p>
+    <img *ngIf="viabilityService.Viable" src="./assets/businessman.svg" class="img-bussines">
+    <img *ngIf="!viabilityService.Viable || viabilityService.Viable === undefined" src="./assets/bussinesManBad.jpeg" class="img-bussines">
+    <div class="info-cal box-summary" *ngIf="viabilityService.Viable !== undefined">
+        <div class="box-desc">Acierta Mas</div>
+        <div class="box-info">{{viabilityService.Response.respuestaServicio.detalles.aciertaMas}}</div>
+        <div class="box-desc">Causal de rechazo</div>
+        <div class="box-info">{{viabilityService.Response.respuestaServicio.detalles.causalRechazo}}</div>
+        <div class="box-desc">Endeudamiento Máximo</div>
+        <div class="box-info">${{viabilityService.Response.respuestaServicio.detalles.endeudamientoMaximo | number:'1.0'}}</div>
+    </div>
+    <button *ngIf="viabilityService.Viable" class="btn-request" start (click)="viewSummary()">VER RESUMEN</button>
+    <button class="btn-back " back (click)="cancelRequest() ">VOLVER AL INICIO</button>
+</app-modal>
+
+<app-modal id="resume" *ngIf="showSummary">
+    <h2 header class="title-message">Resumen de la solicitud</h2>
+    <div class="info-cal box-summary">
+        <div class="box-desc">Estado de la solicitud</div>
+        <div class="box-info">{{viabilityService.Response.respuestaServicio.solicitud}}</div>
+        <div class="box-desc">Monto a solicitar</div>
+        <div class="box-info">${{calculatorService.Cuota.montoAFinanciar | number:'1.0'}}</div>
+        <div class="box-desc">Monto total a financiar</div>
+        <div class="box-info">${{calculatorService.Cuota.montoTotalFinanciamiento | number:'1.0-0'}}</div>
+        <div class="box-desc">Plazo en meses</div>
+        <div class="box-info">{{calculatorService.Cuota.numeroCuota}}</div>
+        <div class="box-desc">Cuota inicial</div>
+        <div class="box-info">${{calculatorService.Cuota.cuotaInicial | number:'1.0'}}</div>
+        <div class="box-desc">Cuota mensual</div>
+        <div class="box-info">${{calculatorService.Cuota.valorCuotaConSeguro | number:'1.0'}}</div>
+        <div class="box-desc">Acierta Mas</div>
+        <div class="box-info">{{viabilityService.Response.respuestaServicio.detalles.aciertaMas}}</div>
+        <div class="box-desc">Causal de rechazo</div>
+        <div class="box-info">{{viabilityService.Response.respuestaServicio.detalles.causalRechazo}}</div>
+        <div class="box-desc">Endeudamiento Máximo</div>
+        <div class="box-info">${{viabilityService.Response.respuestaServicio.detalles.endeudamientoMaximo | number:'1.0'}}</div>
+    </div>
+
+    <div class="info-form box-summary">
+        <div class="box-desc">Nombres</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.nombres}}</div>
+        <div class="box-desc">Apellidos</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.apellidos}}</div>
+        <div class="box-desc">Tipo de identificación</div>
+        <div class="box-info">{{viabilityService.DataFault.tipoId}}</div>
+        <div class="box-desc">Número de identificación</div>
+        <div class="box-info">{{viabilityService.Request.requestHeader.identificacion}}</div>
+        <div class="box-desc">Email</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.correoElectronico}}</div>
+        <div class="box-desc">Telefono celular</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.celular}}</div>
+        <div class="box-desc">Fecha de nacimiento</div>
+        <div class="box-info">{{viabilityService.DataFault.fechaNacimiento | birthday}}</div>
+        <div class="box-desc">Actividad económica</div>
+        <div class="box-info">{{viabilityService.DataFault.actividadEco}}</div>
+        <div class="box-desc">Ingresos</div>
+        <div class="box-info">${{viabilityService.Request.requestBody.ingresos | number:'1.0'}}</div>
+        <div class="box-desc">Ciudad</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.ciudad}}</div>
+        <div class="box-desc">Dirección</div>
+        <div class="box-info">{{viabilityService.Request.requestBody.direccion}}</div>
+    </div>
+    <button class="btn-request btn-summary" start (click)="cancelRequest()">VOLVER AL INICIO</button>
+</app-modal> -->

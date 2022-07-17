@@ -1,0 +1,160 @@
+<div class="calculator">
+  <div class="dialog-label">
+    <div class="title marginOne">
+      <h2>1- ¿Cuánto cuesta la bicicleta?</h2>
+    </div>
+    <div class="slidercontainer marginOne">
+      <input
+        class="slider"
+        type="range"
+        [(ngModel)]="calculatorService.Request.valorProducto"
+        (ngModelChange)="changeRequestValue()"
+        [min]="minAmount$ | async"
+        [max]="maxProduct$ | async"
+        [step]="step"
+        name="sliderValue"
+        required
+      />
+    </div>
+    <div class="contMinMax marginOne">
+      <div class="contMin">
+        <p><span class="gray">Mín: $</span>{{ minAmount$ | async | number: '1.0-0':'es' }}</p>
+      </div>
+      <div class="contMax">
+        <p><span class="gray">Máx: $</span> {{ maxProduct$ | async | number: '1.0-0':'es' }}</p>
+      </div>
+    </div>
+    <mat-form-field class="dialog-input" appearance="outline">
+      <input
+        matInput
+        type="tel"
+        [(ngModel)]="calculatorService.Request.valorProducto"
+        (ngModelChange)="changeRequestValue()"
+        currencyMask
+        [options]="{
+          align: 'left',
+          prefix: '$ ',
+          thousands: '.',
+          decimal: ',',
+          precision: 0
+        }"
+      />
+      <mat-hint class="has-error" *ngIf="calculatorService.Request.valorProducto < (minAmount$ | async)">
+        El monto mínimo de la bicicleta debe ser:
+        {{ minAmount$ | async | number: '1.0-0':'es' }}.
+      </mat-hint>
+      <mat-hint class="has-error" *ngIf="calculatorService.Request.valorProducto > (maxProduct$ | async)">
+        El monto maximo de la bicicleta debe ser:
+        {{ maxProduct$ | async | number: '1.0-0':'es' }}.
+      </mat-hint>
+    </mat-form-field>
+    <div class="hr"></div>
+    <div class="title marginOne">
+      <h2>2- ¿Solicitas?</h2>
+    </div>
+    <mat-form-field class="dialog-input" appearance="outline">
+      <input
+        matInput
+        [(ngModel)]="calculatorService.Request.valorSolicitado"
+        (ngModelChange)="changeRequestValue()"
+        type="tel"
+        currencyMask
+        [options]="{
+          align: 'left',
+          prefix: '$ ',
+          thousands: '.',
+          decimal: ',',
+          precision: 0
+        }"
+      />
+      <mat-hint class="has-error" *ngIf="calculatorService.Request.valorSolicitado < (minAmount$ | async)">
+        El monto mínimo a financiar es {{ minAmount$ | async | number: '1.0-0':'es' }}.
+      </mat-hint>
+      <mat-hint class="has-error" *ngIf="calculatorService.Request.valorSolicitado > (maxAmount$ | async)">
+        El monto máximo a financiar es {{ maxAmount$ | async | number: '1.0-0':'es' }}.
+      </mat-hint>
+    </mat-form-field>
+    <div class="grace-period-risk marginOne">
+      <mat-slide-toggle
+        [(ngModel)]="calculatorService.Request.subsidized"
+        (ngModelChange)="changeRequestValue('subsidized')"
+        *ngIf="calculatorService.Request.valorSolicitado >= 10000000"
+        >Subvencionado</mat-slide-toggle
+      >
+      <mat-slide-toggle
+        [disabled]="isSubsidized"
+        [(ngModel)]="calculatorService.Request.gracePeriod"
+        (ngModelChange)="changeRequestValue()"
+        >Período de gracia ({{ gracePeriod$ | async }} meses)</mat-slide-toggle
+      >
+      <mat-slide-toggle [(ngModel)]="calculatorService.Request.riskInsurance" (ngModelChange)="changeRequestValue()"
+        >Seguro todo riesgo</mat-slide-toggle
+      >
+    </div>
+    <div class="hr"></div>
+    <div class="title marginOne">
+      <h2>3- ¿En cuantas cuotas desea pagar la bicicleta?</h2>
+    </div>
+    <div class="calculator-container__element">
+      <mat-error
+        class="calculator-container__element--error"
+        *ngIf="calculatorService.Request.cantidadCuotas === 0 && checkedBtnRq"
+      >
+        Seleccione el número de cuotas
+      </mat-error>
+    </div>
+    <div class="cuota marginOne">
+      <div class="radio" *ngFor="let radio of cuotaService.Cuotas">
+        <input
+          name="Radios"
+          type="radio"
+          [ngClass]="{ check: true, disabled: radio.isDisable }"
+          [value]="radio.idCuota"
+          [(ngModel)]="calculatorService.Request.cantidadCuotas"
+          [disabled]="radio.isDisable"
+          (ngModelChange)="changeRequestValue()"
+        />
+        <div class="radio-container">
+          <div class="numBer">{{ radio.meses }}</div>
+          <div class="mes">meses</div>
+          <div class="grace-perido" *ngIf="calculatorService.Request.gracePeriod">
+            {{ radio.idCuota - (gracePeriod$ | async) }} pagos
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infocuota marginOne">
+      <div class="text">
+        Cuota Aproximada mensual:<br />
+        (incluye seguro de vida)<br />
+        *Recuerda que en tu primer cuota pagaras el GMF
+      </div>
+      <p class="vrCuota">$ {{ calculatorService.Cuota.valorCuotaConSeguro | number: '1.0-0':'es' }}</p>
+      <div class="tooltip top">
+        ?
+        <span class="tiptext">
+          <ul>
+            <li>
+              Monto total a financiar: $ {{ calculatorService.Cuota.montoTotalFinanciamiento | number: '1.0-0':'es' }}
+            </li>
+            <li>Valor seguro deudor: $ {{ calculatorService.Cuota.valorTotalSeguro | number: '1.0-0':'es' }}</li>
+            <li>Valor seguro todo riesgo: $ {{ calculatorService.Cuota.valorTodoRiesgo | number: '1.0-0':'es' }}</li>
+            <li>Tasa NMV: {{ calculatorService.Cuota.nominalMesVencido * 100 | number: '1.0-2':'es' }}</li>
+            <li>GMF: $ {{ calculatorService.Cuota.cuatroxMil  | number: '1.0-2':'es' }}</li>
+
+          </ul>
+        </span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div class="calculator-container__buttons">
+      <button class="btn btn-request marginOne" (click)="openSolicitud()">INICIAR SOLICITUD</button>
+      <button class="btn btn-print marginOne" [disabled]="!calculatorService.getAccions" (click)="onPrint()">
+        IMPRIMIR
+      </button>
+    </div>
+    <div class="img-info">
+      <img src="../../../../assets/specialized/imgSpecialized.png" alt="" />
+    </div>
+  </div>
+</div>

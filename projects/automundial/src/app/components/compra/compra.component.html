@@ -1,0 +1,23 @@
+<lib-print-detail-partners
+  [currentfee]="currentFee$"
+  [logoheader]="URL_LOGO_PARTNER"
+  [companyheaderlogo]="URL_LOGO_SANTANDER"
+></lib-print-detail-partners>
+
+<lib-process-request-v1 class="loader" (endRequest)="endRequestViability()" *ngIf="flowService.StartFlow">
+</lib-process-request-v1>
+
+<div class="home-container" [class.loaded]="!!(partnerId$ | async)">
+  <app-basic-layout
+    [URL_BACKGROUND]="URL_BACKGROUND"
+    [URL_LOGO_PARTNER]="URL_LOGO_PARTNER"
+    [URL_LOGO_FOOTER]="URL_LOGO_FOOTER"
+    [partner]="partner"
+  >
+    <div calculator>
+      <div calculator-content class="home-container__content-card">
+        <lib-card-calculator #calculatorCard (starRequest)="openDialog()" (print)="onPrint()"> </lib-card-calculator>
+      </div>
+    </div>
+  </app-basic-layout>
+</div>

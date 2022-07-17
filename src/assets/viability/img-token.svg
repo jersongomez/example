@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164.424" height="105.068" viewBox="0 0 164.424 105.068">
+  <g id="Grupo_3" data-name="Grupo 3" transform="translate(-32.222 -51.179)">
+    <path id="Trazado_1" data-name="Trazado 1" d="M193.162,89.994l-2.076-5.82H34.722L32.7,90.037a8.509,8.509,0,0,0-.474,2.78h0c0,5,5.2,9.059,11.619,9.059H182.027c6.424,0,11.627-4.057,11.627-9.064h0A8.341,8.341,0,0,0,193.162,89.994Z" transform="translate(0 54.372)" fill="#525c6b"/>
+    <path id="Trazado_2" data-name="Trazado 2" d="M189.8,113.437l-16.626-47.02H58.9c-5.325,0-9.991,2.778-11.394,6.787L33.433,113.437c-2.081,5.955,3.667,11.826,11.58,11.826h133.2C186.133,125.263,191.882,119.392,189.8,113.437Z" transform="translate(1.289 25.109)" fill="#7a8e9b"/>
+    <path id="Trazado_3" data-name="Trazado 3" d="M43.262,125.261,56.126,66.417H133.3l12.864,58.844Z" transform="translate(18.193 25.109)" fill="#c6c6c6"/>
+    <path id="Trazado_4" data-name="Trazado 4" d="M45.236,73.388l-6.994,20.6,6.632,1.148L49.7,74.158Z" transform="translate(9.921 36.596)" fill="#525c6b"/>
+    <g id="Grupo_1" data-name="Grupo 1" transform="translate(166.907 113.629)">
+      <path id="Trazado_5" data-name="Trazado 5" d="M91.992,84.9l-.771-2.576c-.416-1.38-2.171-2.259-3.959-1.97-1.814.3-2.979,1.687-2.6,3.1l.7,2.6.019.056c.424,1.425,2.253,2.309,4.078,1.975S92.418,86.324,91.992,84.9Z" transform="translate(-80.602 -65.644)" fill="#525c6b"/>
+      <path id="Trazado_6" data-name="Trazado 6" d="M90.75,81.582l-1.478-4.931a3.237,3.237,0,0,0-3.694-1.835c-1.695.275-2.78,1.573-2.426,2.892l1.332,4.954.016.058c.4,1.343,2.129,2.182,3.853,1.867S91.152,82.927,90.75,81.582Z" transform="translate(-83.086 -74.764)" fill="#525c6b"/>
+    </g>
+    <path id="Trazado_7" data-name="Trazado 7" d="M123.7,91.659H81.72L60.1,100.613V51.181h63.6Z" transform="translate(72.944 -0.002)" fill="#ec0000"/>
+    <path id="Trazado_8" data-name="Trazado 8" d="M70.52,91.946H49.511a1.365,1.365,0,1,1,0-2.648H70.52a1.365,1.365,0,1,1,0,2.648Z" transform="translate(25.695 62.816)" fill="#7a8e9b"/>
+  </g>
+</svg>

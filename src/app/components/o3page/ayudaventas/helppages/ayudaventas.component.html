@@ -1,0 +1,40 @@
+<div class="superContenedor fondo fndHeader">
+  <!-- Contenedor -->
+
+  <section class="contenedor color-header">
+    <div class="contenido">
+      <p class="pLight">Tecnología inteligente para moverte en la ciudad</p>
+    </div>
+  </section>
+
+  <div class="business-help-container__navbar">
+    <lib-standard-size-layout>
+      <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER" [companyHeaderLogo]="URL_LOGO_SANTANDER">
+      </lib-navbar>
+    </lib-standard-size-layout>
+  </div>
+
+  <div class="help-sales-container__back-mobile"></div>
+</div>
+
+<lib-standard-size-layout>
+  <lib-app-manual-partners [helpitems]="helpItemsO3Mobility"></lib-app-manual-partners>
+</lib-standard-size-layout>
+
+<lib-standard-size-layout>
+  <lib-item-request-partners></lib-item-request-partners>
+</lib-standard-size-layout>
+
+<div class="business-help-container__tips">
+  <lib-standard-size-layout>
+    <lib-sales-tip-partners [helptips]="helpTipsO3Mobility"></lib-sales-tip-partners>
+  </lib-standard-size-layout>
+</div>
+
+<div contact>
+  <lib-standard-size-layout>
+    <lib-contact-partners></lib-contact-partners>
+  </lib-standard-size-layout>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,44 @@
+$topMargin: 20px;
+
+/* Colors */
+
+$blanco: rgba(255, 255, 255, 1);
+$blancoTransparente: rgba(255, 255, 255, 0.5);
+$textoUno: rgba(112, 112, 112, 1);
+$gris: rgba(244, 244, 244, 1);
+$negro: rgba(0, 0, 0, 1);
+$opaco: rgba(153, 153, 153, 1);
+$grisTenue: rgba(240, 240, 240, 1);
+$color-cliente: rgba(0, 123, 185, 1);
+
+/* Imágenes */
+
+$logoO3:"../../../../assets/img/logoO3.png";
+$logoSantander:"../../../../assets/img/consumerFinance.png";
+$fondoDesktop:"../../../../assets/img/fondo.png";
+$fondoDesktopHelp:"../../../../../assets/img/fondo.png";
+$fondoMobile:"../../../../assets/img/fondo-mobile.png";
+$fondoMobileHelp:"../../../../../assets/img/fondo-mobile.png";
+
+/* Responsive */
+
+$Asmall: 575.98px;
+$small: 576px;
+$Atablet: 767.98px;
+$tablet: 767.98px;
+$Alaptop: 991.98px;
+$laptop: 992px;
+$Adesktop: 1199.98px;
+$desktop: 1200px;
+
+/* maxwidth */
+
+$mWtablet: 540px;
+$mWlaptop: 720px;
+$mWdesktop: 960px;
+$mWfull: 1140px;
+
+/* variables paraiso*/
+
+$fondoUnoParaiso:"src/assets/paraiso/img/fondo1.jpg";
+$logoCliente: "src/assets/paraiso/img/paraiso.png";

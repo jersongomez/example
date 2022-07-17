@@ -1,0 +1,48 @@
+@import 'src/scss/variables';
+@import 'src/scss/mixins';
+
+.section-modal {
+  width: 100%;
+  font-family: Roboto;
+  text-align: center;
+
+  .text-content {
+    color: #1b1b1b;
+    opacity: 1;
+    .section-form {
+      padding: 20px 0;
+      width: 100%;
+      font-family: Roboto;
+      font-size: 12px;
+      .mat-form-field {
+        width: 100%;
+      }
+      .Icedula {
+        width: 100%;
+        font-family: Roboto;
+        text-align: center;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+.acctions-button {
+  padding-top: -10%;
+  button {
+    background-color: rgba(236, 0, 0, 1);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 1);
+    margin: 0 10px;
+    padding: 0 66px;
+
+    @include Asmall() {
+      width: 80%;
+      height: 11vh;
+      font-size: 14px;
+    }
+    &:disabled {
+      background-color: rgb(255, 96, 96);
+    }
+  }
+}

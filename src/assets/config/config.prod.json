@@ -1,0 +1,20 @@
+{
+    "env": {
+        "name": "prod"
+    },
+    "logging": {
+        "console": false
+    },
+    "keycloakConfig": {
+        "url": "",
+        "realm": "",
+        "clientId": ""
+    },
+    "apiServer": {
+        "backend": "",
+        "viability": "",
+        "middleware": "",
+        "getIp": "",
+        "getIpV2": ""
+    }
+}

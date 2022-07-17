@@ -1,0 +1,53 @@
+// @import '../../../../scss/variables';
+
+.challenge-question-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  &__question {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    // color: $textoUno;
+    font-size: 14px;
+    padding: 16px 0;
+    display: flex;
+    align-items: flex-end;
+
+    &--number {
+      font-size: 48px;
+      //   color: $color-cliente;
+    }
+  }
+
+  &__answers {
+    padding: 16px 0;
+
+    &--radio-group {
+    }
+
+    &--answer {
+    }
+  }
+}
+
+.challenge-question-radio-group {
+  display: flex;
+  flex-direction: column;
+
+  &__radio {
+    margin: 8px 0;
+
+    &--text {
+      white-space: normal;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<div class="contInputHeader marginGridMobile">
+  <form class="contMatInput" [formGroup]="form">
+    <h3>Financia vehículos eléctricos fácilmente</h3>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>¿Cuanto cuesta el vehículo a financiar?</mat-label>
+        <input
+          matInput
+          type="tel"
+          currencyMask
+          formControlName="monto"
+          [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0 }"
+          name="monto"
+          [min]="minAmount$ | async"
+          [max]="maxAmount$ | async"
+        />
+        <mat-hint class="has-error" *ngIf="form.get('monto').errors?.min && form.get('monto').touched">
+          El valor mínimo a financiar es de $ {{ minAmount$ | async | number: '1.0':'es' }}
+        </mat-hint>
+        <mat-hint class="input-error" *ngIf="form.get('monto').errors?.max">
+          El valor máximo a financiar es de $ {{ maxAmount$ | async | number: '1.0':'es' }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="city-initial">
+      <div class="city">
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Ciudad</mat-label>
+          <mat-select formControlName="ciudad">
+            <mat-option *ngFor="let ciudad of citiesParams$ | async" [value]="ciudad.textValue">
+              {{ ciudad.textValue }}
+            </mat-option>
+          </mat-select>
+          <mat-hint *ngIf="form.get('ciudad').errors?.required && form.get('ciudad').touched" class="has-error">
+            La ciudad es necesaria
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="initial">
+        <mat-form-field class="dialog-input" appearance="outline">
+          <mat-label>Porcentaje cuota inicial</mat-label>
+          <input
+            matInput
+            formControlName="porcentajeInitial"
+            type="tel"
+            [min]="percentMin"
+            [max]="percentMax$ | async"
+            currencyMask
+            [options]="{ align: 'left', prefix: '', suffix: '%', precision: 0.0, decimal: ',' }"
+          />
+          <mat-hint *ngIf="form.get('porcentajeInitial').errors?.required" class="has-error">
+            Porcentaje inicial requerido
+          </mat-hint>
+          <mat-hint
+            class="has-error"
+            *ngIf="form.get('porcentajeInitial').errors?.min && form.get('porcentajeInitial').touched"
+          >
+            El porcentaje mínimo de cuota inicial es de {{ percentMin }}%
+          </mat-hint>
+          <mat-hint
+            class="has-error"
+            *ngIf="form.get('porcentajeInitial').errors?.max && form.get('porcentajeInitial').touched"
+          >
+            El porcentaje máximo de cuota inicial es de {{ percentMax$ | async }}%
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,61 @@
+<app-print [logo]="URL_LOGO_PARTNER"></app-print>
+<app-process-request class="loader" *ngIf="flowService.StartFlow"></app-process-request>
+<div *ngIf="!(partnerId$ | async)" class="loader-background">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+<div class="content" *ngIf="!!(partnerId$ | async)">
+  <div class="superContenedor fondo fndHeader">
+    <section class="contenedor color-header">
+      <div class="contenido">
+        <p class="pLight">Tecnología inteligente para moverte en la ciudad</p>
+      </div>
+    </section>
+
+    <div class="o3home-container__navbar">
+      <lib-standard-size-layout>
+        <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER" [companyHeaderLogo]="URL_LOGO_SANTANDER">
+        </lib-navbar>
+      </lib-standard-size-layout>
+    </div>
+
+    <section class="seccionFluida">
+      <div class="contenedor marginGridMobile fndMobile">
+        <div class="contenido">
+          <app-inputheader (outMontoSolicitado)="calcularCuota($event)"></app-inputheader>
+          <p class="pBrownM">¿En cuántas cuotas desea cancelar?</p>
+          <p class="pBlueM">0% de interés comprando hasta en 12 cuotas!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccionFluida">
+      <div class="contenedor marginGridMobile text-info">
+        <div class="contenido">
+          <p class="pBrown">¿En cuántas cuotas desea cancelar el vehículo?</p>
+          <p class="pBlue">0% de interés comprando hasta en 12 cuotas!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="superContenedor">
+    <section class="contenedor marginGridMobile">
+      <div class="contenido divCalculator">
+        <div class="o3home-container__content">
+          <div class="o3home-container__content--calculator">
+            <app-calculator></app-calculator>
+          </div>
+          <div class="o3home-container__content--buttons">
+            <div class="botones btn-order">
+              <button class="primario" (click)="onPrint()" [disabled]="!calculatorService.getAccions">Imprimir</button>
+              <button class="secundario" (click)="openSolicitud()" [disabled]="!calculatorService.getAccions">
+                Iniciar Solicitud
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>

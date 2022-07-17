@@ -1,0 +1,111 @@
+<div class="contResume">
+  <h3>Detalles del prestamo</h3>
+  <hr />
+  <div [ngClass]="{ mgHidden: !showContent, mgShow: showContent }" class="resume">
+    <div class="values">
+      <p>Monto total solicitado</p>
+      <p>Cuota inicial</p>
+      <p>Cuota mensual</p>
+      <p>Valor total del seguro</p>
+      <p>Costo mensual del seguro</p>
+      <p>GMF</p>
+    </div>
+    <div class="results">
+      <p>
+        $
+        {{
+          calculatorService.Cuota.montoAFinanciar == undefined
+            ? 0
+            : (calculatorService.Cuota.montoAFinanciar | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.cuotaInicial == undefined
+            ? 0
+            : (calculatorService.Cuota.cuotaInicial | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.valorCuotaConSeguro == undefined
+            ? 0
+            : (calculatorService.Cuota.valorCuotaConSeguro | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.valorTotalSeguro == undefined
+            ? 0
+            : (calculatorService.Cuota.valorTotalSeguro | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.costoMensualSeguro == undefined
+            ? 0
+            : (calculatorService.Cuota.costoMensualSeguro | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.cuatroxMil == undefined
+            ? 0
+            : (calculatorService.Cuota.cuatroxMil | number: '1.0':'es')
+        }}
+      </p>
+    </div>
+  </div>
+  <div [ngClass]="{ hidden: !showContent, show: showContent, mgShowBottom: showContent }" class="resume">
+    <div class="values">
+      <p>Monto total a financiar</p>
+      <p>Costo de interes</p>
+      <p>Tasa E.A</p>
+      <p>Tasa NMV</p>
+      <p>*Recuerda que en tu primer cuota pagaras el GMF</p>
+
+    </div>
+    <div class="results">
+      <p>
+        $
+        {{
+          calculatorService.Cuota.montoTotalFinanciamiento == undefined
+            ? 0
+            : (calculatorService.Cuota.montoTotalFinanciamiento | number: '1.0':'es')
+        }}
+      </p>
+      <p>
+        $
+        {{
+          calculatorService.Cuota.costoInteres == undefined
+            ? 0
+            : (calculatorService.Cuota.costoInteres | number: '1.0-0':'es')
+        }}
+      </p>
+      <p>
+        {{ calculatorService.Cuota.tasa == undefined ? 0 : (calculatorService.Cuota.tasa * 100 | number: '1.0-2':'es') }}%
+      </p>
+      <p>
+        {{
+          calculatorService.Cuota.nominalMesVencido == undefined
+            ? 0
+            : (calculatorService.Cuota.nominalMesVencido   * 100 | number: '1.0-2':'es')
+        }}%
+      </p>
+    </div>
+  </div>
+  <hr />
+  <div class="showMas pointer" (click)="showContent = !showContent">
+    <div class="cntShowMas">
+      <div class="cntMas">MOSTRAR {{ showContent ? 'MENOS' : 'MÁS' }}</div>
+      <div class="cntIcon">
+        <mat-icon>keyboard_arrow_{{ showContent ? 'up' : 'down' }}</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

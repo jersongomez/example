@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ abl_artifact_id }}'
+data:
+  BFF_CONSUMER_URL: '{{ abl_cm_bff_url }}'
+  FEASIBILITY_CONSUMER_URL: '{{ abl_cm_webf_url }}'
+  GET_IP: '{{ abl_webgetip_url }}'
+  GET_IPV2: '{{ abl_webgetipv2_url }}'
+  MIDDLEWARE_CONSUMER_URL: '{{ abl_cm_webmidwr_url }}'

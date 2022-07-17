@@ -1,0 +1,33 @@
+<div class="app-initial-percent-container">
+  <form class="contMatInput" [formGroup]="form">
+    <div>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          type="tel"
+          currencyMask
+          formControlName="percent"
+          name="percent"
+          [options]="{
+            align: 'left',
+            prefix: '',
+            suffix: ' %',
+            thousands: '.',
+            decimal: ',',
+            precision: 0,
+            debounce: 1000
+          }"
+          [min]="min"
+          [max]="max"
+        />
+        <mat-hint class="has-error" *ngIf="form.get('percent').errors?.min && form.get('percent').touched">
+          El porcentaje mínimo es de {{ min | number: '1.0':'es' }} %
+        </mat-hint>
+        <mat-hint class="has-error" *ngIf="form.get('percent').errors?.max">
+          El porcentaje máximo es de {{ max | number: '1.0':'es' }} %
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <ng-content></ng-content>
+  </form>
+</div>

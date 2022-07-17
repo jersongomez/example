@@ -1,0 +1,26 @@
+<section class="section-modal">
+  <div mat-dialog-content class="text-content">
+    "Selecciona Sede - Vendedor"
+    <div class="section-form">
+      <mat-form-field appearance="outline" class="form">
+        <mat-label> Ingresa Sede </mat-label>
+        <mat-select [(ngModel)]="selectAlliet">
+          <mat-option *ngFor="let aliado of dataAlliets" [value]="aliado.id"> {{aliado.sede}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="Icedula">
+        <input
+          class="InpCedula"
+          matInput
+          placeholder="Ingresa cedula asesor"
+          [(ngModel)]="cedula"
+          (keypress)="utils.numbersOnly($event)"
+          height="14px"
+        />
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-acctions class="acctions-button">
+    <button mat-button [disabled]="!selectAlliet" (click)="confirmAllies()">Continuar</button>
+  </div>
+</section>

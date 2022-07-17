@@ -1,0 +1,39 @@
+<div class="validate-otp-container">
+  <div class="validate-otp-container__title">Confirma tu identidad</div>
+  <div class="validate-otp-container__subtitle">Ingresa el código que enviamos a tu celular</div>
+  <div class="validate-otp-container__content">
+    <div class="validate-otp-container__content--img">
+      <img src="assets\viability\img-token.svg" alt="img-token" />
+    </div>
+    <div class="validate-otp-container__content--input">
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            formControlName="otp"
+            type="password"
+            autocomplete="off"
+            (keypress)="utils.numbersOnly($event)"
+            placeholder="* * * * * *"
+            maxlength="6"
+          />
+          <mat-hint
+            class="validate-otp-container__content--error"
+            *ngIf="form.get('otp').errors?.required && form.get('otp').touched"
+          >
+            El Código OTP es necesario
+          </mat-hint>
+          <mat-hint class="validate-otp-container__content--error" *ngIf="form.get('otp').errors?.minlength">
+            Debe tener minimo 6 números
+          </mat-hint>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="validate-otp-container__footer">
+    <span class="validate-otp-container__footer--expired-code">
+      {{ validationService.smsExpire }}
+    </span>
+    <div class="validate-otp-container__footer--bold" (click)="sendAgainOtp()">Reenviar código</div>
+  </div>
+</div>

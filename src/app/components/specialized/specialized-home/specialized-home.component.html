@@ -1,0 +1,71 @@
+<app-print logo="./assets/specialized/LogoSpecializedBlanco.png" logoClass="invert"></app-print>
+<app-process-request class="loader" *ngIf="flowService.StartFlow"></app-process-request>
+<div class="specialized-home-loader" *ngIf="!(partnerId$ | async)">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<div class="specialized-home-container" *ngIf="!!(partnerId$ | async)">
+  <div class="specialized-home-container__background"></div>
+  <div class="specialized-home-container__content">
+    <div class="specialized-home-container__content--navbar">
+      <app-navbar-specialized></app-navbar-specialized>
+    </div>
+    <div class="specialized-home-container__content--section-center">
+      <div class="specialized-home-section-center">
+        <div class="specialized-home-section-center__information">
+          <div class="textinfo">
+            <div class="text1">
+              Es hora de iniciar nuevas rodadas, de<br />
+              sumar más kilómetros, aquí se abren las<br />
+              puertas para nuevos ciclistas.<br />
+              <span>#JuntosSomosSpecialized</span>
+            </div>
+            <div class="info-conditions">
+              <h4>Coberturas seguro todo riesgo:</h4>
+              <ul>
+                <li>
+                  Daño Accidental: Valor de la bicicleta en caso de daño accidental.<br />
+                  <i>Deducible: 10% nuevas</i>
+                </li>
+                <li>
+                  Hurto Calificado: En caso de huto calificado se cubrirá el valor asegurado.
+                  <br /><i>Deducible: 10% nuevas</i>
+                </li>
+                <li>Muerte Accidental. <i>Valor Asegurado: $4.000.000</i></li>
+                <li>Gastos médicos por accidente. <i>Hasta: $500.000</i></li>
+              </ul>
+            </div>
+            <div class="text2">
+              <span>SIMULE LA CUOTA MENSUAL</span><br />
+              ¡Sin papeleos complejos y de manera ágil!
+            </div>
+            <div class="info-conditions">
+              <h4>Condiciones para el cliente:</h4>
+              <ul>
+                <li>Debe tener entre 18 y 75 años</li>
+                <li>Ganar más de un salario mínimo</li>
+                <li>El monto mínimo es $800.000</li>
+                <li>El monto máximo es $20.000.000</li>
+                <li>Colombiano o residente con visa e historia laboral</li>
+                <li>Plazo de financiación máximo 12 meses adicionales a la duracion del crédito</li>
+              </ul>
+              <h4>Clientes asalariados:</h4>
+              <p>Continuidad laboral mínima de 12 meses.</p>
+              <h4>Clientes independientes:</h4>
+              <p>Antigüedad en la actividad mínima de 12 meses</p>
+            </div>
+          </div>
+        </div>
+        <div class="specialized-home-section-center__calculator">
+          <app-calculator (starSolicitud)="openSolicitud()"></app-calculator>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specialized-home-container__sales-tips">
+    <app-tips-ventas></app-tips-ventas>
+  </div>
+  <div class="specialized-home-container__footer">
+    <app-footer></app-footer>
+  </div>
+</div>

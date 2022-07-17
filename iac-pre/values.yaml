@@ -1,0 +1,184 @@
+springboot:
+  app:
+    name: frontend-services-consumer
+    labels:
+      app: frontend-services-consumer
+      app.kubernetes.io/component: frontend-services-consumer
+      app.kubernetes.io/instance: frontend-services-consumer
+      app.kubernetes.io/name: frontend-services-consumer
+      app.kubernetes.io/part-of: frontend-services-consumer
+      app.openshift.io/runtime: springboot
+      app.openshift.io/runtime-version: "2.2"
+      app.kubernetes.io/version: "1.16.0"
+
+  image:
+    ## Name of the image you want to build/deploy
+    name: image-registry.openshift-image-registry.svc:5000/consumer-pre/frontend-services-consumer
+    ## Tag that you want to build/deploy
+    tag: latest
+
+  ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
+  deploy:
+    ## Number of pod replicas to deploy
+    replicas: 1
+
+    ## Freeform service ports. More information: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
+    ports:
+      - name: http
+        port: 8080
+        targetPort: 8080
+        protocol: TCP
+
+  ## Freeform resources for Springboot. More information: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    resources:
+      limits:
+        cpu: 400m
+        memory: 1024Mi
+      requests:
+        cpu: 200m
+        memory: 640Mi
+
+     ## Freeform Liveness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
+    #livenessProbe:
+    #  httpGet:
+    #    path: /
+    #    port: http
+    ## If you don't want a livenessProbe, override like this in your values file
+    livenessProbe: ''
+
+    ## Freeform Readiness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
+    #readinessProbe:
+    #  httpGet:
+    #    path: /
+    #    port: http
+    ## If you don't want a readinessProbe, override like this in your values file
+    readinessProbe: ''
+
+    ## Freeform env for the Springboot app. More information: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+    env:
+      - name: JAVA_OPTIONS
+        value: '-Xms640m -Xmx1024m'
+    #  - name: VAR_NAME
+    #    value: var-value
+
+    ## Freeform envFrom for the Springboot app. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
+    envFrom:
+      - secretRef:
+          name: secret-frontend-services-consumer-conexion-bd-amq
+
+    ## Application properties file for configuring the Springboot app
+    applicationProperties:
+      ## Determines if application properties should be created in a configmap and mounted to the Springboot container
+      enabled: true
+      ## Location to mount the properties file
+      mountPath: /deployments/config/
+      ## Name application properties to mount
+      name: application-frontend-services-consumer
+      ## Name file properties in configmap
+      nameFile: application.yml
+      ## Application properties file contents
+      properties: |-
+        # config de endpoint info para spring actuator
+        info:
+          app:
+            name: frontend-services-consumer
+            description: Servicio frontend-services-consumer
+            version: v1
+        # config de endpoints para spring actuator
+        endpoints:
+          enabled: false
+          health:
+            enabled: true
+        logging:
+          config: classpath:logback.xml
+        # config de endpoints para spring actuator
+        management:
+          server:
+            address: 0.0.0.0
+            port: 8012
+          endpoint:
+            restart:
+              enabled: true
+              
+        services-data-access:
+          service-name: services-data-access
+          proto: http
+          host: service-data-access.consumer-pre.svc.cluster.local
+          port: 8080
+
+        server:
+          ssl:
+            enabled: false
+          port: 8018
+        spring:
+          cloud:
+            kubernetes:
+              # define politica para el servicio cuando se hacen cambios en el configmap
+              reload:
+                enabled: true
+        constants:
+          endpoint:
+            token: https://macia.wikiplata.com:44375/token
+            consulta: https://macia.wikiplata.com:44375/consultas
+          frontend-services-consumer:
+            grant-type: password
+            username: 900491651-5
+            password: g^3p|g&;OEGD
+        keycloak:
+          realm: rei_login
+          auth-server-url: https://sso-management-adm-security.apps.ocp4-preprod.cosanpre.corp/auth
+          ssl-required: none
+          disable-trust-manager: true
+          resource: b3d77d64
+          security-constraints:
+          - security-collections:
+            - patterns:
+              - /token
+              - /consultas
+            auth-roles:
+            - uma_authorization
+
+    ## Freeform volumes. More information: https://kubernetes.io/docs/concepts/storage/volumes/
+    volumes:
+     # - name: my-config
+     #   configMap:
+     #     name: my-configmap
+
+    ## Freeform volume mounts. More information: https://kubernetes.io/docs/concepts/storage/volumes/
+    volumeMounts:
+     # - name: my-config
+     #   mountPath: /etc/config
+
+    ## Type of service to create. More information: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+    serviceType: ClusterIP
+
+    ## For creating a Route, allowing your application to be accessed from outside the OCP cluster
+    route:
+      enabled: true
+      targetPort: http
+      ## More information: https://docs.openshift.com/container-platform/4.6/networking/routes/secured-routes.html
+      tls:
+        enabled: false
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
+        ## IMPORTANT: Do not check 'key' into git!
+        key:
+        caCertificate:
+        certificate:
+        destinationCACertificate:
+    
+    secret:
+      enabled: true
+      name: secret-frontend-services-consumer-conexion-bd-amq
+      data:
+        frontend-services-consumer.database.user: ZGJfT3BlblNoaWZ0
+        frontend-services-consumer.database.passwd: UG9zaXRpdmEyMDIwMDMq
+        frontend-services-consumer.amq.user: YWRtaW4=
+        frontend-services-consumer.amq.passwd: YWRtaW5yM2RoNHQyMDIxKg==
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80

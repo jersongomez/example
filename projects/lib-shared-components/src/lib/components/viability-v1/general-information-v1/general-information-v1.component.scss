@@ -1,0 +1,121 @@
+// @import '../../../../scss/variables';
+
+.general-information-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__titletext {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+    border-radius: 8px;
+    border: solid 1px #ec0000;
+    padding: 16px;
+    margin: 0px 0px 16px;
+  }
+
+  &__title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    // color: $textoUno;
+    font-size: 16px;
+    padding: 16px 0;
+    text-align: center;
+
+    &--link {
+      cursor: pointer;
+      color: #ec0000;
+      text-decoration: underline;
+    }
+  }
+
+  &__img {
+    padding: 16px 0;
+
+    img {
+      height: 200px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+  }
+}
+
+.general-information-values-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__values {
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 16px;
+    border-radius: 8px;
+    border: solid 1px #ec0000;
+    padding: 16px;
+
+    &--row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--title {
+      color: #ec0000;
+    }
+
+    &--value {
+      margin-left: 8px;
+    }
+  }
+}
+
+.general-information-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+
+  &__title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+  }
+
+  &__subtitle {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    color: #ec0000;
+    padding: 4px 0;
+  }
+}

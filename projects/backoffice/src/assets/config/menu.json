@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "icon": "perm_contact_calendar",
+            "label": "Trazabilidad",
+            "url": "/backoffice"
+        }
+    ],
+    "bottom-items": [
+        {
+            "icon": "logout",
+            "label": "Cerrar sesión",
+            "function": "logout"
+        }
+    ]
+}

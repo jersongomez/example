@@ -1,0 +1,28 @@
+<div class="lib-radio-amounts-container">
+  <form [formGroup]="form">
+    <div class="cnt-options">
+      <div class="opcion" *ngFor="let amountOption of amountsOptions">
+        <h3>
+          {{ amountOption.label }}
+        </h3>
+        <div>
+          <div class="cell" *ngIf="!amountOption.isShow" (click)="toggleInput($event, amountOption)">
+            $ {{ amountOption.amount | number: '1.0-0':'es' }}
+          </div>
+          <input
+            class="cell"
+            (click)="clickInput($event)"
+            (change)="changeAmount($event, amountOption)"
+            *ngIf="!!amountOption.isShow"
+            type="number"
+            [value]="amountOption.amount"
+          />
+        </div>
+        <span class="btn-seleccion">
+          <input formControlName="amount" name="amount" type="radio" [value]="amountOption.amount" />
+          <div>SELECCIONAR</div>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>

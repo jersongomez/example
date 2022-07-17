@@ -1,0 +1,53 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+h3 {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.contResume {
+  border: 1px solid rgba(112, 112, 112, 1);
+  background-color: none;
+  padding: 20px 30px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  opacity: 1;
+  .resume {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    font-size: 14px;
+    @include Asmall() {
+      grid-template-columns: 2fr 1fr;
+      font-size: 12px;
+    }
+    .values {
+      grid-column: 2;
+      justify-items: left;
+      @include Asmall() {
+        grid-column: 1;
+      }
+    }
+    .results {
+      justify-items: right;
+      text-align: right;
+      font-weight: 700;
+    }
+  }
+}
+
+p {
+  line-height: 1.6;
+}
+
+.mgHidden {
+  margin: 10px 0px;
+}
+
+.mgShow {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.mgShowBottom {
+  margin-bottom: 10px;
+}

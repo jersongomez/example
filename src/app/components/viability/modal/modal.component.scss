@@ -1,0 +1,112 @@
+@import '../../../../scss/mixins';
+@import '../../../../scss/variables';
+:host {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+.background {
+  background: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  top: 0%;
+}
+
+.card {
+  z-index: 2;
+  background: white;
+  padding: 2% 5%;
+  margin-top: 3%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  box-shadow: 0px 2px 6px rgba(25, 25, 25, 1);
+  border-radius: 15px;
+  position: relative;
+  max-width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  @include tabletLaptop {
+    max-width: 40%;
+    padding: 2% 3%;
+  }
+  @include laptopDesktop {
+    max-width: 30%;
+    padding: 2% 3%;
+  }
+  @include desktopFull {
+    max-width: 35%;
+    padding: 2% 3%;
+  }
+}
+
+.logo-santander {
+  margin: 10px;
+}
+
+.header {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: Roboto;
+  text-align: center;
+}
+
+.message {
+  // display: grid;
+  label {
+    text-align: right;
+    margin-right: 10px;
+  }
+  input {
+    width: 50px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+::ng-deep .img-loading {
+  margin-top: 20px;
+  margin-bottom: 56px;
+  margin: 0 auto;
+}
+
+::ng-deep .logo-modal {
+  width: 50%;
+}
+
+::ng-deep .title-message {
+  font-size: 20px;
+  font-family: Roboto;
+}
+
+::ng-deep .info {
+  width: 100%;
+  grid-row: 1;
+  font-size: 14px;
+  text-align: center;
+  font-family: Roboto;
+}
+
+::ng-deep .img-bussines {
+  width: 50%;
+  margin: 0 auto;
+}
+
+::ng-deep .title-request {
+  font-size: 20px;
+}
+
+::ng-deep .logo-modal {
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+}

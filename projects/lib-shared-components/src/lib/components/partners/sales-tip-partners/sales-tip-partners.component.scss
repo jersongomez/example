@@ -1,0 +1,36 @@
+.lib-sales-tip-partners-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0;
+
+  &__tip {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--image {
+      align-self: center;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &--title {
+      text-align: center;
+      font-weight: normal;
+      font-family: 'DINPro';
+      font-size: 16px;
+      padding: 8px;
+    }
+
+    &--description {
+      text-align: center;
+      font-weight: normal;
+      font-family: 'DINPro';
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+}

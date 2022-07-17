@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="header">
+    <div class="logo2">
+      <img [src]="logoHeader" alt="logo-partner" />
+    </div>
+    <div class="logo1">
+      <img [src]="companyHeaderLogo" alt="company-logo" />
+    </div>
+    <div class="title-print">
+      Monto solicitado: $ {{ (currentFee$ | async).amountToFinanced | number: '1.0-0':'es' }}
+    </div>
+  </div>
+  <div class="plan-pagos">
+    <div class="header-plan-pagos">Plan de pagos:</div>
+    <div class="body-plan-pagos">
+      <div class="cuota">{{ (currentFee$ | async).feeNumber }} Pagos</div>
+      <div class="valor">$ {{ (currentFee$ | async).valueFeeWithInsurance | number: '1.0-0':'es' }} / mes</div>
+    </div>
+  </div>
+  <div class="descripcion"></div>
+  <div class="detalles">
+    <div class="detalles-header">Detalles del prestamo</div>
+    <hr class="detalles-line" />
+    <div class="detalles-body">
+      <div class="detalles-info">
+        <li class="dot-leader">
+          <span class="dot-leader__left">Costo total del seguro: (Vigencia del crédito)</span>
+          <span class="dot-leader__right">$ {{ (currentFee$ | async).totalSafeValue | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Valor cuota sin seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ (currentFee$ | async).valueFeeWithoutInsurance | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Valor cuota con seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ (currentFee$ | async).valueFeeWithInsurance | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Cuota mensual del seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ (currentFee$ | async).monthlyInsuranceCost | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Monto total a finaciar:</span>
+          <span class="dot-leader__right"
+            >$ {{ (currentFee$ | async).totalFinancingAmount | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader" *ngIf="(currentFee$ | async).interestCost > 0">
+          <span class="dot-leader__left">Costo de Interes:</span>
+          <span class="dot-leader__right">$ {{ (currentFee$ | async).interestCost | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Tasa E.A:</span>
+          <span class="dot-leader__right">{{ (currentFee$ | async).rate | number: '1.0-2':'es' }} %</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Tasa NMV:</span>
+          <span class="dot-leader__right"
+            >{{ (currentFee$ | async).nominalMonthOverdue * 100 | number: '1.0-2':'es' }} %</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">GMF:</span>
+          <span class="dot-leader__right"
+            >$ {{ (currentFee$ | async).fourPerThousand | number: '1.0-2':'es' }}%</span
+          >
+        </li>
+        <li class="dot-leader" *ngIf="(currentFee$ | async).allRiskValue > 0">
+          <span class="dot-leader__left">Valor total seguro todo riesgo: (Anual)</span>
+          <span class="dot-leader__right">$ {{ (currentFee$ | async).allRiskValue | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader" *ngIf="(currentFee$ | async).monthlyCostAllRisk > 0">
+          <span class="dot-leader__left">Prima mensual seguro todo riesgo:</span>
+          <span class="dot-leader__right">$ {{ (currentFee$ | async).monthlyCostAllRisk | number: '1.0-0':'es' }}</span>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

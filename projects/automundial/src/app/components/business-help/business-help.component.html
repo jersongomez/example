@@ -1,0 +1,40 @@
+<lib-business-help-layout>
+  <div navbar>
+    <div class="business-help-container__navbar">
+      <lib-standard-size-layout>
+        <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER"> </lib-navbar>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+
+  <div images>
+    <lib-standard-size-layout>
+      <lib-app-manual-partners [helpitems]="helpItems"></lib-app-manual-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div items>
+    <lib-standard-size-layout>
+      <lib-item-request-partners></lib-item-request-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div tips>
+    <div class="business-help-container__tips">
+      <lib-standard-size-layout>
+        <lib-sales-tip-partners [helptips]="helpTips"></lib-sales-tip-partners>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+  <div contact>
+    <lib-standard-size-layout>
+      <lib-contact-partners></lib-contact-partners>
+    </lib-standard-size-layout>
+  </div>
+
+  <div footer>
+    <div class="business-help-container__footer">
+      <lib-standard-size-layout>© 2021 - Automundial </lib-standard-size-layout>
+    </div>
+  </div>
+</lib-business-help-layout>

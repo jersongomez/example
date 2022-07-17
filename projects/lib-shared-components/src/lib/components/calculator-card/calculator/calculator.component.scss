@@ -1,0 +1,242 @@
+.calculator {
+  width: 100%;
+  height: 100%;
+  background-color: #e6e7e9;
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: auto;
+  padding: 30px 48px;
+}
+.calculator .dialog-label {
+  width: 100%;
+  font-family: Roboto;
+  display: grid;
+  margin: auto;
+}
+.calculator .dialog-label .marginOne {
+  margin: 12px 0;
+}
+.calculator .dialog-label .title {
+  grid-row: 1;
+}
+.calculator .dialog-label .title h2 {
+  font-size: 22px;
+  font-weight: 400;
+  color: #192b4a;
+}
+.calculator .dialog-label .slidercontainer {
+  width: 100%;
+  grid-row: 2;
+}
+.calculator .dialog-label .slidercontainer input[type='range'] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #269c64;
+  outline: 0;
+  border-radius: 5px;
+}
+.calculator .dialog-label .slidercontainer input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  background: #269c64;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.calculator .dialog-label .slidercontainer input[type='range']::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  background: #269c64;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.calculator .dialog-label .slidercontainer input[type='range']::-ms-thumb {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  background: #269c64;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.calculator .dialog-label .contMinMax {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0 !important;
+  font-size: 20px;
+}
+.calculator .dialog-label .contMinMax .contMin {
+  grid-column: 1;
+}
+.calculator .dialog-label .contMinMax .contMax {
+  grid-column: 2;
+  text-align: right;
+}
+.calculator .dialog-label .contMinMax .gray {
+  color: #192b4a;
+}
+.calculator .dialog-label .contMinMax p {
+  color: #4c4c4c;
+}
+.calculator .dialog-label .hr {
+  width: 98%;
+  height: 1px;
+  background-color: #959595;
+  margin: 10px auto 15px;
+}
+.calculator .dialog-label .info-cuota {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.calculator .dialog-label .info-cuota .info {
+  display: grid;
+  grid-template-rows: 1fr;
+  line-height: 24px;
+  margin: 10px 0;
+}
+.calculator .dialog-label .info-cuota .info .info-title {
+  grid-row: 1;
+  font-size: 18px;
+  color: #192b4a;
+  font-weight: 400;
+}
+.calculator .dialog-label .info-cuota .info .info-tasa {
+  grid-row: 2;
+  font-size: 15px;
+  color: #4c4c4c;
+  font-weight: 300;
+}
+
+.calculator .dialog-label pre {
+  white-space: pre-line;
+}
+.calculator .dialog-label mat-form-field {
+  font-size: 18px;
+}
+.calculator .dialog-label mat-form-field .input {
+  display: grid;
+  grid-template-columns: 5% 85% 10%;
+}
+.calculator .dialog-label mat-form-field .input .progress {
+  grid-column: 1;
+  margin: -4px 0 0 40px;
+}
+.calculator .dialog-label mat-form-field .input input {
+  grid-column: 2;
+  height: 30px;
+  margin-top: -8px;
+}
+.calculator .dialog-label mat-form-field .input .tooltip {
+  grid-column: 3;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: gray;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  justify-self: right;
+  margin-top: -8px;
+  position: relative;
+}
+.calculator .dialog-label mat-form-field .input .tooltip .tiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+}
+.calculator .dialog-label mat-form-field .input .tooltip .tiptext::after {
+  content: '';
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+}
+.calculator .dialog-label mat-form-field .input .tooltip .tiptext li {
+  line-height: 25px;
+}
+.calculator .dialog-label mat-form-field .input .tooltip:hover .tiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.calculator .dialog-label mat-form-field .input .tooltip.top .tiptext {
+  margin-left: -155px;
+  bottom: 150%;
+  left: 60%;
+}
+.calculator .dialog-label mat-form-field .input .tooltip.top .tiptext::after {
+  margin-left: -5px;
+  top: 100%;
+  left: 50%;
+  border-color: #2e2e2e transparent transparent;
+  opacity: 1;
+}
+.calculator .dialog-label .info-ahorro {
+  line-height: 24px;
+}
+.calculator .dialog-label .info-ahorro li {
+  list-style: none;
+  color: #4c4c4c;
+  font-weight: 300;
+  font-size: 16px;
+  display: flex;
+}
+.calculator .dialog-label .info-ahorro li .progress-li {
+  margin: 2px 0 0 10px;
+}
+.calculator .dialog-label .info-ahorro .text-ahorro {
+  font-weight: 700;
+  font-size: 18px;
+  color: #192b4a;
+  text-transform: uppercase;
+}
+.calculator .dialog-label .btn {
+  height: 60px;
+  border-radius: 5px;
+  font-size: 20px;
+  border: 1px solid #269c64;
+}
+.calculator .dialog-label .btn-request {
+  background-color: #269c64;
+  color: #fff;
+}
+.calculator .dialog-label .btn-print {
+  color: #269c64;
+  background-color: #fff;
+  cursor: pointer;
+}
+.has-error {
+  color: red;
+  font-size: 13px;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-outline-gap {
+  background-color: #fff;
+}
+
+::ng-deep .calculator {
+  .input-amout {
+    mat-form-field {
+      width: 100%;
+    }
+
+    .mat-form-field-infix {
+      padding: 1em 0 !important;
+    }
+  }
+}

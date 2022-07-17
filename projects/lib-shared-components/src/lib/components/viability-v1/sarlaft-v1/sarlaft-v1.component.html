@@ -1,0 +1,183 @@
+<div class="sarlaft-container">
+  <div class="sarlaft-container__title">Registra los siguientes datos</div>
+  <div class="sarlaft-container__form">
+    <form [formGroup]="form">
+      <div class="sarlaft-container__form--input">
+        <mat-form-field appearance="outline">
+          <mat-label>Departamento de nacimiento</mat-label>
+          <mat-select formControlName="deparmentBirth">
+            <mat-option *ngFor="let department of ciudadService.Departments" [value]="department.id">
+              {{ department.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-hint
+            class="sarlaft-container__form--error"
+            *ngIf="form.get('deparmentBirth').errors?.required && form.get('deparmentBirth').touched"
+          >
+            El departamento de nacimiento es necesario
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="sarlaft-container__form--input">
+        <mat-form-field appearance="outline">
+          <mat-label>Ciudad de nacimiento</mat-label>
+          <mat-select formControlName="cityBirth">
+            <mat-option *ngIf="citiesBirth.length === 0">Seleccione primero un Departamento</mat-option>
+            <mat-option *ngFor="let city of citiesBirth" [value]="city.id">
+              {{ city.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-hint
+            class="sarlaft-container__form--error"
+            *ngIf="form.get('cityBirth').errors?.required && form.get('cityBirth').touched"
+          >
+            La ciudad de nacimiento es necesario
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <ng-container *ngIf="isActivityEmployee">
+        <div class="sarlaft-container__form--title-date-entry">Fecha de ingreso a la empresa</div>
+        <mat-hint
+          *ngIf="
+            (form.get('companyDateEntry.day').errors?.required && form.get('companyDateEntry.day').touched) ||
+            (form.get('companyDateEntry.month').errors?.required && form.get('companyDateEntry.month').touched) ||
+            (form.get('companyDateEntry.year').errors?.required && form.get('companyDateEntry.year').touched)
+          "
+          class="sarlaft-container__form--error"
+        >
+          Seleccioné la fecha de ingreso a la empresa
+        </mat-hint>
+        <div formGroupName="companyDateEntry" class="sarlaft-container__form--date-entry">
+          <mat-form-field appearance="outline">
+            <mat-label>Día</mat-label>
+            <mat-select formControlName="day">
+              <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Mes</mat-label>
+            <mat-select formControlName="month">
+              <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Año</mat-label>
+            <mat-select formControlName="year">
+              <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre de la empresa</mat-label>
+            <input matInput formControlName="companyName" type="text" autocomplete="off" />
+            <mat-hint
+              class="sarlaft-container__form--error"
+              *ngIf="form.get('companyName').errors?.required && form.get('companyName').touched"
+            >
+              El nombre de empresa es necesario
+            </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de contrato laboral</mat-label>
+            <mat-select formControlName="typeContract">
+              <mat-option *ngFor="let type of typesContract$ | async" [value]="type.code">
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+            <mat-hint
+              class="sarlaft-container__form--error"
+              *ngIf="form.get('typeContract').errors?.required && form.get('typeContract').touched"
+            >
+              El tipo de contrato laboral es necesario
+            </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Departamento empresa</mat-label>
+            <mat-select formControlName="deparmentCompany">
+              <mat-option *ngFor="let department of ciudadService.Departments" [value]="department.id">
+                {{ department.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-hint
+              class="sarlaft-container__form--error"
+              *ngIf="form.get('deparmentCompany').errors?.required && form.get('deparmentCompany').touched"
+            >
+              El departamento empresa es necesario
+            </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Ciudad empresa</mat-label>
+            <mat-select formControlName="companyCity">
+              <mat-option *ngIf="citiesCompany.length === 0">Seleccione primero un Departamento </mat-option>
+              <mat-option *ngFor="let city of citiesCompany" [value]="city.id">
+                {{ city.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-hint
+              class="sarlaft-container__form--error"
+              *ngIf="form.get('companyCity').errors?.required && form.get('companyCity').touched"
+            >
+              La ciudad empresa es necesario
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Dirección empresa</mat-label>
+            <input matInput formControlName="companyAddress" type="text" autocomplete="off" />
+            <mat-hint
+              class="sarlaft-container__form--error"
+              *ngIf="form.get('companyAddress').errors?.required && form.get('companyAddress').touched"
+            >
+              La dirección de empresa es necesario
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="sarlaft-container__form--input">
+          <mat-form-field appearance="outline">
+            <mat-label>Teléfono empresa</mat-label>
+            <input
+              matInput
+              formControlName="companyPhone"
+              type="tel"
+              autocomplete="off"
+              maxlength="7"
+              minlength="7"
+              (keypress)="utils.numbersOnly($event)"
+            />
+            <mat-hint
+              *ngIf="form.get('companyPhone').errors?.required && form.get('companyPhone').touched"
+              class="sarlaft-container__form--error"
+            >
+              El teléfono de empresa es necesario
+            </mat-hint>
+            <mat-hint
+              *ngIf="form.get('companyPhone').errors?.minlength || form.get('companyPhone').errors?.maxlength"
+              class="sarlaft-container__form--error"
+            >
+              Debe tener minimo y maximo 7 números
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+      <div class="sarlaft-container__form--text">
+        Entiendes y aceptas que si perteneces a un programa de reincorporación a la vida civil deberás informarlo a
+        Santander a través de los canales de atención conforme a la circular externa 005 de 2018 emitida por la
+        Superintendencia Financiera de Colombia
+      </div>
+    </form>
+  </div>
+</div>

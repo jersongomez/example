@@ -1,0 +1,60 @@
+@import '../../../src/scss/variables';
+@import '../../../src/scss/mixins';
+
+::ng-deep .mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  color: white;
+}
+
+::ng-deep .mat-icon-button .mat-icon,
+.mat-icon-button i {
+  color: white;
+}
+
+.navbar-colsanitas-component {
+  display: -webkit-box;
+
+  .navbarSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    div {
+      padding: 0 6px;
+
+      @include tabletLaptop() {
+        .navbar-colsanitas-component {
+          display: -webkit-box;
+          width: 34%;
+        }
+        .navbarSection {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+      }
+
+      @include smallTablet() {
+        max-width: 630px;
+        width: 100%;
+        align-self: center;
+      }
+
+      @include Asmall() {
+        .navbar-colsanitas-component {
+          display: -webkit-box;
+          width: 75%;
+        }
+      }
+
+      @include Asmall() {
+        width: 50%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

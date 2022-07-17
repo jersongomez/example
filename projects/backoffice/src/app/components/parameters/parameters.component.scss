@@ -1,0 +1,95 @@
+table {
+  box-shadow: none;
+  width: 100%;
+}
+
+button {
+  border-radius: 25px;
+  border: 1px solid rgba(236, 0, 0, 1);
+  color: rgba(236, 0, 0, 1);
+  font-weight: bold;
+  margin: 20px 0px;
+  padding: 5px;
+  width: 100%;
+}
+
+.home-container {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .content {
+    flex-grow: 2;
+
+    &__drawer {
+      background-color: white;
+      height: 100%;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin: 15px 0px;
+    }
+  }
+}
+
+.container-content {
+  background-color: white;
+  box-shadow: inset 0 5px 10px -10px gray;
+
+  .table-content {
+    margin: 0px 40px;
+  }
+}
+
+.side-menu {
+  background-color: black;
+  width: 250px;
+}
+
+.loader-background {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(219, 211, 211, 0.1);
+  z-index: 9999;
+  mat-progress-spinner {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: rgba(236, 0, 0, 1);
+}
+
+::ng-deep mat-flat-button.mat-warn {
+  stroke: rgba(236, 0, 0, 1);
+}
+.lb_No_Text {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  font-family: Roboto;
+  padding: 20px 0;
+}
+
+
+tr.mat-header-row {
+  height: 54px;
+  font-size: 15px !important;
+  background-color: rgb(235, 235, 235);
+
+
+}

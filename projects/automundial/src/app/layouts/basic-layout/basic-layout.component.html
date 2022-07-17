@@ -1,0 +1,76 @@
+<div class="basic-layout-loader" *ngIf="!(partnerId$ | async)">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<div class="basic-layout-container" *ngIf="!!(partnerId$ | async)" [attr.style]="getImg('bannerBackground')">
+  <div navbar>
+    <div class="basic-layout-container__navbar">
+      <lib-standard-size-layout size="lg">
+        <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER" [companyHeaderLogo]="URL_LOGO_SANTANDER">
+        </lib-navbar>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+
+  <div class="basic-layout-container__calculator">
+    <lib-standard-size-layout size="lg">
+      <div class="part2">
+        <div class="info1">
+          <img alt="" class="keep-rolling" src="/assets/automundial/siguerodando.png" />
+          <h1>RUEDA BAJO CERO</h1>
+          <h2>
+            PAGA 0% DE INTERES <br />
+            A 3 Y 6 MESES
+          </h2>
+          <h2></h2>
+          <pre class="text-info">
+                    Solicita esta línea de crédito rotativo,
+            con la cual podrás comprar tus llantas 
+            cada vez que lo requieras. De una forma 
+            fácil y segura.
+          </pre>
+        </div>
+
+        <ng-content select="[calculator]"></ng-content>
+      </div>
+    </lib-standard-size-layout>
+  </div>
+
+  <div class="section info">
+    <lib-standard-size-layout size="lg">
+      <section class="part3">
+        <div class="info-fee">
+          <h2>SIMULA LA CUOTA</h2>
+          <p>¡Evita que tu cliente realice papeleos complejos! <br />Gestiona productos de manera ágil</p>
+          <h4>Condiciones para el cliente:</h4>
+          <ul>
+            <li>Debe tener entre 18 y 75 años</li>
+            <li>Ganar más de un salario mínimo</li>
+            <li>El monto mínimo es $700.000</li>
+            <li>El monto máximo es $20.000.000</li>
+            <li>Colombiano o residente con visa e historia laboral</li>
+          </ul>
+          <h4>Clientes asalariados:</h4>
+          <p class="marginP">Continuidad laboral mínima de 12 meses.</p>
+          <h4>Clientes independientes:</h4>
+          <p class="marginP">Antigüedad en la actividad mínima de 12 meses</p>
+        </div>
+        <div class="logos"><img alt="iconos" src="./assets/automundial/icons.png" /></div>
+      </section>
+    </lib-standard-size-layout>
+
+    <div tips>
+      <div class="business-help-container__tips">
+        <lib-standard-size-layout size="lg">
+          <lib-sales-tip-partners [helptips]="helpTips"></lib-sales-tip-partners>
+        </lib-standard-size-layout>
+      </div>
+    </div>
+  </div>
+
+  <div footer>
+    <div class="basic-layout-container__footer">
+      <img [src]="URL_LOGO_FOOTER" />
+    </div>
+  </div>
+</div>

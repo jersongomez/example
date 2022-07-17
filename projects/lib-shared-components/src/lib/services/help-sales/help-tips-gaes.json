@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Sencillo",
+    "description": "Aprobación inmediata. Obtén una decisión crediticia en instantes, sin papeleo.",
+    "image": "assets/help-sales/gaes/tip-one.png"
+  },
+  {
+    "id": 2,
+    "title": "Personal",
+    "description": "Plazos convenientes y amplia financiación de acuerdo a las necesidades de tu cliente.",
+    "image": "assets/help-sales/gaes/tip-two.png"
+  },
+  {
+    "id": 3,
+    "title": "Justo",
+    "description": "Baja tasa de interés a término fijo, contamos con una amplia red de puntos de pago.",
+    "image": "assets/help-sales/gaes/tip-three.png"
+  }
+]

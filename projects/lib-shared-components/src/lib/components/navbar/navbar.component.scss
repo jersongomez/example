@@ -1,0 +1,55 @@
+@import '../../styles/styles.scss';
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+
+  &__images {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    &--one,
+    &--two {
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      // background-position: center center;
+      max-width: 120px;
+
+      @include respond-to(tablet) {
+        max-width: 180px;
+      }
+    }
+
+    &--one {
+      height: 50%;
+
+      @include respond-to(tablet) {
+        height: 75%;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &--two {
+      height: 50%;
+      // width: 148px;
+      margin-left: 16px;
+
+      @include respond-to(tablet) {
+        margin-left: 32px;
+        height: 75%;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  &__app-menu {
+    flex-grow: 0;
+  }
+}

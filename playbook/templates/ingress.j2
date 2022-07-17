@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: {{ abl_ingress_class }}
+  name: '{{ abl_artifact_id }}'
+spec:
+  rules:
+  - host: '{{ abl_domain }}'
+    http:
+      paths:
+      - backend:
+          serviceName: '{{ abl_artifact_id }}'
+          servicePort: 8080
+        pathType: ImplementationSpecific

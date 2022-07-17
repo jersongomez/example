@@ -1,0 +1,84 @@
+<lib-print-detail-partners
+  [currentfee]="currentFee$"
+  [logoheader]="URL_LOGO_PARTNER"
+  [companyheaderlogo]="URL_LOGO_SANTANDER"
+>
+</lib-print-detail-partners>
+
+<lib-process-request-v1 class="loader" (endRequest)="endRequestViability()" *ngIf="flowService.StartFlow">
+</lib-process-request-v1>
+
+<div class="home-loader" *ngIf="!(partnerId$ | async)">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<div class="colsanitas-home-container" *ngIf="!!(partnerId$ | async)">
+  <div class="colsanitas-home-container__background"></div>
+  <div class="colsanitas-home-container__content">
+    <div class="colsanitas-home-container__content--navbar">
+      <app-navbar-specialized></app-navbar-specialized>
+    </div>
+    <div class="colsanitas-home-container__content--section-center">
+      <div class="colsanitas-home-section-center">
+        <div _ngcontent-dpu-c1="" class="textCntBig">
+          <div _ngcontent-dpu-c1="" class="texInicial">
+            <p _ngcontent-dpu-c1="" class="bigTitle">
+              Financia el tratamiento<br _ngcontent-dpu-c1="" />
+              de tu paciente
+            </p>
+            <br _ngcontent-dpu-c1="" />
+            <p _ngcontent-dpu-c1="" class="textParrafo">
+              Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y disfruta de los
+              beneficios que Santander te ofrece.
+            </p>
+          </div>
+        </div>
+
+        <div class="colsanitas-home-section-center__calculator">
+          <app-calculator
+            [minamount]="minAmount$"
+            [maxamount]="maxAmount$"
+            [graceperiod]="gracePeriod$"
+            [fees]="installmentsParam$"
+            [creditfeedata]="currentFee$"
+            (starSolicitud)="openSolicitud()"
+          >
+          </app-calculator>
+        </div>
+        <div _ngcontent-gsh-c1="" class="textCntDosBig doNotPrint">
+          <div _ngcontent-gsh-c1="" class="simulaCuota">
+            <p _ngcontent-gsh-c1="" class="bigTitle">Simula la cuota</p>
+            <p _ngcontent-gsh-c1="" class="title">¡Evita que tu paciente realice papeleos complejos!</p>
+            <p _ngcontent-gsh-c1="" class="title">Gestiona productos de manera ágil</p>
+          </div>
+          <div _ngcontent-gsh-c1="" class="cntClienteUno doNotPrint">
+            <p _ngcontent-gsh-c1="" class="title">Condiciones para el cliente:</p>
+            <p _ngcontent-gsh-c1="" class="listaItem">
+              • Debe tener entre 18 y 75 años<br _ngcontent-gsh-c1="" />
+              • Ganar más de un salario mínimo<br _ngcontent-gsh-c1="" />
+              • El monto mínimo es $800.000<br _ngcontent-gsh-c1="" />
+              • El monto máximo es $20.000.000<br _ngcontent-gsh-c1="" />
+              • Colombiano o residente con visa e historia laboral<br _ngcontent-gsh-c1="" />
+              • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
+            </p>
+          </div>
+          <div _ngcontent-gsh-c1="" class="cntClienteDos doNotPrint">
+            <p _ngcontent-gsh-c1="" class="title">Clientes asalariados:</p>
+            <p _ngcontent-gsh-c1="" class="listaItem">Continuidad laboral mínima de 12 meses.</p>
+            <p _ngcontent-gsh-c1="" class="title">Clientes independientes:</p>
+            <p _ngcontent-gsh-c1="" class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
+          </div>
+        </div>
+        <div _ngcontent-men-c1="" class="contGrafica doNotPrint">
+          <img class="grafica" src="./assets/colsanitas/grafica.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="colsanitas-home-container__sales-tips">
+    <app-tips-ventas></app-tips-ventas>
+  </div>
+  <div class="colsanitas-home-container__footer">
+    <app-footer></app-footer>
+  </div>
+</div>

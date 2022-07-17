@@ -1,0 +1,20 @@
+{
+    "env": {
+        "name": "dev"
+    },
+    "logging": {
+        "console": true
+    },
+    "keycloakConfig": {
+        "url": "http://localhost:8080/auth",
+        "realm": "rei_login",
+        "clientId": "cli_login"
+    },
+    "apiServer": {
+        "backend": "http://localhost:8031",
+        "viability": "http://localhost:8029",
+        "middleware": "http://localhost:8097",
+        "getIp": "https://ipv4.icanhazip.com/",
+        "getIpV2": "https://api.ipify.org/"
+    }
+}

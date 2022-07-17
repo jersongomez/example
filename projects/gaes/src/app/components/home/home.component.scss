@@ -1,0 +1,45 @@
+@import '../../../../../lib-shared-components/src/lib/layouts/home/light-home-layout/light-home-layout.component.scss';
+
+@media print {
+  .light-home-layout-container {
+    display: none;
+  }
+}
+
+@media (min-width: 767.98px) {
+  .not-in-menu {
+    display: none;
+  }
+}
+
+.not-in-menu {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    display: block !important;
+    height: auto;
+  }
+
+  mat-progress-spinner {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+
+  button {
+    display: block;
+    background-color: #f0f0f0;
+    color: #939393;
+    border: none;
+    border-radius: 6px;
+    font-size: 9px;
+    font-family: Montserrat;
+    height: 40px;
+    width: 100%;
+    font-size: 13px;
+    font-family: Montserrat;
+    margin-top: 15px;
+  }
+}

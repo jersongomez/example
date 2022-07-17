@@ -1,0 +1,65 @@
+<div class="general-information-container">
+  <div
+    *ngIf="!!generalInfoService.DataInfo.titletext"
+    class="general-information-container__titletext"
+    [innerHtml]="generalInfoService.DataInfo.titletext"
+  ></div>
+  <div
+    *ngIf="!!generalInfoService.DataInfo.text"
+    class="general-information-container__text"
+    [innerHtml]="generalInfoService.DataInfo.text"
+  ></div>
+
+  <div
+    *ngIf="!!generalInfoService.DataInfo.title"
+    class="general-information-container__title"
+    [innerHtml]="generalInfoService.DataInfo.title"
+  ></div>
+  <div
+    *ngIf="!!generalInfoService.DataInfo.subtitle"
+    class="general-information-container__subtitle"
+    [innerHtml]="generalInfoService.DataInfo.subtitle"
+  ></div>
+  <div *ngIf="generalInfoService.Documents.length > 0" class="general-information-container__subtitle">
+    Descarga los documentos firmados
+    <span class="general-information-container__subtitle--link" (click)="downloadDocs()">aqui</span>
+  </div>
+  <div *ngIf="!!generalInfoService.DataInfo.img" class="general-information-container__img">
+    <img [src]="generalInfoService.DataInfo.img" alt="businessman" />
+  </div>
+  <div *ngIf="!!generalInfoService.DataInfo.content" class="general-information-container__content">
+    <div
+      *ngIf="!!generalInfoService.DataInfo.content.title || !!generalInfoService.DataInfo.content.subtitle"
+      class="general-information-container__content--messages"
+    >
+      <div class="general-information-messages">
+        <div *ngIf="!!generalInfoService.DataInfo.content.title" class="general-information-messages__title">
+          {{ generalInfoService.DataInfo.content.title }}
+        </div>
+        <div *ngIf="!!generalInfoService.DataInfo.content.subtitle" class="general-information-messages__subtitle">
+          {{ generalInfoService.DataInfo.content.subtitle }}
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="!!generalInfoService.DataInfo.content.status"
+      class="general-information-container__content--values-status"
+    >
+      <div class="general-information-values-status">
+        <div class="general-information-values-status__values">
+          <div
+            *ngFor="let state of generalInfoService.DataInfo.content.status"
+            class="general-information-values-status__values--row"
+          >
+            <div class="general-information-values-status__values--title">
+              {{ state.title }}
+            </div>
+            <div class="general-information-values-status__values--value">
+              {{ state.value }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-traceability-filter
+    (filter)="getsignedDocuments($event)"
+    [menuselect]="menuselect"
+  >
+</app-traceability-filter>
+<div *ngIf="logDataLoaded" class="loader-background">
+
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+ <table mat-table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0" class="mat-elevation-z8">
+    <!-- TipoDcumento Column -->
+    <ng-container matColumnDef="TipoDocumento">
+      <th mat-header-cell *matHeaderCellDef> Tipo Documento</th>
+      <td mat-cell *matCellDef="let element"> {{element.idType}} </td>
+    </ng-container>
+
+    <!-- NumeroCedula Column -->
+    <ng-container matColumnDef="NumeroCedula">
+      <th mat-header-cell *matHeaderCellDef> No. de Cedula </th>
+      <td mat-cell *matCellDef="let element"> {{element.idNumber}} </td>
+    </ng-container>
+
+    <!-- Aliado Column -->
+    <ng-container matColumnDef="Aliado">
+      <th mat-header-cell *matHeaderCellDef> Aliado </th>
+      <td mat-cell *matCellDef="let element"> {{element.aliado}} </td>
+    </ng-container>
+
+    <!-- NumeroCasoBizagi Column -->
+    <ng-container matColumnDef="NumeroCasoBizagi">
+      <th mat-header-cell *matHeaderCellDef> No. Caso Bizagi</th>
+      <td mat-cell *matCellDef="let element"> {{element.numberCase}} </td>
+    </ng-container>
+
+    <!-- Documento Column -->
+    <ng-container matColumnDef="Documento">
+      <th mat-header-cell *matHeaderCellDef> Documento Firmado. </th>
+      <td mat-cell *matCellDef="let element" class="icon">
+        <!-- <mat-icon (click)="dowdloadPDF(element)" >arrow_downward</mat-icon> -->
+        <mat-icon (click)="downloafFile(element)" >arrow_downward</mat-icon>{{element.fileName}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div *ngIf="notFound">
+    <p class="lb_No_Text">{{ notFound }}</p>
+  </div>

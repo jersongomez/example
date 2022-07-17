@@ -1,0 +1,81 @@
+<lib-print-detail-partners
+  [currentfee]="currentFee$"
+  [logoheader]="URL_LOGO_PARTNER"
+  [companyheaderlogo]="URL_LOGO_SANTANDER"
+></lib-print-detail-partners>
+
+<lib-process-request-v1
+  class="loader"
+  (endRequest)="endRequestViability()"
+  *ngIf="flowService.StartFlow"
+></lib-process-request-v1>
+
+<div class="home-loader" *ngIf="!(partnerId$ | async)">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<div class="home-container">
+  <lib-home-layout *ngIf="!!(partnerId$ | async)" [imgbg]="URL_BACKGROUND">
+    <div header-title>
+      <div class="home-container__header-title">
+        <lib-standard-size-layout>Financia tus colchones con el Banco Santander</lib-standard-size-layout>
+      </div>
+    </div>
+    <div navbar>
+      <div class="home-container__navbar">
+        <lib-standard-size-layout>
+          <lib-navbar [menu]="menuItems$" [logoHeader]="URL_LOGO_PARTNER" [companyHeaderLogo]="URL_LOGO_SANTANDER">
+          </lib-navbar>
+        </lib-standard-size-layout>
+      </div>
+    </div>
+    <div content-card>
+      <lib-standard-size-layout>
+        <div class="home-container__content-card">
+          <lib-inputheader
+            #inputHeader
+            labelHeader="Cuánto cuesta el colchon a financiar ?"
+            [min]="minAmount$"
+            [max]="maxAmount$"
+            (outAmountRequested)="changeAmountRq($event)"
+          >
+          </lib-inputheader>
+        </div>
+      </lib-standard-size-layout>
+    </div>
+    <div simulator>
+      <lib-standard-size-layout>
+        <div class="home-container__simulator">
+          <div class="home-container__simulator--title">¿En cuantas cuotas desea cancelar tus productos?</div>
+          <div class="home-container__simulator--radio-group">
+            <lib-radio-group
+              [fees]="installmentsParam$"
+              (onSelectFee)="selectFee($event)"
+              [creditfeedata]="currentFee$"
+              [minAmount]="minAmount$"
+              [calculatorfees]="fees$"
+              [loadingfees]="loadingFees$"
+            >
+            </lib-radio-group>
+          </div>
+
+          <div class="home-container__simulator--summary">
+            <lib-calculator-summary [creditfeedata]="currentFee$"></lib-calculator-summary>
+          </div>
+        </div>
+        <div class="home-container__content--buttons">
+          <div class="botones btn-order">
+            <button class="primario" (click)="onPrint()">Imprimir</button>
+            <button class="secundario" (click)="startRequestFlow()">Iniciar Solicitud</button>
+          </div>
+        </div>
+      </lib-standard-size-layout>
+    </div>
+
+    <div footer>
+      <div class="home-container__footer">
+        <lib-standard-size-layout>© 2021 - COLCHONES PARAISO</lib-standard-size-layout>
+      </div>
+    </div>
+  </lib-home-layout>
+</div>

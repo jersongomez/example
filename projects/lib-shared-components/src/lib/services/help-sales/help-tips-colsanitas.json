@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "description": "Aprobación inmediata. Obtén una decisión crediticia en instantes, sin papeleo.",
+    "title": "Sencillo",
+    "image": "assets/colsanitas/tipUno.png"
+  },
+  {
+    "id": 2,
+    "description": "Plazos convenientes y amplia financiación de acuerdo a las necesidades de tu cliente.",
+    "title": "Personal",
+    "image": "assets/colsanitas/tipDos.png"
+  },
+  {
+    "id": 3,
+    "description": "Baja tasa de interés a término fijo, contamos con una amplia red de puntos de pago.",
+    "title": "Justo",
+    "image": "assets/colsanitas/tipTres.png"
+  }
+]

@@ -1,0 +1,14 @@
+@import './../../../../../scss/variables';
+@import './../../../../../scss/mixins';
+.textParrafo {
+  text-align: left;
+  padding-top: 30px;
+  @include Asmall() {
+    text-align: left;
+  }
+}
+
+.parrafo {
+  margin: 0px 0px 15px 0px;
+  font-size: 13px;
+}

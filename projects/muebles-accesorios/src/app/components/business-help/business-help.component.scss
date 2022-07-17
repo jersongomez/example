@@ -1,0 +1,30 @@
+@import '../../../../../lib-shared-components/src/lib/styles/styles.scss';
+
+.business-help-container {
+  &__header-title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    padding: 20px 0;
+    color: white;
+  }
+
+  &__navbar {
+    background-color: white;
+  }
+
+  &__tips {
+    background-color: map-get($colors, gray-light);
+  }
+
+  &__footer {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    padding: 20px 0;
+    background-color: map-get($colors, gold);
+    font-size: 12px;
+    text-align: center;
+  }
+}

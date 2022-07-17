@@ -1,0 +1,341 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+.calculator {
+  margin-top: 25%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  .dialog-label {
+    width: 100%;
+    font-family: DINPro !important;
+    margin: auto;
+    .marginOne {
+      margin: 16px 4% 4px;
+    }
+    .title {
+      h2 {
+        font-family: DINPro !important;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #231f20;
+        letter-spacing: -1px;
+        transform: scaleY(1.2);
+      }
+    }
+    .hr {
+      width: 92%;
+      height: 3px;
+      background-color: rgb(149, 149, 149);
+      margin: 10px auto;
+    }
+    .slidercontainer {
+      input[type='range'] {
+        width: 100%;
+        -webkit-appearance: none;
+        height: 20px;
+        background-color: rgb(238, 242, 244);
+        border: 1px solid rgb(98, 127, 151);
+        outline: none;
+        border-radius: 5px;
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 34px;
+          height: 34px;
+          background: rgb(98, 127, 151);
+          cursor: pointer;
+          border-radius: 50px;
+        }
+        &::-moz-range-thumb {
+          appearance: none;
+          width: 34px;
+          height: 34px;
+          background: rgb(98, 127, 151);
+          cursor: pointer;
+          border-radius: 50px;
+        }
+        &::-ms-thumb {
+          appearance: none;
+          width: 34px;
+          height: 34px;
+          background: rgb(98, 127, 151);
+          cursor: pointer;
+          border-radius: 50px;
+        }
+      }
+    }
+    .contMinMax {
+      margin-top: 8px !important;
+      font-size: 16px;
+      font-family: DINPro;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+
+      .contMax {
+        text-align: right;
+      }
+      .gray {
+        color: rgb(25, 43, 74);
+      }
+      p {
+        color: rgb(76, 76, 76);
+      }
+    }
+    mat-form-field {
+      display: block;
+      font-size: 18px;
+      margin: 5px 4% 0px;
+      font-family: DINPro !important;
+      font-weight: normal;
+      .input {
+        display: grid;
+        grid-template-columns: 5% 85% 10%;
+        .progress {
+          grid-column: 1;
+          margin: -4px 0 0 40px;
+        }
+        input {
+          grid-column: 2;
+          height: 30px;
+          margin-top: -8px;
+        }
+      }
+    }
+    .grace-period-risk {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      mat-slide-toggle {
+        margin: 0 8px;
+        font-family: DINPro !important;
+        font-weight: 500;
+      }
+    }
+    .cuota {
+      display: flex;
+      flex-flow: row wrap;
+
+      .radio {
+        position: relative;
+        height: 83px;
+        width: 20%;
+        min-width: 100px;
+        padding: 4px;
+
+        .check.disabled {
+          cursor: not-allowed;
+        }
+
+        input,
+        .radio-container {
+          position: absolute;
+          height: calc(100% - 8px);
+          width: calc(100% - 8px);
+        }
+
+        input {
+          opacity: 0;
+          z-index: 1;
+          cursor: pointer;
+        }
+
+        .radio-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .numBer {
+            line-height: 0.8;
+            font-size: 35px;
+            color: rgb(105, 110, 110);
+            font-family: DINPro;
+            font-weight: bold;
+          }
+
+          .mes {
+            font-size: 15px;
+            color: rgb(105, 110, 110);
+            font-family: DINPro;
+            font-weight: 500;
+            display: flex;
+          }
+
+          .grace-perido {
+            font-size: 15px;
+            color: rgb(28, 148, 181);
+            font-family: DINPro;
+            font-weight: 500;
+          }
+        }
+      }
+
+      input[type='radio'] + .radio-container {
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: rgb(235, 235, 234);
+        border: none;
+      }
+
+      input[type='radio']:checked + .radio-container {
+        border: none;
+        background-color: white;
+        box-shadow: 0px 1px 7px 0px rgb(147, 147, 147);
+        border-radius: 5px;
+      }
+    }
+
+    .infocuota {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(235, 235, 234);
+      border-radius: 8px;
+      padding: 8px;
+      .text {
+        white-space: pre-line;
+        font-family: DINPro !important;
+        font-weight: 500;
+        color: rgb(174, 177, 178);
+        font-size: 16px;
+      }
+      .vrCuota {
+        text-align: left;
+        font-weight: 400;
+        font-family: DINPro !important;
+        font-size: 16px;
+      }
+      .tooltip {
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        background-color: gray;
+        color: white;
+        font-size: 13px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        text-align: center;
+        justify-self: center;
+        position: relative;
+        cursor: pointer;
+
+        .tiptext {
+          visibility: hidden;
+          width: 300px;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          text-align: center;
+          border-radius: 3px;
+          padding: 6px 0;
+          position: absolute;
+          z-index: 1;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          opacity: 0.5;
+          &::after {
+            content: '';
+            position: absolute;
+            border-width: 5px;
+            border-style: solid;
+          }
+          li {
+            line-height: 25px;
+          }
+        }
+      }
+      .tooltip:hover .tiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+      .tooltip.top .tiptext {
+        margin-left: -155px;
+        bottom: 150%;
+        // TODO
+        // left: 60%;
+        right: 0;
+      }
+      .tooltip.top .tiptext::after {
+        margin-left: -5px;
+        top: 100%;
+        // TODO
+        // left: 50%;
+        right: 5px;
+        border-color: #2e2e2e transparent transparent transparent;
+        opacity: 1;
+      }
+    }
+    .btn {
+      height: 60px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'DINPro';
+      font-weight: 500;
+      letter-spacing: -1.5px;
+      font-size: 30px;
+    }
+    .btn-request {
+      background-color: rgb(238, 29, 35);
+      border: none;
+      color: white;
+      box-shadow: 3px 3px 3px 0px rgb(65, 68, 70);
+    }
+    .btn-print {
+      color: white;
+      background-color: rgb(65, 68, 70);
+      border: none;
+    }
+    .img-info {
+      width: 92%;
+      height: 92%;
+      margin: auto;
+      margin-top: 8%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.4em 0px !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.5em;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 15px;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  width: 133.33333%;
+}
+
+.calculator-container {
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__element {
+    margin: 0 4%;
+
+    &--error {
+      font-family: Roboto;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12px;
+      color: #ec0000;
+    }
+  }
+}

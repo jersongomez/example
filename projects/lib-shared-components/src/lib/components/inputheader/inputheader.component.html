@@ -1,0 +1,26 @@
+<div [class.contInputHeader]="loadCard" [class.marginGridMobile]="loadCard">
+  <form class="contMatInput" [formGroup]="form">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ labelHeader }} </mat-label>
+        <input
+          matInput
+          type="tel"
+          currencyMask
+          formControlName="amount"
+          name="amount"
+          [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0, debounce: 1000 }"
+          [min]="min$ | async"
+          [max]="max$ | async"
+        />
+        <mat-hint class="has-error" *ngIf="form.get('amount').errors?.min && form.get('amount').touched">
+          El valor mínimo a financiar es de $ {{ min$ | async | number: '1.0':'es' }}
+        </mat-hint>
+        <mat-hint class="has-error" *ngIf="form.get('amount').errors?.max">
+          El valor máximo a financiar es de $ {{ max$ | async | number: '1.0':'es' }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <ng-content></ng-content>
+  </form>
+</div>

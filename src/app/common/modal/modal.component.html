@@ -1,0 +1,162 @@
+<section class="section-modal">
+  <div class="modal" *ngIf="tipoModal=='tiempoSesion'">
+      <div mat-dialog-content class="text-content">{{ data.message }}</div>
+      <div class="seg" *ngIf="data.type === 'warning'">{{ timerSeconds }} segundos</div>
+      <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+      <div mat-dialog-acctions class="acctions-button">
+        <div *ngIf="data.type === 'warning'; else elseDiv">
+          <button mat-button (click)="closeModal()">Continuar</button>
+          <button mat-button (click)="logout()">{{ btnAccept }}</button>
+        </div>
+        <ng-template #elseDiv>
+          <button mat-button (click)="logout()">{{ btnAccept }}</button>
+        </ng-template>
+      </div>
+  </div>
+
+  <div id="modalNoFound" *ngIf="tipoModal=='closeInactive'">
+    <h1 mat-dialog-title id="tituloModal">Sitio no disponible</h1>
+    <div id="imgNo">
+      <img src="../../../assets/img//negado.png" alt="" id="imgNegado">
+    </div>
+
+    <div class="acctions-button">
+      <button class="btn-request" id="botonaceptar" (click)="logout()" [ngStyle]="styleBoton">Aceptar</button>
+    </div>
+  </div>
+
+  <div id="modalAliados" *ngIf="tipoModal=='crearAliado'|| tipoModal=='EditarAliado'">
+    <h1 class="tituloModal">Ingresa información de aliado</h1>
+    <form [formGroup]="form" (ngSubmit)="save($event)">
+      <div class="contendorInput" id="controlForm">
+        <mat-form-field class="date-form-field" id="busquedaNombre">
+          <input
+            matInput
+            formControlName="nombreAliado"
+            placeholder="Ingresa nombre aliado"
+            minlength="2"
+            maxlength="60"
+          />
+        </mat-form-field><br>
+        <mat-form-field class="date-form-field" id="busquedaNombre">
+          <input
+            matInput
+            formControlName="riesgo"
+            placeholder="Riesgoo aliado"
+            minlength="1"
+            maxlength="2"
+            (keypress)="utils.numbersOnly($event)"
+            />
+        </mat-form-field><br>
+
+        <div class="contenedormatSlide">
+          <mat-form-field class="input-form" [floatLabel]="'never'">
+            <mat-slide-toggle
+              [labelPosition]="'after'"
+              [color]="'warn'"
+              formControlName="AliadoAddi">
+            </mat-slide-toggle> Aliadoo Addi
+            <textarea matInput hidden></textarea>
+            <!-- <mat-error class="mat-error">Campo requerido</mat-error> -->
+          </mat-form-field><br>
+
+          <mat-form-field class="input-form" [floatLabel]="'never'">
+            <mat-slide-toggle
+              [labelPosition]="'after'"
+              [color]="'warn'"
+              formControlName="EstadoAliado">
+            </mat-slide-toggle> Estado Aliado
+            <textarea matInput hidden></textarea>
+            <!-- <mat-error class="mat-error">Campo requerido</mat-error> -->
+          </mat-form-field><br>
+        </div>
+      </div>
+      <div class="botones" id="CtBtnParametros">
+        <button type="submit" mat-flat-button color="warn" [disabled]="!isValidFilter()" id="btnGuardar">
+          GUARDAR
+        </button>
+      </div>
+    </form>
+    <button (click)="closeModal()" mat-flat-button id="btnSalir">
+      SALIR
+    </button>
+  </div>
+
+  <div id="modalParametro" *ngIf="tipoModal=='CrearParametro'|| tipoModal=='EditarParametro'">
+    <h1 class="tituloModal">Ingresa información de parametro</h1>
+    <form [formGroup]="form" (ngSubmit)="save($event)">
+      <div class="contendorInput" id="controlForm">
+        <mat-form-field class="date-form-field" id="inputForm">
+          <input
+            matInput
+            formControlName="nombreParametro"
+            placeholder="Ingresa nombre parametro"
+            minlength="2"
+            maxlength="60"
+          />
+        </mat-form-field><br>
+        <mat-form-field class="date-form-field" id="inputForm">
+          <input
+            matInput
+            formControlName="tipoParametro"
+            placeholder="Tipo Parametro"
+            minlength="1" maxlength="60"
+          />
+        </mat-form-field><br>
+        <mat-form-field class="date-form-field" id="inputForm">
+          <input
+            matInput
+            formControlName="valorNumerico"
+            placeholder="Valor Numerico"
+            minlength="1" maxlength="20"
+            (keypress)="utils.numbersOnly($event)"
+          />
+        </mat-form-field><br>
+        <mat-form-field class="date-form-field" id="inputForm">
+          <input
+            matInput formControlName="valorTexto"
+            placeholder="Valor Texto"
+            minlength="1" maxlength="60"
+         />
+        </mat-form-field><br>
+        <mat-form-field class="input-form" [floatLabel]="'never'">
+          <mat-slide-toggle
+            [labelPosition]="'after'"
+            [color]="'warn'"
+            formControlName="activo"
+          >
+          </mat-slide-toggle>Estado Aliado
+          <textarea matInput hidden></textarea>
+                    <!-- <mat-error class="mat-error">Campo requerido</mat-error> -->
+        </mat-form-field><br>
+        <mat-form-field class="date-form-field" id="inputForm">
+          <input
+            matInput
+            placeholder="Id Aliado"
+            minlength="1" maxlength="24"
+            formControlName="idAliado"
+          >
+        </mat-form-field><br>
+      </div>
+      <div class="botones" id="CtBtnParametros">
+        <button type="submit" mat-flat-button color="warn" [disabled]="!isValidFilter()" id="btnGuardar">
+          GUARDAR
+        </button>
+      </div>
+
+    </form>
+    <button (click)="closeModal()" mat-flat-button id="btnSalir">
+      SALIR
+    </button>
+  </div>
+
+  <div id="modalParametro" *ngIf="tipoModal=='confirmacionRegistro'">
+    <div id="confirmacionProceso">{{mensajeInformativo}}</div>
+    <div class="botones" id="CtBtnParametros">
+      <button (click)="closeModal()"  color="warn" mat-flat-button id="InfbtnSalir">
+        SALIR
+      </button>
+    </div>
+
+  </div>
+</section>

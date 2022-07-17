@@ -1,0 +1,21 @@
+<mat-nav-list class="side-menu__list">
+  <mat-list-item
+    *ngFor="let item of menu.items"
+    (click)="[select(item)]"
+    [routerLink]="[item.url]"
+    class="side-menu__item"
+  >
+    <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+    {{ item.label }}
+  </mat-list-item>
+  <mat-divider class="side-menu__separator"></mat-divider>
+
+  <div class="bottom-items">
+    <mat-divider class="side-menu__separator"></mat-divider>
+
+    <mat-list-item *ngFor="let item of menu.bottomItems" (click)="[this[item.url]()]" class="side-menu__item">
+      <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+      {{ item.label }}
+    </mat-list-item>
+  </div>
+</mat-nav-list>

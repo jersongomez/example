@@ -1,0 +1,58 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15%;
+  text-align: center;
+  font-family: Roboto;
+  margin-top: 7%;
+  @include Asmall() {
+    margin-top: 20%;
+  }
+  img {
+    width: auto;
+    @include Asmall() {
+      width: 50%;
+    }
+  }
+  .pnftitle h2 {
+    font-size: 26px;
+    color: rgba(27, 27, 27, 1);
+    opacity: 1;
+    @include Asmall() {
+      font-size: 3vh;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: (153, 153, 153, 1);
+    opacity: 1;
+    @include Asmall() {
+      font-size: 2.3vh;
+    }
+  }
+  mat-form-field {
+    width: 382px;
+    @include Asmall() {
+      width: 80%;
+    }
+  }
+  .btn-request {
+    background-color: rgba(236, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    margin-bottom: 2%;
+    font-size: 14px;
+    width: 382px;
+    text-transform: uppercase;
+    @include Asmall() {
+      width: 80%;
+      height: 11vh;
+      font-size: 14px;
+    }
+  }
+}

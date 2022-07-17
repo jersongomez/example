@@ -1,0 +1,166 @@
+/* forms iniciar solicitud*/
+
+.title-request {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-family: Roboto;
+    text-align: center;
+}
+
+.dialog-title {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 26px;
+}
+
+.dialog-form {
+    margin: 0px 10%;
+    max-height: 90%;
+}
+
+.dialog-label {
+    width: 100%;
+    font-family: Roboto;
+}
+
+.dialog-label h2 {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+
+.dialog-input {
+    width: 100%;
+    font-family: Roboto;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.dialog-select {
+    width: 33%;
+    font-family: Roboto;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.dia {
+    padding-right: 2%;
+}
+
+.mes {
+    padding: 0 2%;
+}
+
+.year {
+    padding-left: 2%;
+}
+
+
+/*Heredables*/
+
+::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+    padding: 0.4em 0px !important;
+}
+
+:host
+    ::ng.deep
+        .mat-checkbox-inner-container {
+            margin-top: initial;
+            margin-bottom: initial;
+            transform: translateY(3px);
+
+          }
+
+
+
+::ng-deep .mat-form-field-label-wrapper {
+    top: -1.5em;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 15px;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+.has-error {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: red;
+    font-size: 12px;
+}
+
+.authorize-all-checkbox {
+    padding: 16px 0;
+}
+
+.authorize-all-checkbox__checkbox {
+    text-align: justify;
+
+}
+
+.authorize-all-checkbox__checkbox--text {
+    white-space: normal;
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: normal;
+}
+
+.authorize-all-checkbox__checkbox--text a {
+    color: #EC0000;
+}
+
+.authorize-all-checkbox__checkbox--text span {
+    color: #EC0000;
+}
+
+mat-progress-spinner {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+}
+
+
+#procesess {
+  top: 300px;
+
+}
+
+#procesess mat-progress-spinner {
+  margin: 25px auto;
+}
+mat-progress-spinner {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+}
+
+
+#procesess {
+  top: 300px;
+     @include Asmall() {
+       top: 200px;
+     }
+}
+
+#procesess mat-progress-spinner {
+  margin: 25px auto;
+}
+
+
+
+.spinner-container{
+  display: inline-flex !important;
+  height: 250px;
+}

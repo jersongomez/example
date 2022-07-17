@@ -1,0 +1,82 @@
+@import './../../../../../scss/variables';
+@import './../../../../../scss/mixins';
+.fndHeader {
+  background-image: url($fondoDesktopHelp);
+  background-size: 124% 100%;
+  min-height: 57vh;
+
+  @include Asmall() {
+    background-image: none;
+    height: 414px;
+    min-height: 414px;
+  }
+
+  @include smallTablet() {
+    height: 679px;
+  }
+
+  @include tabletLaptop() {
+    height: 628.89px;
+  }
+
+  @include laptopDesktop() {
+    height: 724.28px;
+  }
+
+  @include desktopFull() {
+    height: 728.14px;
+  }
+}
+
+.help-sales-container {
+  &__back-mobile {
+    @include Asmall() {
+      background-image: url($fondoMobileHelp);
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: 100% auto;
+      height: 305px;
+    }
+  }
+}
+
+.color-header {
+  max-width: 100%;
+  background-color: rgba(0, 82, 214, 1);
+  opacity: 0.8;
+}
+
+/* Formas Fuentes */
+
+.pLight {
+  font-weight: 300;
+  font-size: 12px;
+  color: $blanco;
+  font-family: Roboto;
+  @include Asmall() {
+    font-size: 11px;
+    text-align: center;
+  }
+}
+
+.viewMobile {
+  text-decoration: none;
+  margin: auto;
+  width: 100%;
+}
+
+#menu {
+  text-align: center;
+}
+
+@import '../../../../../../projects/lib-shared-components/src/lib/styles/styles.scss';
+
+.business-help-container {
+  &__navbar {
+    background-color: white;
+  }
+
+  &__tips {
+    background-color: map-get($colors, gray-light);
+  }
+}

@@ -1,0 +1,24 @@
+<div class="cntModal">
+  <div class="background"></div>
+
+  <div class="card animated fadeInUp fast">
+    <div class="logo-santander">
+      <ng-content select="[logo]"></ng-content>
+    </div>
+
+    <div class="header">
+      <ng-content select="[header]"></ng-content>
+    </div>
+
+    <div class="message">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="footer">
+      <ng-content class="btn-request" select="[start]"></ng-content>
+    </div>
+    <div class="footer">
+      <ng-content class="btn-back" select="[back]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<gaes-basic-layout>
+  <div main-content class="basic-content request-container">
+    <div class="contenido">
+      <div class="light-steps">
+        <lib-app-manual-partners [helpitems]="helpItemsGaes"></lib-app-manual-partners>
+      </div>
+
+      <div class="pasos">
+        <div class="parrafomargenInferior">
+          <p class="textParrafo">
+            <strong>10.</strong> De acuerdo con la respuesta que el sistema le dé a tu cliente,<br />
+            debes hacer lo siguiente :
+          </p>
+          <br />
+          <p class="green"><strong>Si la solicitud fue Aprobada:</strong></p>
+          <br />
+          <p class="red"><strong>Si la solicitud fue negada:</strong></p>
+          <p class="parrafo">
+            Solo debes enviar los documentos y explicarle a tu paciente que la solicitud por el momento no es viable,
+            pero que puede intentarlo pasados tres meses desde la fecha actual.
+          </p>
+          <br />
+          <p class="parrafo">
+            <strong>la solicitud fue pre Aprobado sin documentos:</strong><br />
+            Después de enviar el correo electrónico con los documentos firmados por el cliente, deberás esperar una hora
+            para que Santander Financing Finance te remita una decisión final.
+          </p>
+          <br />
+          <p class="parrafo">
+            <strong>la solicitud es pre aprobada con documentos:</strong><br />
+            Deberás solicitar a tu paciente los siguientes documentos adicionales al correo definido.
+          </p>
+          <br />
+          <p class="parrafo">
+            <strong>Si tu paciente es empleado:</strong><br />
+            Certificación laboral vigente no mayor a 30 días.<br />
+            Si aplica, certificaciones de sus empleos anteriores para demostrar continuidad laboral de al menos 12
+            meses,<br />
+            con continuidad de 6 meses en su empleo actual.<br /><br />
+          </p>
+          <p class="parrafo">
+            <strong>Pensionados:</strong><br />
+            Resolución de pensión o extractos (últimos tres meses) o desprendibles de pago (últimos tres meses).<br /><br />
+          </p>
+          <p class="parrafo">
+            <strong>Independientes:</strong><br />
+            Tu paciente debe anexar su RUT y/o Cámara de Comercio con vigencia no mayor a 30 dias, Declaración de renta
+            y/o extractos bancarios de los últimos tres meses y/o Tarjetas de propiedad con contratos.<br /><br />
+          </p>
+          <p class="parrafo">
+            <strong>Si es rentista de capital:</strong><br />
+            Certificados de tradición y libertad (no mayor a 30 días) con contratos.<br /><br />
+            Una vez recibas los documentos de tu paciente y los remitas al correo asignado, tendras un respuesta en las
+            próximas horas sobre la solicitud:<br /><br /><strong
+              >Si fue aprobada, infórmale a tu paciente que puede iniciar el tratamiento.</strong
+            ><br /><br /><strong
+              >Si fue negada, explícale que puede intentarlo pasados tres meses desde la fecha actual</strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div tips>
+    <div class="business-help-container__tips">
+      <lib-standard-size-layout>
+        <h1 class="tipsVentas">Tips Ventas:</h1>
+        <lib-sales-tip-partners [helptips]="helpTipsGaes"></lib-sales-tip-partners>
+      </lib-standard-size-layout>
+    </div>
+  </div>
+
+  <div contact>
+    <lib-standard-size-layout>
+      <lib-contact-partners></lib-contact-partners>
+    </lib-standard-size-layout>
+  </div>
+</gaes-basic-layout>

@@ -1,0 +1,230 @@
+<div class="viability-container">
+  <div class="viability-container__title">El cliente ha sido identificado</div>
+  <div class="viability-container__subtitle">Registra los siguientes datos</div>
+  <div class="viability-container__form">
+    <form [formGroup]="form">
+      <div class="viability-form">
+        <div class="viability-form__inputs">
+          <div class="viability-form__inputs--title-date-birth">Fecha de nacimiento</div>
+          <mat-hint
+            *ngIf="
+              (form.get('dateBirth.day').errors?.required && form.get('dateBirth.day').touched) ||
+              (form.get('dateBirth.month').errors?.required && form.get('dateBirth.month').touched) ||
+              (form.get('dateBirth.year').errors?.required && form.get('dateBirth.year').touched)
+            "
+            class="viability-form__inputs--error"
+          >
+            Seleccioné su fecha de nacimiento
+          </mat-hint>
+          <div formGroupName="dateBirth" class="viability-form__inputs--date-birth">
+            <mat-form-field appearance="outline">
+              <mat-label>Día</mat-label>
+              <mat-select formControlName="day">
+                <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Mes</mat-label>
+              <mat-select formControlName="month">
+                <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Año</mat-label>
+              <mat-select formControlName="year">
+                <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Actividad económica</mat-label>
+              <mat-select formControlName="economicActivity">
+                <mat-option *ngFor="let activity of activities" [value]="activity.code">
+                  {{ activity.name }}
+                </mat-option>
+              </mat-select>
+              <mat-hint
+                *ngIf="form.get('economicActivity').errors?.required && form.get('economicActivity').touched"
+                class="viability-form__inputs--error"
+              >
+                La actividad económica es necesario
+              </mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Ingresos mensuales</mat-label>
+              <input
+                matInput
+                formControlName="income"
+                type="tel"
+                [min]="minAmount$ | async"
+                currencyMask
+                [options]="{ align: 'left', prefix: '$ ', thousands: '.', decimal: ',', precision: 0 }"
+              />
+              <mat-hint
+                *ngIf="form.get('income').errors?.required && form.get('income').touched"
+                class="viability-form__inputs--error"
+              >
+                Los ingresos son necesarios
+              </mat-hint>
+              <mat-hint
+                *ngIf="
+                  form.get('income').errors?.min && form.get('income').touched && !form.get('income').errors?.required
+                "
+                class="viability-form__inputs--error"
+              >
+                Los ingresos deben ser iguales o superiores a $ {{ minAmount$ | async | number: '1.0-0':'es' }}
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Departamento de residencia</mat-label>
+              <mat-select formControlName="departmentResidence">
+                <mat-option *ngFor="let department of ciudadService.Departments" [value]="department.id">
+                  {{ department.nombre }}
+                </mat-option>
+              </mat-select>
+              <mat-hint
+                *ngIf="form.get('departmentResidence').errors?.required && form.get('departmentResidence').touched"
+                class="viability-form__inputs--error"
+              >
+                El departamento de residencia es necesario
+              </mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Ciudad de residencia</mat-label>
+              <mat-select formControlName="cityResidence">
+                <mat-option *ngIf="cities.length === 0">Seleccione primero un Departamento</mat-option>
+                <mat-option *ngFor="let city of cities" [value]="city.id">
+                  {{ city.nombre }}
+                </mat-option>
+              </mat-select>
+              <mat-hint
+                *ngIf="form.get('cityResidence').errors?.required && form.get('cityResidence').touched"
+                class="viability-form__inputs--error"
+              >
+                La ciudad de residencia es necesaria
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Dirección de residencia</mat-label>
+              <input matInput formControlName="address" type="text" autocomplete="off" />
+              <mat-hint
+                class="viability-form__inputs--error"
+                *ngIf="form.get('address').errors?.required && form.get('address').touched"
+              >
+                La dirección de residencia es necesaria
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Estrato</mat-label>
+              <mat-select formControlName="stratum">
+                <mat-option *ngFor="let stratumOption of stratumList" [value]="stratumOption.id">
+                  {{ stratumOption.label }}
+                </mat-option>
+              </mat-select>
+              <mat-hint
+                *ngIf="form.get('stratum').errors?.required && form.get('stratum').touched"
+                class="viability-form__inputs--error"
+              >
+                El estrato es necesario
+              </mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="viability-form__inputs--input">
+            <mat-form-field appearance="outline">
+              <mat-label>Estado civil</mat-label>
+              <mat-select formControlName="civilStatus">
+                <mat-option
+                  *ngFor="let civilStatusOption of civilStatusService.CivilStatuses"
+                  [value]="civilStatusOption.estadoCivil"
+                >
+                  {{ civilStatusOption.valor }}
+                </mat-option>
+              </mat-select>
+              <mat-hint
+                *ngIf="form.get('civilStatus').errors?.required && form.get('civilStatus').touched"
+                class="viability-form__inputs--error"
+              >
+                El estado civil es necesario
+              </mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="viability-form__summary">
+          <div class="viability-form__summary--title">Resumen</div>
+          <div class="viability-form__summary--content">
+            <div class="viability-summary-box">
+              <div class="viability-summary-box__body">
+                <div class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Monto a solicitar</div>
+                  <div class="viability-summary-box__body--value">
+                    $ {{ (currentFee$ | async).amountToFinanced | number: '1.0-0':'es' }}
+                  </div>
+                </div>
+                <div class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Plazo en meses</div>
+                  <div class="viability-summary-box__body--value">{{ (currentFee$ | async).feeNumber }} meses</div>
+                </div>
+                <div class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Cuota mensual</div>
+                  <div class="viability-summary-box__body--value">
+                    $ {{ (currentFee$ | async).valueFeeWithInsurance | number: '1.0-0':'es' }}
+                  </div>
+                </div>
+                <div *ngIf="expand" class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Monto total a financiar</div>
+                  <div class="viability-summary-box__body--value">
+                    $ {{ (currentFee$ | async).totalFinancingAmount | number: '1.0-0':'es' }}
+                  </div>
+                </div>
+                <div *ngIf="expand" class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Valor seguro deudor (Vigencia del crédito)</div>
+                  <div class="viability-summary-box__body--value">
+                    $ {{ (currentFee$ | async).totalSafeValue | number: '1.0-0':'es' }}
+                  </div>
+                </div>
+                <div *ngIf="expand" class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Valor seguro todo riesgo (Anual)</div>
+                  <div class="viability-summary-box__body--value">
+                    $ {{ (currentFee$ | async).allRiskValue | number: '1.0-0':'es' }}
+                  </div>
+                </div>
+                <div *ngIf="expand" class="viability-summary-box__body--row">
+                  <div class="viability-summary-box__body--title">Tasa NMV</div>
+                  <div class="viability-summary-box__body--value">
+                    {{ (currentFee$ | async).nominalMonthOverdue * 100 | number: '1.0-2':'es' }}
+                  </div>
+                </div>
+              </div>
+              <div class="viability-summary-box__footer">
+                <div class="viability-summary-box__footer--link" (click)="expand = !expand">
+                  <div class="viability-summary-box__footer--text">
+                    {{ !expand ? 'VER MÁS' : 'VER MENOS' }}
+                  </div>
+                  <div class="viability-summary-box__footer--icon">
+                    <mat-icon *ngIf="!expand" aria-hidden="false" aria-label="expand"> keyboard_arrow_down</mat-icon>
+                    <mat-icon *ngIf="expand" aria-hidden="false" aria-label="collapse"> keyboard_arrow_up</mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

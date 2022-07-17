@@ -1,0 +1,87 @@
+<div *ngIf="calculatorService.getAccions" class="container">
+  <div class="header">
+    <div class="logo2 {{ logoClass }}">
+      <img [src]="logo" />
+    </div>
+    <div class="logo1">
+      <img src="../../../../assets/img/consumerFinance.png" />
+    </div>
+    <div class="title-print">
+      Monto solicitado: $ {{ calculatorService.Cuota.montoAFinanciar | number: '1.0-0':'es' }}
+    </div>
+  </div>
+  <div class="plan-pagos">
+    <div class="header-plan-pagos">Plan de pagos:</div>
+    <div class="body-plan-pagos">
+      <div class="cuota">{{ calculatorService.Cuota.numeroCuota }} Pagos</div>
+      <div class="valor">$ {{ calculatorService.Cuota.valorCuotaConSeguro | number: '1.0-0':'es' }} / mes</div>
+    </div>
+  </div>
+  <div class="descripcion"></div>
+  <div class="detalles">
+    <div class="detalles-header">Detalles del prestamo</div>
+    <hr class="detalles-line" />
+    <div class="detalles-body">
+      <div class="detalles-info">
+        <li class="dot-leader">
+          <span class="dot-leader__left">Costo total del seguro: (Vigencia del crédito)</span>
+          <span class="dot-leader__right">$ {{ calculatorService.Cuota.valorTotalSeguro | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Valor cuota sin seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.valorCuotaSinSeguro | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Valor cuota con seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.valorCuotaConSeguro | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Cuota mensual del seguro:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.costoMensualSeguro | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Monto total a finaciar:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.montoTotalFinanciamiento | number: '1.0-0':'es' }}</span
+          >
+        </li>
+        <li class="dot-leader" *ngIf="calculatorService.Cuota.costoInteres > 0">
+          <span class="dot-leader__left">Costo de Interes:</span>
+          <span class="dot-leader__right">$ {{ calculatorService.Cuota.costoInteres | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Tasa E.A:</span>
+          <span class="dot-leader__right">{{ calculatorService.Cuota.tasa * 100 | number: '1.0-2':'es' }} %</span>
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">Tasa NMV:</span>
+          <span class="dot-leader__right"
+            >{{ calculatorService.Cuota.nominalMesVencido * 100 | number: '1.0-2':'es' }} %</span
+          >
+        </li>
+        <li class="dot-leader">
+          <span class="dot-leader__left">GMF:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.cuatroxMil | number: '1.0-2':'es' }} </span
+          >
+        </li>
+        <li class="dot-leader" *ngIf="calculatorService.Cuota.valorTodoRiesgo > 0">
+          <span class="dot-leader__left">Valor total seguro todo riesgo: (Anual)</span>
+          <span class="dot-leader__right">$ {{ calculatorService.Cuota.valorTodoRiesgo | number: '1.0-0':'es' }}</span>
+        </li>
+        <li class="dot-leader" *ngIf="calculatorService.Cuota.costoMensualTodoRiesgo > 0">
+          <span class="dot-leader__left">Prima mensual seguro todo riesgo:</span>
+          <span class="dot-leader__right"
+            >$ {{ calculatorService.Cuota.costoMensualTodoRiesgo | number: '1.0-0':'es' }}</span
+          >
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+---
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: '{{ abl_artifact_id }}'
+      labels:
+        app: '{{ abl_artifact_id }}'
+        provider: consumer
+        group: co.com.bsnc
+        app.openshift.io/runtime: nodejs
+        product: '{{ abl_product }}'
+        build: '{{ abl_job_build }}'
+    spec:
+      type: ClusterIP
+      selector:
+        app: '{{ abl_artifact_id }}'
+        provider: consumer
+        group: co.com.bsnc
+      ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
+          name: http
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        configmap.fabric8.io/update-on-change: {{ abl_artifact_id }}
+        fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project={{ abl_artifact_id }}
+      labels:
+        app: '{{ abl_artifact_id }}'
+        product: '{{ abl_product }}'
+        provider: consumer
+        group: co.com.bsnc
+        app.openshift.io/runtime: 'nodejs'
+        build: '{{ abl_job_build }}'
+      name: '{{ abl_artifact_id }}'
+    spec:
+      replicas: {{ abl_replicas }}
+      revisionHistoryLimit: 10
+      selector:
+        matchLabels:
+          app: '{{ abl_artifact_id }}'
+          provider: consumer
+          group: co.com.bsnc
+      template:
+        metadata:
+          annotations:
+            configmap.fabric8.io/update-on-change: {{ abl_artifact_id }}
+            fabric8.io/metrics-path: dashboard/file/kubernetes-pods.json/?var-project={{ abl_artifact_id }}
+          labels:
+            app: '{{ abl_artifact_id }}'
+            product: '{{ abl_product }}'
+            group: co.com.bsnc
+            provider: consumer
+            build: '{{ abl_job_build }}'
+        spec:
+          imagePullSecrets:
+          - name: bsnc-registry
+          containers:
+          - name: {{ abl_artifact_id }}
+            image: {{ abl_registry }}/{{ abl_namespace }}/{{ abl_artifact_id }}:{{ abl_image_version }}
+            imagePullPolicy: {{ abl_img_pullpolicy }}
+            envFrom:
+              - configMapRef:
+                  name: {{ abl_artifact_id }}
+              - secretRef:
+                  name: sso-{{ abl_artifact_id }}
+            ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            livenessProbe:
+              failureThreshold: 2
+              initialDelaySeconds: {{ abl_liveness_delay }}
+              periodSeconds: 10
+              tcpSocket:
+                port: http
+              timeoutSeconds: 5
+            readinessProbe:
+              failureThreshold: 2
+              initialDelaySeconds: {{ abl_readiness_delay }}
+              periodSeconds: 5
+              tcpSocket:
+                port: http
+              timeoutSeconds: 5
+            resources:
+              limits:
+                cpu: {{ abl_cpu_limit }}
+                memory: {{ abl_memory_limit }}
+              requests:
+                cpu: {{ abl_cpu_request }}
+                memory: {{ abl_memory_request }}
+

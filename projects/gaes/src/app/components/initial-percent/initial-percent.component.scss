@@ -1,0 +1,17 @@
+::ng-deep .app-initial-percent-container {
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.app-initial-percent-container {
+  .has-error {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: red;
+    font-size: 12px;
+    @media only screen and (max-width: 320px) {
+      font-size: 11px;
+    }
+  }
+}

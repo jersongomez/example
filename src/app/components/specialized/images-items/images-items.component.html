@@ -1,0 +1,16 @@
+<div class="titleManSol textoBlanco">
+  <h1>Manual de solicitud</h1>
+  <p class="title">Si tu cliente decide financiar con Santander, sigue los siguientes pasos:</p>
+</div>
+
+<div class="pasos">
+  <div class="paso" *ngFor="let item of itemsAyuda; let i = index">
+    <div class="parrafo">
+      <p class="textParrafo">{{ item.id }}. {{ item.descripcion }}</p>
+    </div>
+    <div class="imagePaso">
+      <img src="../../../../assets/specialized/{{ item.imagen }}" alt="" />
+    </div>
+    <hr />
+  </div>
+</div>

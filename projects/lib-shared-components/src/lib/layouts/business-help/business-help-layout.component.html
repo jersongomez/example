@@ -1,0 +1,36 @@
+<div class="lib-business-help-contianer">
+  <div #headerTitle class="lib-business-help-contianer__header-title">
+    <ng-content select="[header-title]"></ng-content>
+  </div>
+  <div #navbar class="lib-business-help-contianer__navbar">
+    <ng-content select="[navbar]"></ng-content>
+  </div>
+  <div #contentCard class="lib-business-help-contianer__content-card">
+    <ng-content select="[contentCard]"></ng-content>
+  </div>
+
+  <div class="lib-business-help-contianer__process">
+    <ng-content select="[process]"></ng-content>
+  </div>
+
+  <div class="lib-business-help-contianer__images">
+    <ng-content select="[images]"></ng-content>
+  </div>
+  <div class="lib-business-help-contianer__items">
+    <ng-content select="[items]"></ng-content>
+  </div>
+
+  <div class="lib-business-help-contianer__sales-tips">
+    <ng-content select="[tips]"></ng-content>
+  </div>
+  <div class="lib-business-help-contianer__contact">
+    <ng-content select="[contact]"></ng-content>
+  </div>
+
+  <div class="lib-business-help-contianer__footer">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>
+<div *ngIf="!!imgBg" #bg class="lib-business-help-bg">
+  <img [src]="imgBg" alt="background" />
+</div>

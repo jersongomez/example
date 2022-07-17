@@ -1,0 +1,38 @@
+.lib-input-tooltip {
+  mat-form-field {
+    width: 100%;
+  }
+
+  .tooltip {
+    grid-column: 3;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: gray;
+    color: #fff;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: -27px -20px;
+    position: absolute;
+
+    &::after {
+      margin-left: -5px;
+      top: 100%;
+      left: 50%;
+      border-color: #2e2e2e transparent transparent;
+      opacity: 1;
+      content: '';
+      position: absolute;
+      border-width: 5px;
+      border-style: solid;
+    }
+  }
+}
+
+::ng-deep .mat-tooltip {
+  white-space: pre-line !important;
+}

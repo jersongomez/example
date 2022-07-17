@@ -1,0 +1,13 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+:host {
+  display: block;
+  background-color: rgba(0, 82, 214, 1);
+  font-weight: 300;
+  font-size: 13px;
+  color: $blanco;
+  @include Asmall() {
+    font-size: 11px;
+    text-align: center;
+  }
+}

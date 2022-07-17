@@ -1,0 +1,13 @@
+<div class="lib-sales-tip-partners-container">
+  <div *ngFor="let tip of helpTips" class="lib-sales-tip-partners-container__tip">
+    <div class="lib-sales-tip-partners-container__tip--image">
+      <img [src]="tip.image" alt="help-tips-image" />
+    </div>
+    <div *ngIf="!!tip.title" class="lib-sales-tip-partners-container__tip--title">
+      {{ tip.title }}
+    </div>
+    <div class="lib-sales-tip-partners-container__tip--description">
+      {{ tip.description }}
+    </div>
+  </div>
+</div>

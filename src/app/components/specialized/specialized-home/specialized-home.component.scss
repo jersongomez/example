@@ -1,0 +1,194 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: rgb(238, 29, 35);
+}
+
+.specialized-home-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Roboto;
+
+  @media print {
+    display: none;
+  }
+
+  &__background {
+    width: 100%;
+    height: 800px;
+    background-image: url('/assets/specialized/fondoSpecialized.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__content,
+  &__sales-tips {
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__content {
+    padding: 5% 5% 0 2%;
+
+    &--navbar,
+    &--section-center {
+      width: 100%;
+    }
+  }
+
+  &__sales-tips,
+  &__footer {
+    padding: 5% 0 0 0;
+  }
+
+  &__footer {
+    width: 100%;
+  }
+}
+
+.specialized-home-section-center {
+  display: flex;
+
+  @include tabletLaptop() {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  @include smallTablet() {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  @include Asmall() {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  &__information,
+  &__calculator {
+    width: 50%;
+
+    @include tabletLaptop() {
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+
+    @include smallTablet() {
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+
+    @include Asmall() {
+      max-width: 630px;
+      width: 100%;
+      align-self: center;
+    }
+  }
+
+  &__information {
+    margin-top: 579px;
+
+    @include laptopDesktop() {
+      margin-top: 597px;
+    }
+
+    @include tabletLaptop() {
+      margin-top: 0;
+    }
+
+    @include smallTablet() {
+      margin-top: 0;
+    }
+
+    @include Asmall() {
+      margin-top: 0;
+    }
+
+    .textinfo {
+      grid-row: 2;
+      margin-top: 5%;
+      .text1 {
+        font-family: 'DINPro';
+        font-weight: 500;
+        font-size: 30px;
+        letter-spacing: -1.5px;
+        transform: scaleY(1.2);
+        span {
+          font-weight: bold;
+        }
+      }
+      .text2 {
+        font-family: 'DINPro';
+        font-weight: 500;
+        font-size: 28px;
+        letter-spacing: -1.5px;
+        transform: scaleY(1.2);
+        color: rgb(65, 68, 70);
+        span {
+          font-weight: bold;
+          color: black;
+        }
+      }
+      .info-conditions {
+        font-family: 'DINPro';
+        font-weight: 500;
+        width: 100%;
+        color: rgb(65, 68, 70);
+        margin-top: 8%;
+        h4 {
+          font-size: 28px;
+          font-weight: bold;
+          text-transform: uppercase;
+          transform: scaleY(1.2);
+          letter-spacing: -1.5px;
+          margin: 10px 0;
+        }
+        ul {
+          list-style-position: inside;
+          margin-bottom: 20px;
+          li {
+            line-height: 20px;
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.specialized-home-loader {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(219, 211, 211, 0.1);
+  z-index: 9999;
+
+  mat-progress-spinner {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+}

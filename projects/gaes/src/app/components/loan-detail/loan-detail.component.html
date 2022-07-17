@@ -1,0 +1,87 @@
+<div>
+  <div class="cntAprox">
+    <p class="grayParrf">Cuota inicial:</p>
+    <h3>{{ initialPercent | number: '1.0-0':'es' }} %</h3>
+  </div>
+
+  <hr />
+
+  <div class="cntAprox" id="cuotaInicial">
+    <p class="grayParrf">Valor cuota inicial:</p>
+    <h3>$ {{ (currentFee$ | async).initialFee | number: '1.0-0':'es' }}</h3>
+  </div>
+
+  <div class="cntAprox">
+    <p class="grayParrf">
+      Cuota aproximada mensual:
+      <br class="no-desk" />
+      (incluye seguro de vida)
+    </p>
+    <h3>$ {{ (currentFee$ | async).valueFeeWithInsurance | number: '1.0-0':'es' }}</h3>
+    <div class="tooltip do-not-print">
+      <mat-icon (click)="setShowDetails()">help_outline</mat-icon>
+    </div>
+  </div>
+
+  <div class="cntAprox details" *ngIf="!!showDetails">
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">Monto a financiar:</p>
+      <p class="cifraBlack">$ {{ (currentFee$ | async).amountToFinanced | number: '1.0-0':'es' }}</p>
+    </div>
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">Valor de la cuota sin seguro:</p>
+      <p class="cifraBlack">
+        $
+        {{ (currentFee$ | async).valueFeeWithoutInsurance | number: '1.0-0':'es' }}
+      </p>
+    </div>
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">Valor del seguro:</p>
+      <p class="cifraBlack" *ngIf="!!(currentFee$ | async).totalSafeValue">
+        $ {{ (currentFee$ | async).totalSafeValue | number: '1.0-0':'es' }}
+      </p>
+      <p class="cifraBlack" *ngIf="!(currentFee$ | async).totalSafeValue">Gratis</p>
+    </div>
+    <!---->
+    <div class="contDetail" *ngIf="!zeroRate">
+      <p class="grayParrf">Cuota mensual del seguro:</p>
+      <p class="cifraBlack" *ngIf="!!(currentFee$ | async).monthlyInsuranceCost">
+        $ {{ (currentFee$ | async).monthlyInsuranceCost | number: '1.0-0':'es' }}
+      </p>
+      <p class="cifraBlack" *ngIf="!(currentFee$ | async).monthlyInsuranceCost">Gratis</p>
+    </div>
+    <!---->
+    <div class="contDetail" *ngIf="!zeroRate">
+      <p class="grayParrf">Monto total a financiar:</p>
+      <p class="cifraBlack">$ {{ (currentFee$ | async).totalFinancingAmount | number: '1.0-0':'es' }}</p>
+    </div>
+    <!---->
+    <div class="contDetail" *ngIf="zeroRate">
+      <p class="grayParrf">Valor final:</p>
+      <p class="cifraBlack">
+        $ {{ (currentFee$ | async).amountToFinanced + (currentFee$ | async).initialFee | number: '1.0-0':'es' }}
+      </p>
+    </div>
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">Tasa efectiva anual:</p>
+      <p class="cifraBlack">{{ (currentFee$ | async).rate | number: '1.0-2':'es' }} %</p>
+    </div>
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">Tasa nominal mes vencido:</p>
+      <p class="cifraBlack">{{ (currentFee$ | async).nominalMonthOverdue * 100 | number: '1.0-2':'es' }} %</p>
+    </div>
+    <!---->
+    <div class="contDetail">
+      <p class="grayParrf">GMF:</p>
+      <p class="cifraBlack">$ {{ (currentFee$ | async).fourPerThousand | number: '1.0-2' :'es' }} </p>
+    </div>
+    <div>
+      <p class="grayColor">*Recuerda que en tu primer cuota pagaras el GMF</p>
+    </div>
+  </div>
+</div>

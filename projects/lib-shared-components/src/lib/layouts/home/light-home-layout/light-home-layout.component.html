@@ -1,0 +1,49 @@
+<div class="lib-light-home-layout-container">
+  <div class="super-container animated fadeIn fast">
+    <section class="backgound-image do-not-print" id="hero" [attr.style]="getImg('bannerBackground')">
+      <div class="lib-light-home-layout__container lib-light-home-layout__container-overnav-header do-not-print">
+        <div #contentOverNav id="content-over-nav" class="basic-content over-nav-header">
+          <ng-content select="[content-over-nav]"></ng-content>
+        </div>
+      </div>
+      <div class="white-background print-ok">
+        <div class="lib-light-home-layout__container lib-light-home-layout__container-white-background">
+          <div class="basic-content logos">
+            <img class="print-ok" src="{{ logoPartner }}" />
+            <img class="print-ok" src="{{ logoSantander }}" />
+            <div class="gaes-logo bg-logo" [attr.style]="getImg(['logoPartner', 'logoWhitePartner'])"></div>
+            <div class="santander-logo bg-logo" [attr.style]="getImg(['logoSantander', 'logoWhiteSantander'])"></div>
+            <div #navLinks id="nav-links" class="nav-right-links do-not-print">
+              <ng-content select="[nav-links]"></ng-content>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lib-light-home-layout__container hero-text do-not-print">
+        <div class="basic-content columns-4">
+          <div class="column-1">
+            <div #summaryText id="summary-text">
+              <ng-content select="[summary-text]"></ng-content>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section #mainContent>
+      <ng-content select="[main-content]"></ng-content>
+    </section>
+
+    <ng-content tips select="[tips]"></ng-content>
+
+    <ng-content contact select="[contact]"></ng-content>
+
+    <section>
+      <div class="basic-content">
+        <div class="cnt-footer print-ok" class="lib-light-home-layout-contianer__footer">
+          <ng-content select="[footer]"></ng-content>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="challenge-question-container">
+  <div class="challenge-question-container__title">
+    Para poder autenticarte en nuestro sistema, responde estas preguntas
+  </div>
+  <div class="challenge-question-container__question">
+    <div class="challenge-question-container__question--number">{{ currenQuestion.orden }}.</div>
+    {{ currenQuestion.texto }}
+  </div>
+  <div class="challenge-question-container__answers">
+    <form [formGroup]="form">
+      <mat-radio-group class="challenge-question-radio-group" formControlName="answers">
+        <mat-radio-button
+          *ngFor="let respuesta of currenQuestion.respuesta"
+          class="challenge-question-radio-group__radio"
+          [value]="respuesta.id"
+        >
+          <span class="challenge-question-radio-group__radio--text">
+            {{ respuesta.texto }}
+          </span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+  </div>
+</div>

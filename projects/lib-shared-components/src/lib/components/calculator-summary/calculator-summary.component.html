@@ -1,0 +1,49 @@
+<div class="contResume">
+  <h3>Detalles del prestamo</h3>
+  <hr />
+  <div [ngClass]="{ mgHidden: !showContent, mgShow: showContent }" class="resume">
+    <div class="values">
+      <p>Monto total solicitado</p>
+      <p>Cuota inicial</p>
+      <p>Cuota mensual</p>
+      <p>Valor total del seguro</p>
+      <p>Costo mensual del seguro</p>
+      <p>GMF</p>
+
+    </div>
+    <div class="results">
+      <p>$ {{ (creditFeeData$ | async).amountToFinanced | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).initialFee | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).valueFeeWithInsurance | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).totalSafeValue | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).monthlyInsuranceCost | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).fourPerThousand | number: '1.0-0':'es' }}</p>
+
+    </div>
+  </div>
+  <div [ngClass]="{ hidden: !showContent, show: showContent, mgShowBottom: showContent }" class="resume">
+    <div class="values">
+      <p>Monto total a financiar</p>
+      <p>Costo de interes</p>
+      <p>Tasa E.A</p>
+      <p>Tasa NMV</p>
+      <p>*Recuerda que en tu primer cuota pagaras el GMF</p>
+
+    </div>
+    <div class="results">
+      <p>$ {{ (creditFeeData$ | async).totalFinancingAmount | number: '1.0-0':'es' }}</p>
+      <p>$ {{ (creditFeeData$ | async).interestCost | number: '1.0-0':'es' }}</p>
+      <p>{{ (creditFeeData$ | async).rate * 100 | number: '1.0-2':'es' }} %</p>
+      <p>{{ (creditFeeData$ | async).nominalMonthOverdue * 100 | number: '1.0-2':'es' }} %</p>
+    </div>
+  </div>
+  <hr />
+  <div class="showMas pointer" (click)="showContent = !showContent">
+    <div class="cntShowMas">
+      <div class="cntMas">MOSTRAR {{ showContent ? 'MENOS' : 'MÁS' }}</div>
+      <div class="cntIcon">
+        <mat-icon>keyboard_arrow_{{ showContent ? 'up' : 'down' }}</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

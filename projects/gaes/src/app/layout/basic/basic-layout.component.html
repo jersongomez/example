@@ -1,0 +1,43 @@
+<lib-process-request-v1 class="loader" (endRequest)="endRequestViability()" *ngIf="flowService.StartFlow">
+</lib-process-request-v1>
+
+<div class="home-loader" *ngIf="!(partnerId$ | async)">
+  <mat-progress-spinner mode="indeterminate" value="100"></mat-progress-spinner>
+</div>
+
+<lib-light-home-layout
+  *ngIf="!!(partnerId$ | async)"
+  [currentfee]="currentFee$"
+  [logoheader]="URL_LOGO_PARTNER"
+  [bannerBackground]="URL_BANNER_BACKGROUND"
+  [logoPartner]="URL_LOGO_PARTNER"
+  [logoWhitePartner]="URL_LOGO_WHITE_PARTNER"
+  [logoSantander]="URL_LOGO_SANTANDER"
+  [logoWhiteSantander]="URL_LOGO_WHITE_SANTANDER"
+>
+  <div content-over-nav>FINANCIA EL DISPOSITIVOS CON GAES Y EL BANCO SANTANDER</div>
+
+  <lib-navbar-menu nav-links [menuItems]="menuItems$" class="nav-right-links"></lib-navbar-menu>
+
+  <div summary-text>
+    <h1>
+      FINANCIA EL DISPOSITIVO
+      <br class="no-desk" />
+      DE TU PACIENTE
+    </h1>
+    <p class="parrafo">
+      GAES es una compañía multinacional líder en el sector de la corrección auditiva, lleva 70 años diseñando (I+D),
+      produciendo, distribuyendo y comercializando audífonos para todas las personas con dificultades auditivas.
+    </p>
+  </div>
+
+  <div main-content class="lib-light-home-layout__container">
+    <ng-content select="[main-content]"></ng-content>
+  </div>
+
+  <ng-content tips select="[tips]"></ng-content>
+
+  <ng-content contact select="[contact]"></ng-content>
+
+  <p footer class="small print-ok">Copyright © 2019, Banco Santander</p>
+</lib-light-home-layout>

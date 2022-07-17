@@ -1,0 +1,123 @@
+@import '../../../../../lib-shared-components/src/lib/styles/styles.scss';
+
+.home-container {
+  @media print {
+    display: none;
+  }
+
+  &__header-title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    padding: 20px 0;
+    color: white;
+  }
+
+  &__navbar {
+    background-color: white;
+  }
+
+  &__simulator {
+    &--title {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    &--subtitle {
+      text-align: center;
+      padding: 3%;
+      color: brown;
+      font-weight: bold;
+    }
+
+    &--radiogroup {
+      text-align: center;
+      padding: 5%;
+    }
+  }
+
+  &__footer {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    padding: 20px 0;
+    background-color: map-get($colors, gold);
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  height: 6.5vh;
+}
+.primario {
+  border: 1px solid black;
+}
+.secundario {
+  border: 1px solid map-get($colors, gold);
+  background-color: map-get($colors, gold);
+  color: azure;
+  width: 100%;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  grid-gap: 15px;
+  margin: 10px 0px;
+}
+
+.btn-order {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 6.5vh;
+
+  .viewMobile {
+    text-decoration: none;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: blue !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: blue !important; /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: blue !important; /*outer ring color change*/
+}
+
+.home-loader {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(219, 211, 211, 0.1);
+  z-index: 9999;
+
+  mat-progress-spinner {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+}

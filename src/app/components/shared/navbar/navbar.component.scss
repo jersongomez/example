@@ -1,0 +1,49 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+.navbarSeccion {
+  background-color: $blanco;
+  .contenedor {
+    max-width: 100%;
+  }
+}
+
+.navbar-container {
+  grid-column-start: 2;
+  display: flex;
+  justify-content: space-between;
+
+  &__images {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    &--one,
+    &--two {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+
+    &--one {
+      background-image: url($logoO3);
+      height: 75%;
+      width: 58px;
+    }
+
+    &--two {
+      background-image: url($logoSantander);
+      height: 75%;
+      width: 148px;
+      margin-left: 32px;
+
+      @include smallTablet() {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__app-menu {
+    flex-grow: 0;
+  }
+}

@@ -1,0 +1,22 @@
+<section class="seccionFluida tipsVentas">
+  <div class="contenedor">
+    <div class="contenido">
+      <h1>Tips de ventas:</h1>
+      <div class="partDosBig">
+        <div class="contDosBig">
+          <div *ngFor="let tip of itemsVentas" class="item">
+            <img src="../../../../assets/img/{{ tip.imagen }}" />
+            <div class="text">
+              <p class="title">
+                {{ tip.titulo }}
+              </p>
+              <p class="textContent">
+                {{ tip.descripcion }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

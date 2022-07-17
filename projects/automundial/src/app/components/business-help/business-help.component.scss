@@ -1,0 +1,44 @@
+.business-help-container {
+  &__header-title {
+    font-family: Roboto;
+    font-weight: bold;
+    font-style: normal;
+    padding: 20px 0;
+    color: white;
+  }
+
+  &__navbar {
+    background-color: white;
+    margin: 20px 0;
+  }
+
+  &__tips {
+    background-color: white;
+  }
+
+  &__footer {
+    font-family: Roboto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+    padding: 20px 0;
+    background-color: #003577;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+::ng-deep .lib-business-help-contianer {
+  &__content-card {
+    display: none;
+  }
+
+  &__navbar {
+    button {
+      background-color: #269c64;
+      color: #fff;
+      border: 1px solid #269c64;
+      margin-left: 1%;
+    }
+  }
+}
